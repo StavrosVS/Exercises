@@ -1,0 +1,189 @@
+\subsection{Απάντηση Υποερωτήματος (γ)}
+\label{ssec:Solution_4.2}
+\doublespacing
+
+Ο ισχυρισμός ότι η διαφορά δύο κανονικών γλωσσών μπορεί να παράξει μη μετρήσιμο πλήθος συμβολοσειρών είναι
+λανθασμένος. Θα προχωρήσω σε απόδειξη με δύο μεθόδους:
+
+ %\hfill \break
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Απόδειξη - μέρος 1/2]
+\begin{itemize}
+	\itemsep1em
+
+	\item Ως συμβολοσειρά ορίζεται ακολουθία συμβόλων πεπερασμένου μήκους.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{4.3.1}{\bf{(1)}}\end{flushright}
+
+	\item Ως αλφάβητο $\Sigma$ ορίζεται ως πεπερασμένο σύνολο συμβόλων.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{4.3.2}{\bf{(2)}}\end{flushright}
+
+	\item $\Sigma^n$ με $n \in \mathbb{N}^0$ να εννοείται το σύνολο των
+	συμβολοσειρών$^{\hyperlink{4.3.1}{\bf{\textcolor{red}{(1)}}}}$ μήκους $n$ πχ για γλώσσα
+	$\Sigma = {a, b},\, \Sigma^0 = {\emptyset},\, \Sigma^1 = {a, b},\, \Sigma^2 = {aa, ab, ba, bb}$ κοκ.
+	Eίναι μετρήσιμο$^{\hyperlink{4.3.2}{\bf{\textcolor{red}{(2)}}}}$ με πλήθος $\vert\Sigma^n\vert = 2^n$.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{4.3.3}{\bf{(3)}}\end{flushright}
+
+	\item Ορίζουμε σύνολο συμβολοσειρών $\Sigma^*$ αλφάβητου $\Sigma$ για το οποίο ισχύει:\\
+	$\{ \Sigma^* \;\vert\; (n \in \mathbb{N}^0)\,[\Sigma^* = \Sigma^0 \cup \Sigma^1 \cup ... \cup \Sigma^n] \}$ \\
+	Υπερσύνολο$^{\hyperlink{4.3.3}{\bf{\textcolor{red}{(3)}}}}$ που αποτελείτε από ένωση μετρήσιμων
+	συνόλων δεν μπορεί παρά να είναι και το
+	ίδιο μετρήσιμο. Επίσης αφού $n \in \mathbb{N}^0$ τότε $\Sigma^*$ μετρήσιμο και με βάση την αρχή του
+	περιστερώνα αφού ισχύει\\
+	 $\{\{n \in \mathbb{N}^0 \;\vert\; k \in \mathbb{N}\}:[\exists n_k : k = n+1]\}$.
+	 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	 \begin{flushright}\hypertarget{4.3.4}{\bf{(4)}}\end{flushright}
+
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Απόδειξη - μέρος 2/2]
+	\begin{itemize}
+		\itemsep1em
+
+
+	\item Για μία κανονική γλώσσα $\mathcal{L}$ ισχύει $\mathcal{L} \subseteq \Sigma^* = \bigcup\limits_{k =
+		0}^{\infty}\Sigma^k$ (γνήσιο υποσύνολο στην -τυπική κατά τα άλλα- περίπτωση που κάποιες συμβολοσειρές δεν
+	αναγνωρίζονται λόγο των γραμματικών κανόνων της γλώσσας). Άρα οι συμβολοσειρές μιας κανονικής γλώσσας είναι
+	πάντα μετρήσιμες ως υποσύνολο του μετρήσιμου $\Sigma^*$.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{4.3.5}{\bf{(5)}}\end{flushright}
+
+	\item Ισχύει για σύνολα Α και Β ότι $Α - Β = \{x \vert [x \in A] \land (x \notin B)\}$ και άρα $(A - B)
+	\subseteq A$ ενώ $(A - B) \not\subseteq B$
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{4.3.6}{\bf{(6)}}\end{flushright}
+
+	\item Για κανονικές γλώσσες $L_1 \in \mathcal{L}_{reg}$ και $L_2 \in \mathcal{L}_{reg}$
+	έχουμε ότι\\
+	$L_1 - L_2 =  L_3$ με $L_3 \subseteq L_1^{\hyperlink{4.3.6}{\bf{\textcolor{red}{(6)}}}}$ \\
+	και αφού $L_1 \in \mathcal{L}_{reg}$ τότε και η $L_3$ μόνο μετρήσιμη θα μπορούσε να
+	είναι$^{\hyperlink{4.3.5}{\bf{\textcolor{red}{(5)}}}}$.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{4.3.7}{\bf{(7)}}\end{flushright}
+
+	\item Πρόταση $\mathcal{P} =$ "Η διαφορά δύο κανονικών γλωσσών μπορεί να παράξει μη μετρήσιμο πλήθος
+	συμβολοσειρών"\\
+	Πρόταση $\mathcal{Q} =$ "Η διαφορά δύο κανονικών γλωσσών πάντα παράγει μετρήσιμο πλήθος συμβολοσειρών"\\
+	$\mathcal{P} = \neg\mathcal{Q}$ αλλά έχουμε ήδη αποδείξει ότι το $\mathcal{Q}$ είναι
+	αληθές$^{\hyperlink{4.3.7}{\bf{\textcolor{red}{(7)}}}}$ δλδ $\mathcal{Q} = Τ$ οπότε $\mathcal{P} = \neg Τ$ και
+	άρα $\mathcal{P} = F$ και άρα ο αρχικός ισχυρισμός είναι λανθασμένος.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\bf{\qedsymbol{}}\end{flushright}
+
+\end{itemize}
+\end{tcolorbox}
+
+% \hfill \break
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Απόδειξη με χρήση ιδιοτήτων κανονικών γλωσσών]
+	\begin{itemize}
+		\itemsep1em
+
+	\item Οι κανονικές γλώσσες μπορεί να είναι είτε πεπερασμένες είτε μετρήσιμα άπειρες και ποτέ μη μετρήσιμα
+	άπειρες. Οι πεπερασμένες γλώσσες είναι πάντα κανονικές.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{4.3.8}{\bf{(8)}}\end{flushright}
+
+	\item Οι κανονικές γλώσσες είναι κλειστές ως προς την πράξη της ένωση.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{4.3.9}{\bf{(9)}}\end{flushright}
+
+	\item $L_1 \in \mathcal{L}_{reg}$ και $L_2 \in \mathcal{L}_{reg}$ δηλαδή κανονικές.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{4.3.10}{\bf{(10)}}\end{flushright}
+
+	\item $L_1 \cup L_2 = L_3 \overset{\hyperlink{4.3.9}{\bf{\textcolor{red}{(9)}}}
+	\land \hyperlink{4.3.10}{\bf{\textcolor{red}{(10)}}}}{\Longrightarrow} L_3$ κανονική
+	$\overset{\hyperlink{4.3.8}{\bf{\textcolor{red}{(8)}}}}{\Longrightarrow}$ μετρήσιμη $\neq$ μή μετρήσιμη. Μόλις
+	αποδείξαμε ότι οι κανονικές γλώσσες είναι κλειστές ως προς την πράξη της διαφοράς.
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\bf{\qedsymbol{}}\end{flushright}
+
+\end{itemize}
+\end{tcolorbox}
+
+\begin{comment}
+Μέθοδος 1η:
+
+\begin{itemize}
+	\itemsep0em
+
+	\item Ως συμβολοσειρά ορίζεται ακολουθία συμβόλων πεπερασμένου μήκους. (1)
+
+	\item Ως αλφάβητο $\Sigma$ ορίζεται ως πεπερασμένο σύνολο συμβόλων.
+
+	\item Για πεπερασμένου πλήθους αλφάβητο $\Sigma$ και κανονική γλώσσα $\mathcal{L}$ ισχύει
+  	$\mathcal{L} \subseteq \Sigma^* = \bigcup\limits_{k = 0}^{\infty}\Sigma^k$
+
+	\item Κανονική γλώσσα απαραίτητα πρέπει να δύναται να περιγραφεί από κανονικές εκφράσεις και επίσης να
+	περιγράφει κανονικά αυτόματα, τα οποία έχουν πεπερασμένη μνήμη και μπορούν να δεχθούν μόνο μετρήσιμο
+	(μετρήσιμα άπειρο είτε πεπερασμένο) πλήθος, πεπερασμένου μήκους (1) συμβολοσειρές. (2)
+
+	\item Για παράδειγμα για μια γλώσσα με αλφάβητο $\Sigma_A = {a, b}$  που περιγράφεται από την κανονική
+	έκφραση $a*β*$ είναι μετρήσιμα άπειρη διότι μπορούμε μία προς μία και κατά σειρά να γράψουμε όλες τις
+	(μετρήσιμα άπειρες) συμβολοσειρές που μπορεί να αυτή παράξει $\{\epsilon, a, b, ab, aa, bb,...\}$.
+
+	\item Άρα οι κανονικές γλώσσες παράγουν μόνο πεπερασμένο ή μετρήσιμα άπειρο πλήθος συμβολοσειρών (2)
+
+	\item Ισχύει για σύνολα Α και Β ότι $Α - Β = \{x \vert [x \in A] \land (x \notin B)\}$ και άρα
+	$(A - B) \subseteq A$ (3)
+
+\end{itemize}
+
+
+Υπάρχουν κανονικές γλώσσες $\mathcal{L}_1$, $\mathcal{L}_2$. Ισχύει ότι για
+$\mathcal{L}_3 = \mathcal{L}_1 - \mathcal{L}_2$, βάση του (3) αληθεύει και ότι $\mathcal{L}_3 \subseteq
+\mathcal{L}_1$.
+
+Εφόσον $\mathcal{L}_3$ υποσύνολο του $\mathcal{L}_1$ τότε δύναται να παράξει πλήθος συμβολοσειρών ίσο ή μικρότερο
+και εφόσον για το $\mathcal{L}_1$ ως κανονική γλώσσα είναι είτε μετρήσιμα άπειρη ή πεπερασμένη (2) άρα το ίδιο
+ισχύει και για το $\mathcal{L}_3$.
+
+
+	\begin{itemize}
+		\itemsep0em
+
+		\item Ο ορισμός των συμβολοσειρών μας λέει ότι μια συμβολοσειρά είναι πάντα πεπερασμένου μήκους. (1)
+
+		\item Οι κανονικές γλώσσες παράγουν ένα υποσύνολο συμβολοσειρών, από αυτές που δύναται να παράξει το
+		αλφάβητο
+		τους.
+
+		\item Οι κανονικές γλώσσες απαραίτητα πρέπει να δύναται να περιγραφή από κανονικές εκφράσεις και επίσης να
+		περιγράφουν κανονικά αυτόματα, τα οποία έχουν πεπερασμένη μνήμη και μπορούν να δεχθούν μόνο μετρήσιμο
+		(μετρήσιμα άπειρο είτε πεπερασμένο) πλήθος, πεπερασμένου μήκους (1) συμβολοσειρές.
+
+		\item Για παράδειγμα για μια γλώσσα με αλφάβητο $\Sigma_A = {a, b}$  που περιγράφεται από την κανονική
+		έκφραση $a*β*$ είναι μετρήσιμα άπειρη διότι μπορούμε μία προς μία και κατά σειρά να γράψουμε όλες τις
+		(μετρήσιμα άπειρες) συμβολοσειρές που μπορεί να αυτή παράξει $\{\epsilon, a, b, ab, aa, bb,...\}$.
+
+		\item Άρα οι κανονικές γλώσσες παράγουν μόνο πεπερασμένο ή μετρήσιμα άπειρο πλήθος συμβολοσειρών (2)
+
+		\item Ισχύει για σύνολα Α και Β ότι $Α - Β = \{x \vert [x \in A] \land (x \notin B)\}$ και άρα
+		$(A - B) \subseteq A$ (3)
+
+	\end{itemize}
+\end{comment}
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+\clearpage

@@ -1,0 +1,88 @@
+\subsection{Απάντηση Υποερωτήματος (γ)}
+\label{ssec:SubsectionName3}
+
+Έχουμε $\{\,x \in \{a,\,b\} \; \vert \;
+ [\,\exists n \in \mathbb {N}^0\,]\;(\,x$ είναι 1ο σύμβολο της $w \,\lor\, m\vert x \vert = 4n+2\,)\}$.
+
+\par
+Εδώ δυνάμεθα να κάνουμε κάποιες παρατηρήσεις όπως για παράδειγμα ότι ουσιαστικά έχουμε μόνο μία συνθήκη, η οποία ναι μεν
+ισχύει για όλα τα σύμβολα της γλώσσας αλλά περιορίζει μόνο ένα από αυτά τη φορά. Για να το θέσουμε αλλιώς, η συνθήκη αυτή μας
+λέει ότι απαιτεί συγκεκριμένο αριθμό εμφανίσεων του 1ου συμβόλου, όποιο και αν είναι αυτό, χωρίς όμως να μας ενδιαφέρει
+οποιοδήποτε άλλο σύμβολο και χωρίς να μας απασχολούν οι θέσεις τους (πέρα του 1ου).
+
+Άρα το \underline{μη αρχικό} σύμβολο μπορεί αυτό να είναι σε οποιαδήποτε θέση και σε οποιοδήποτε αριθμό επαναλήψεων
+συμπεριλαμβανομένου και του μηδέν και άρα μιλάμε πια για βρόγχους ("λούπες").
+
+Από την άλλη, εφόσον ο 1ος χαρακτήρας είναι το μόνο που καθορίζει την αναγνωρισιμότητα της λέξης κατά αποκλειστικότητα,
+μπορούμε να εξάγουμε άλλα δύο δεδομένα:
+
+\begin{itemize}
+	\itemsep0em
+	\item ότι μάλλον οι κόμβοι του αυτομάτου σχηματίζουν δύο αλυσίδες όπου πέρα από το ότι αλλάζουμε σύμβολο μετάβασης (στο
+	αντίστοιχο αρχικό της λέξης) από τον ένα κόμβο στον άλλο (και όλα τα άλλα πάνε στις λούπες) κατά άλλα οι "αλυσίδες" είναι
+	ίδιες (ίδιο αριθμό κόμβων με ίδιες μεταβάσεις διαφορετικού όμως χαρακτήρα).
+
+	\item ότι ο αρχικός κόμβος, είναι κοινός για όλες τις "αλυσίδες" και δεν περιέχει καμία λούπα ή επιστροφή προς αυτόν.
+
+	\item ότι αυτό σημαίνει και ότι αν είχαμε παραπάνω διαφορετικούς χαρακτήρας πχ $w \in {a,b,c,...}^*$ τότε οι "αλυσίδες"
+	θα υπήρχαν σε τόσα "αντίγραφα" όσα και τα διαφορετικά σύμβολα της γλώσσας, πάντα με κοινό κόμβο τον αρχικό.
+\end{itemize}
+
+Θα μπορούσαμε να βρούμε το συγκεκριμένο αυτόματο με αποδόμηση όπως και τα προηγούμενα αλλά θα απαιτούσε περιττά πολύ χρόνο
+και κόπο, λόγο περιπλοκότητας, άρα:
+
+\begin{figure}[!htb] \centering
+		\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
+			% Help grid
+			%	\draw [help lines] (-1,4) grid (8,-10);
+			% Start Node : Every other node is measured based to this one
+			\node (q0) [state, black, scale = 1.3, initial above, initial distance = 4mm, initial text = {Αρχή},
+			top color = green!80, bottom color = green!20] {$q_{0}$};
+
+			% Middle Nodes
+			\node (q1) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, left = of q0] {$q_{1}$};
+			\node (q4) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, below left = of q1]
+			{$q_{4}$};
+			\node (q3) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, above left = of q4]
+			{$q_{3}$};
+
+			\node (q5) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q0] {$q_{5}$};
+			\node (q8) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, below right = of q5]
+			{$q_{8}$};
+			\node (q7) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, above right = of q8]
+			{$q_{7}$};
+
+			% Final Node
+			\node (q2) [state, black, scale = 1.3, accepting, top color = red!80, bottom color = red!20, , double
+			distance = 3pt, double = red!20, above left = of q1] {$q_{2}$};
+
+			\node (q6) [state, black, scale = 1.3, accepting, top color = red!80, bottom color = red!20, , double
+			distance = 3pt, double = red!20, above right = of q5] {$q_{6}$};
+
+			% Draw Arrows/Connections
+			\path [-stealth, thick]
+			(q0) edge [] node [above] {$a$}(q1)
+			(q0) edge [] node [above] {$b$} (q5)
+
+			(q1) edge [] node [left] {$a$} (q2)
+			(q1) edge [loop left] node [left] {$b$} (q1)
+			(q2) edge [] node [below] {$a$} (q3)
+			(q2) edge [loop left] node [left] {$b$} (q2)
+			(q3) edge [] node [below] {$a$} (q4)
+			(q3) edge [loop left] node [left] {$b$} (q3)
+			(q4) edge [] node [below] {$a$} (q1)
+			(q4) edge [loop left] node [left] {$b$} (q4)
+
+			(q5) edge [loop right] node [right] {$a$} (q5)
+			(q5) edge [] node [right] {$b$} (q6)
+			(q6) edge [loop right] node [right] {$a$} (q6)
+			(q6) edge [] node [right] {$b$} (q7)
+			(q7) edge [loop right] node [right] {$a$} (q7)
+			(q7) edge [] node [right] {$b$} (q8)
+			(q8) edge [loop right] node [right] {$a$} (q8)
+			(q8) edge [] node [right] {$b$} (q5);
+		\end{tikzpicture}
+		%\end{flushleft}
+		\caption{DFA $M_{1}$ : \\ $L = \{\,w\; \vert \; (w \in \{a, b\}^*) \; [\vert w \vert$ περιττό$]\}$}
+		\label{fig:sub1}
+\end{figure}

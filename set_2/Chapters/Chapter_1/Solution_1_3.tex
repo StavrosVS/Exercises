@@ -1,0 +1,80 @@
+\subsection{Απάντηση Υποερωτήματος (γ)}
+\label{ssec:Solution_1.3}
+\doublespacing
+Κανένας περιορισμός για $b$ και $c$ πέρα του ότι θα πρέπει να παρεμβάλετε τουλάχιστον μία εμφάνιση ενός
+από αυτά, ανάμεσα σε τυχών δύο συνεχόμενα $a$ και εφόσον\\
+$L\! =\! \{w \in \{a,\, b,\, c\}^* \mid (\forall k \in \mathbb{N}^0, \nexists i \in [1\dots \vert w\vert-1])
+[\vert w\vert_a = 4k+1,\, w_i = w_{i+1} = a]\}$ άρα $\vert w\vert_{min} = 1$.
+
+
+%\par
+%\phantom{\text{Ελάχιστη περίπτωση}}
+\begin{equation*}
+		\overset{\text{Ελάχιστη περίπτωση }}{\rightarrow} a
+\end{equation*}
+\begin{equation*}
+	\begin{split}
+		\begin{gathered}
+	\overset{\vert w \vert_a = 4k+1}{\rightarrow}
+	 (aaaa)^* a
+	\overset{\text{απεριόριστα }b, c}{\rightarrow}\\
+	(b \cup c)^* \; [ a\, (b \cup c)^*\, a\, (b \cup c)^*\, a \,(b \cup c)^*\, a\, (b \cup c)^*]^*\; a\; (b \cup
+	c)^* \\
+	\overset{\text{όχι συνεχόμενα }a}{\rightarrow}
+	(b \cup c)^* \; [a\, (b \cup c)^+\, a\, (b \cup c)^+\, a \,(b \cup c)^+\, a\, (b \cup c)^+]^*\; a \;(b \cup c)^*
+		\end{gathered}
+	\end{split}
+\end{equation*}
+
+\par
+Θα τη "σπάσουμε" σε τμήματα χάριν ευκολίας ανάγνωσης:
+\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace
+\begin{comment}
+	\phantom{\text{Τελική κανονική έκφραση χωρισμένη βάση μοτίβου}}
+	\begin{equation*}
+		{\boldmath
+			\begin{split}
+				\begin{gathered}
+					(b^*c^*)^*\textcolor{orange}{[}
+					\\(a\textcolor{purple}{[}b(b^*c^*)^* \cup c(b^*c^*)^*\textcolor{purple}{]})
+					\\(a\textcolor{purple}{[}b(b^*c^*)^* \cup c(b^*c^*)^*\textcolor{purple}{]})
+					\\(a\textcolor{purple}{[}b(b^*c^*)^* \cup c(b^*c^*)^*\textcolor{purple}{]})
+					\\(a\textcolor{purple}{[}b(b^*c^*)^* \cup c(b^*c^*)^*\textcolor{purple}{]})
+					\\ \textcolor{orange}{]}^* a(b^*c^*)^*
+				\end{gathered}
+		\end{split}}
+		\;\;\;\;\;\;\;\;\;\;\text{Τελική κανονική έκφραση χωρισμένη βάση μοτίβου}
+	\end{equation*}
+\end{comment}
+
+\hfill \break
+\mathversion{bold}
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Κανονική έκφραση χωρισμένη βάση μοτίβου]
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{align*}
+		\begin{gathered}
+			(b \cup c)^*\\
+			[a\,
+			\textcolor{red}{(}b \textcolor{red}{\cup} c\textcolor{red}{)}^+\,
+			 a\,
+			  \textcolor{red}{(}b \textcolor{red}{\cup} c\textcolor{red}{)}^+\,
+			   a \,
+			   \textcolor{red}{(}b \textcolor{red}{\cup} c\textcolor{red}{)}^+\,
+			    a\,
+			    \textcolor{red}{(}b \textcolor{red}{\cup} c\textcolor{red}{)}^+
+			     ]^*\;\\
+			 a\\
+			 (b \cup c)^*
+		\end{gathered}
+	\end{align*}
+\end{tcolorbox}
+\mathversion{normal}
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+\clearpage

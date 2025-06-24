@@ -1,0 +1,97 @@
+\subsection{Απάντηση Υποερωτήματος (γ)}
+\label{ssec:Solution_2.3}
+\doublespacing
+Έχουμε $L = \{ w = xy \in \{a, b\}^* \; \vert \; (x \in \{a, b\},\, [\,\vert w\vert_x = 4n+2,\, n \in
+\mathbb{N}^0\,]\}$.
+
+\par
+Παρατηρούμε ότι ουσιαστικά έχουμε μόνο μία συνθήκη, η οποία ναι μεν ισχύει για όλα τα σύμβολα της γλώσσας αλλά
+περιορίζει μόνο ένα από αυτά τη φορά. Αναλυτικότερα, απαιτεί
+συγκεκριμένο αριθμό εμφανίσεων του πρώτου συμβόλου, χωρίς όμως να μας ενδιαφέρει οποιοδήποτε άλλο σύμβολο και χωρίς
+να μας απασχολούν οι θέσεις τους.
+
+Άρα μη αρχικό σύμβολο δύναται να παρεμβάλλεται παντού εκτός της 1ης θέσης στη λέξη κατά Kleene star
+φορές έκαστη.
+
+Επίσης, εφόσον μόνο ο 1ος χαρακτήρας καθορίζει την αναγνωρισιμότητα της λέξης κατά
+αποκλειστικότητα, μπορούμε να εξάγουμε άλλα δύο δεδομένα:
+
+\begin{itemize}
+	\itemsep0em
+	\item Οι κόμβοι του αυτομάτου σχηματίζουν $k = \{\Sigma \in L \;\vert\; \vert\Sigma\vert\}$ αλυσίδες έκαστη
+	διαφορετικού
+	συμβόλου του αλφαβήτου της γλώσσας, το οποίο δίνει τις μεταβάσεις μεταξύ κόμβων (και τα υπόλοιπα πάνε στις
+	λούπες). Κατά άλλα οι "αλυσίδες" είναι ίδιες και με κοινή αφετηρία την αρχική κατάσταση και η αρχική είναι η
+	μόνη κατάσταση που μπορούμε να μεταβούμε προς άλλη με οποιοδήποτε σύμβολο.
+
+	\item Ο αρχικός κόμβος, είναι κοινός για όλες τις "αλυσίδες" και δεν περιέχει καμία λούπα ή επιστροφή προς
+	αυτόν.
+
+\end{itemize}
+
+%\vfill
+%\clearpage
+Θα μπορούσαμε να βρούμε το συγκεκριμένο αυτόματο με αποδόμηση όπως και τα προηγούμενα αλλά θα απαιτούσε περιττά
+πολύ χρόνο και κόπο, λόγο περιπλοκότητας, άρα:
+
+%\hfill \break
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Τελικό DFA $M_{\text{τελικό}}$]
+	\begin{tikzpicture} [blue, node distance = 2.2cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q0) [state, black, scale = 1, initial above, initial distance = 4mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q_{0}$};
+
+		% Middle Nodes
+		\node (q1) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, left = of q0] {$q_{1}$};
+		\node (q4) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below left = of q1]
+		{$q_{4}$};
+		\node (q3) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, above left = of q4]
+		{$q_{3}$};
+
+		\node (q5) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, right = of q0]
+		{$q_{5}$};
+		\node (q8) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below right = of q5]
+		{$q_{8}$};
+		\node (q7) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, above right = of q8]
+		{$q_{7}$};
+
+		% Final Node
+		\node (q2) [state, black, scale = 1, accepting, top color = red!80, bottom color = red!20, , double
+		distance = 3pt, double = red!20, above left = of q1] {$q_{2}$};
+
+		\node (q6) [state, black, scale = 1, accepting, top color = red!80, bottom color = red!20, , double
+		distance = 3pt, double = red!20, above right = of q5] {$q_{6}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+		(q0) edge [] node [above] {$a$}(q1)
+		(q0) edge [] node [above] {$b$} (q5)
+
+		(q1) edge [] node [right] {$a$} (q2)
+		(q1) edge [loop left] node [left] {$b$} (q1)
+		(q2) edge [] node [left] {$a$} (q3)
+		(q2) edge [loop left] node [left] {$b$} (q2)
+		(q3) edge [] node [left] {$a$} (q4)
+		(q3) edge [loop left] node [left] {$b$} (q3)
+		(q4) edge [] node [right] {$a$} (q1)
+		(q4) edge [loop left] node [left] {$b$} (q4)
+
+		(q5) edge [loop right] node [left] {$a$} (q5)
+		(q5) edge [] node [left] {$b$} (q6)
+		(q6) edge [loop right] node [right] {$a$} (q6)
+		(q6) edge [] node [right] {$b$} (q7)
+		(q7) edge [loop right] node [right] {$a$} (q7)
+		(q7) edge [] node [right] {$b$} (q8)
+		(q8) edge [loop right] node [right] {$a$} (q8)
+		(q8) edge [] node [left] {$b$} (q5);
+	\end{tikzpicture}
+\end{tcolorbox}
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+\clearpage

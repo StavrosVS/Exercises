@@ -1,0 +1,373 @@
+\subsection{Απάντηση Υποερωτήματος (α)}
+\label{ssec:Solution_5.1}
+\doublespacing
+
+\begin{comment}
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\begin{figure}[!htb] \centering
+	\begin{tikzpicture} [blue, node distance = 2.3cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q1) [state, black, scale = 1, initial left, initial distance = 4mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q_{1}$};
+
+		% Middle Nodes
+		\node (q2) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below = of q1]
+		{$q_{2}$};
+
+		\node (q5) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, right = of q1]{$q_{5}$};
+
+		\node (q3) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, right = of q5]{$q_{3}$};
+
+		\node (q4) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, right = of q3]{$q_{4}$};
+
+		\node (q6) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, right = of q2]{$q_{6}$};
+
+		\node (q8) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below = of q4]{$q_{8}$};
+
+		% Final Node
+		\node (q7) [state, black, scale = 1, accepting, top color = red!80, bottom color = red!20,
+		double distance = 3pt, double = red!20, right = of q6] {$q_{7}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+		(q1) edge [loop above] node [left] {$a$}(q1)
+		(q1) edge [] node [left] {$b$} (q2)
+		(q2) edge [bend right = 40] node [above] {$a$} (q7)
+		(q2) edge [] node [left] {$b$} (q5)
+		(q3) edge [bend left = 20] node [right] {$a$} (q7)
+		(q3) edge [bend left = 20] node [below] {$b$} (q5)
+		(q4) edge [bend right = 40] node [below] {$a$} (q5)
+		(q4) edge [bend left = 10] node [left] {$b$} (q8)
+		(q5) edge [] node [below] {$a$} (q1)
+		(q5) edge [bend left = 20] node [above] {$b$} (q3)
+		(q6) edge [] node [right] {$a$} (q5)
+		(q6) edge [bend right = 40] node [above] {$b$} (q8)
+		(q7) edge [] node [above] {$a$} (q6)
+		(q7) edge [bend left] node [left] {$b$} (q3)
+		(q8) edge [bend left = 30] node [left] {$a$} (q4)
+		(q8) edge [out = 70, in = 16, looseness=1.9, min distance = 2.5cm] node [below] {$b$} (q1);
+
+	\end{tikzpicture}
+	%\end{flushleft}
+%	\caption{DFA $M_{1}$ : \\ $L = \{\,w\; \vert \; (w \in \{a, b\}^*) \; [\vert w \vert$ περιττό$]\}$}
+%	\label{fig:sub1}
+\end{figure}
+\end{comment}
+
+Γενικά η διαδικασία έχει ως εξής:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\begin{itemize}
+	\itemsep0em
+
+	\item Αφαιρούμε τυχών απρόσιτες καταστάσεις (εν προκειμένω καμία).
+
+	\item Αρχικά χωρίζουμε τις καταστάσεις σε δύο σύνολα: σύνολο καταστάσεων αποδοχής και σύνολο μή αποδοχής.
+
+	\item Δοκιμάζουμε ανά κάθε κατάσταση (συμπεριλαμβανομένου οποιασδήποτε τελικής μόνο εάν αυτές είναι πάνω από
+	μία) ένα ένα
+	όλα τα σύμβολα της γλώσσας και εφόσον έστω και ένα οδηγεί σε διαφορετικό σύνολο από αυτό που ήδη ανήκει η υπό
+	δοκιμή κατάσταση, φτιάχνουμε καινούργιο σύνολο και την μετακινούμε εκεί καθώς και οποιαδήποτε άλλη όπου στο
+	συγκεκριμένο βήμα, άνηκε στο ίδιο σύνολο με αυτή και για κάθε χαρακτήρα οι μεταβάσεις τις ήταν ίδιες.
+
+	\item Επαναλαμβάνουμε το προηγούμενο βήμα έως να μην υπάρχουν μεταβολές. Τα σύνολα που καταλήγουμε
+	είναι οι κλάσεις ισοδυναμίας και έκαστη θα είναι και μία κατάσταση του πρότυπου αυτόματου που
+	θέλουμε να κατασκευάσουμε.
+
+	\item Κατόπιν βρίσκουμε τις μεταβάσεις του κάθε συνόλου ανά χαρακτήρα και τέλος κατασκευάζουμε το αυτόματο μας.
+\end{itemize}
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+Επειδή ήδη εξηγήσαμε τον αλγόριθμο, δεν θα αναλύσουμε τα βήματα καθώς θα τα παρουσιάζουμε παρακάτω μια και
+ουσιαστικά
+έγινε ήδη στο προηγηθέν κείμενο.
+
+
+
+
+\clearpage
+
+\setlength{\arrayrulewidth}{0.5mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{1}
+
+%\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+
+\arrayrulecolor[HTML]{000000}
+\begin{figure}[!htb!]%[!htb]
+	\rowcolors{2}{gray!70!lightgray!30}{lightgray!35!lightgray!15}
+
+	\begin{center}
+		\begin{tabular}{ |p{4.5cm}|p{2.5cm}|p{2.5cm}|  }
+			\hline
+			\rowcolor{olive!80!olive!30} \multicolumn{3}{|c|}{Πίνακας Μεταβάσεων} \\
+			\hline
+			\rowcolor{orange!80!orange!30}
+			Κατάσταση & $a$ & $b$ \\
+			\hline
+			\cellcolor[RGB]{0,128,0} $q_{1}$ & \cellcolor{green} \{$q_{1}$\} & \{$q_{2}$\}\\
+
+			%\rowcolor{gray}
+			$q_{2}$ & \cellcolor{orange} \{$q_{7}$\} & $\{q_{5}\}$ \\
+
+			$q_{3}$ & \cellcolor{orange} \{$q_{7}$\} & \{$q_{5}$\}\\
+
+			$q_{4}$ & $\{q_{5}\}$ & \{$q_{8}$\}\\
+			\hline
+			$q_{5}$ & \cellcolor{green} $\{q_{1}\}$ & \{$q_{3}$\}\\
+
+			$q_{6}$ & $\{q_{5}\}$ & \{$q_{8}$\}\\
+
+			\cellcolor{red} $q_{7}$ & $\{q_{6}\}$ & \{$q_{3}$\}\\
+
+			$q_{8}$ & $\{q_{4}\}$ & \cellcolor{orange} \{$q_{1}$\}\\
+
+			%Andorra & \cellcolor[HTML]{AA0044} AND    \\
+			\hline
+		\end{tabular}
+
+		\vspace{1.4em}
+
+		\begin{tabular}{ |p{5cm}|p{4.5cm}| }
+			\hline
+			\rowcolor{olive!80!olive!30} \multicolumn{2}{|c|}{Κλάσεις 0-Ισοδυναμίας} \\
+			\hline
+			\rowcolor{orange!80!orange!30}
+			(A)ccepting/(N)on-Accepting & Ισοδύναμες Καταστάσεις \\
+			\hline
+
+			%\rowcolor{gray}
+			\cellcolor{red}$A_0$ & \cellcolor{orange} \{$q_{7}$\}\\
+
+			$Ν_0$ & \{$q_{1},\,q_{2},\,q_{3},\,q_{4},\,q_{5},\,q_{6},\,q_{8}$\}\\
+
+			%Andorra & \cellcolor[HTML]{AA0044} AND    \\
+			\hline
+		\end{tabular}
+
+		\vspace{1.4em}
+
+		\begin{tabular}{ |p{5cm}|p{4.5cm}| }
+			\hline
+			\rowcolor{olive!80!olive!30} \multicolumn{2}{|c|}{Κλάσεις 1-Ισοδυναμίας} \\
+			\hline
+			\rowcolor{orange!80!orange!30}
+			(A)ccepting/(N)on-Accepting & Ισοδύναμες Καταστάσεις \\
+			\hline
+
+			%\rowcolor{gray}
+			\cellcolor{red}$A_0$ & \cellcolor{orange} \{$q_{7}$\}\\
+
+			$Ν_0$ & \{$q_{1},\,q_{4},\,q_{5},\,q_{6},\,q_{8}$\}\\
+
+			$Ν_1$ & \{$q_{2},\,q_{3}$\}\\
+
+			%Andorra & \cellcolor[HTML]{AA0044} AND    \\
+			\hline
+		\end{tabular}
+
+		\vspace{1.4em}
+
+		\begin{tabular}{ |p{5cm}|p{4.5cm}| }
+			\hline
+			\rowcolor{olive!80!olive!30} \multicolumn{2}{|c|}{Κλάσεις 2-Ισοδυναμίας} \\
+			\hline
+			\rowcolor{orange!80!orange!30}
+			(A)ccepting/(N)on-Accepting & Ισοδύναμες Καταστάσεις \\
+			\hline
+
+			%\rowcolor{gray}
+			\cellcolor{red}$A_0$ & \cellcolor{orange} \{$q_{7}$\}\\
+
+			$Ν_0$ & \{$q_{1},\,q_{5}$\}\\
+
+			$Ν_1$ & \{$q_{2},\,q_{3}$\}\\
+
+			$Ν_2$ & \{$q_{4},\,q_{6},\,q_{8}$\}\\
+
+			%Andorra & \cellcolor[HTML]{AA0044} AND    \\
+			\hline
+		\end{tabular}
+
+		\vspace{1.4em}
+
+		\begin{tabular}{ |p{5cm}|p{4.5cm}| }
+			\hline
+			\rowcolor{olive!80!olive!30} \multicolumn{2}{|c|}{Κλάσεις 3-Ισοδυναμίας} \\
+			\hline
+			\rowcolor{orange!80!orange!30}
+			(A)ccepting/(N)on-Accepting & Ισοδύναμες Καταστάσεις \\
+			\hline
+
+			%\rowcolor{gray}
+			\cellcolor{red}$A_0$ & \cellcolor{orange} \{$q_{7}$\}\\
+
+			$Ν_0$ & \{$q_{1},\,q_{5}$\}\\
+
+			$Ν_1$ & \{$q_{2},\,q_{3}$\}\\
+
+			$Ν_2$ & \{$q_{4},\,q_{6}$\}\\
+
+			$Ν_3$ & \{$q_{8}$\}\\
+
+			%Andorra & \cellcolor[HTML]{AA0044} AND    \\
+			\hline
+		\end{tabular}
+
+	\end{center}
+	%caption{} \label{fig:M4}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htb!]%[!htb]
+	\rowcolors{2}{gray!70!lightgray!30}{lightgray!35!lightgray!15}
+
+	\begin{center}
+		\begin{tabular}{ |p{5cm}|p{4.5cm}| }
+			\hline
+			\rowcolor{olive!80!olive!30} \multicolumn{2}{|c|}{Κλάσεις 4-Ισοδυναμίας} \\
+			\hline
+			\rowcolor{orange!80!orange!30}
+			(A)ccepting/(N)on-Accepting & Ισοδύναμες Καταστάσεις \\
+			\hline
+
+			%\rowcolor{gray}
+			\cellcolor{red}$A_0$ & \cellcolor{orange} \{$q_{7}$\}\\
+
+			$Ν_0$ & \{$q_{1},\,q_{5}$\}\\
+
+			$Ν_1$ & \{$q_{2},\,q_{3}$\}\\
+
+			$Ν_2$ & \{$q_{4},\,q_{6}$\}\\
+
+			$Ν_3$ & \{$q_{8}$\}\\
+
+			%Andorra & \cellcolor[HTML]{AA0044} AND    \\
+			\hline
+		\end{tabular}
+
+		\vspace{1.5em}
+
+		\begin{tabular}{ |p{1.6cm}|p{3cm}|p{1.8cm}|p{0.8cm}|p{0.8cm}|  }
+			\hline
+			\rowcolor{olive!80!olive!30} \multicolumn{5}{|c|}{Κλάσεις Ισοδυναμίας και Μεταβάσεις} \\
+			\hline
+			\rowcolor{orange!80!orange!30}
+			Νέα Κατάσταση & (A)ccepting / (N)on-Accepting & Ισοδύναμες Καταστάσεις &
+			$δ(q',a)$ &
+			$δ(q',b)$ \\
+			\hline
+
+			%\rowcolor{gray}
+
+			\cellcolor[RGB]{0,128,0}$q'_0$ & \cellcolor[RGB]{0,128,0}$Ν_0$ & \cellcolor{green}\{$q_{1},\,q_{5}$\} &
+			\cellcolor{green}$q'_{0}$ & $q'_{1}$ \\
+
+			$q'_1$ & $Ν_1$ & \{$q_{2},\,q_{3}$\} & \cellcolor{orange}$q'_{4}$ & \cellcolor{green}$q'_{0}$ \\
+
+			$q'_2$ & $Ν_2$ & \{$q_{4},\,q_{6}$\} & \cellcolor{green}$q'_{0}$ & $q'_{3}$ \\
+
+			$q'_3$ & $Ν_3$ & \{$q_{8}$\} & $q'_{2}$ & \cellcolor{green}$q'_{0}$ \\
+
+			\cellcolor{red}$q'_4$ & \cellcolor{red}$A_0$ & \cellcolor{orange}\{$q_{7}$\} & $q'_3$ & $q'_1$ \\
+
+			%Andorra & \cellcolor[HTML]{AA0044} AND    \\
+			\hline
+		\end{tabular}
+
+	\end{center}
+	%\caption{} \label{fig:M4}
+\end{figure}
+
+%\clearpage
+%\hfill \break
+
+
+%\hfill \break
+
+%\clearpage
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = $M'$]
+	\centering
+	\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q0) [state, black, scale = 1, initial left, initial distance = 2.5mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q'_{0}$\nodepart{lower}$q_{1},\,q_{5}$};
+
+		% Middle Nodes
+		\node (q2) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below right = of q0]
+		{$q'_{2}$\nodepart{lower}$q_{4},\,q_{6}$};
+		\node (q1) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, above right = of q2]
+		{$q'_{1}$\nodepart{lower}$q_{2},\,q_{3}$};
+		\node (q3) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below left = of q2]
+		{$q'_{3}$\nodepart{lower}$q_{8}$};
+
+		% Final Node
+		\node (q4) [state, black, scale = 1, accepting, top color = red!80, bottom color = red!20, , double
+		distance = 3pt, double = red!20, below right = of q2] {$q'_{4}$\nodepart{lower}$q_{7}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+		(q0) edge [out = 205, in = 245, loop] node [left] {$a$}(q0)
+		(q0) edge [bend left = 20] node [below] {$b$} (q1)
+
+		(q1) edge [bend right = 20] node [right] {$a$} (q4)
+		(q1) edge [bend left = 20] node [below] {$b$} (q0)
+
+		(q2) edge [] node [below] {$a$} (q0)
+		(q2) edge [bend left = 20] node [right] {$b$} (q3)
+
+		(q3) edge [bend left = 20] node [left] {$a$} (q2)
+		(q3) edge [] node [left] {$b$} (q0)
+
+		(q4) edge [] node [above] {$a$} (q3)
+		(q4) edge [bend right = 20] node [right] {$b$} (q1);
+
+	\end{tikzpicture}
+\end{tcolorbox}
+
+%\FloatBarrier
+\begin{comment}
+
+	\hfill \break
+
+	\begin{figure}[H]%[!htb]
+		\rowcolors{4}{gray!70!lightgray!30}{lightgray!35!lightgray!15}
+
+		\begin{center}
+			\begin{tabular}{ |s|p{2.5cm}|p{1cm}|p{1cm}|  }
+				\hline
+				\rowcolor{olive!80!olive!30} \multicolumn{4}{|c|}{Κλάσεις 1-Ισοδυναμίας} \\
+				\hline
+				\rowcolor{orange!80!orange!30}
+				Νέα Κατάσταση: (A)ccepting / (N)on-Accepting & Εμπεριεχόμενες Ισοδύναμες Καταστάσεις & $a$ & $b$ \\
+				\hline
+
+				%\rowcolor{gray}
+				\cellcolor{red} $A_0$ & \cellcolor{orange} \{$q_{7}$\} & $\{q_{6}\}$ & $\{q_{3}\}$\\
+
+				\cellcolor{cyan}$Ν_0$ & \cellcolor{green} \{$q_{1}$\} & \cellcolor{green}$\{q_{1}\}$ & $\{q_{2}\}$\\
+				$Ν_1$ & \{$q_{2},\,q_{3}$\} & \cellcolor{orange}$\{q_{7}\}$ & $\{q_{5}\}$\\
+				$Ν_2$ & \{$q_{4},\,q_{6}$\} & $\{q_{5}\}$ & $\{q_{8}\}$\\
+				$Ν_3$ & \{$q_{5}$\} & \cellcolor{green}$\{q_{1}\}$ & $\{q_{3}\}$\\
+				$Ν_4$ & \{$q_{8}$\} & $\{q_{4}\}$ & \cellcolor{green}$\{q_{1}\}$\\
+
+				%Andorra & \cellcolor[HTML]{AA0044} AND    \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\caption{} \label{fig:M4}
+	\end{figure}
+\end{comment}
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+\clearpage

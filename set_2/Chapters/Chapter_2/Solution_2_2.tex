@@ -1,0 +1,280 @@
+\subsection{Απάντηση Υποερωτήματος (β)}
+\label{ssec:Solution_2.2}
+\doublespacing
+Έχουμε $L = \{w \in \{a,\, b\}^* \;\vert\; (\,\forall k \in \mathbb{N}^0\,)\;[\,\vert w\vert_a = 2k \land\vert
+w\vert_b=4k+3\,]\,\}$.
+\\ Καταλαβαίνουμε ότι $\vert w \vert_min = 3.$ Προχωράμε σε αποδόμηση προβλήματος σε δύο απλούστερα αυτόματα βάση έκαστης εκ
+των δύο συνθηκών που το αποτελούν:
+
+\begin{itemize}
+	\itemsep0em
+	\item Το 1ο αυτόματο $M_{1}$ θα αναγνωρίζει λέξη με άρτιο πλήθος $a$.
+	\item Το 2ο αυτόματο $M_{2}$ θα αναγνωρίζει λέξη με πλήθος $b$ ίσο με 4k+3.
+\end{itemize}
+
+
+\begin{figure}[!htb]
+	\begin{subfigure}{.50\textwidth}
+		%\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
+			% Help grid
+			%	\draw [help lines] (-1,4) grid (8,-10);
+			% Start Node : Every other node is measured based to this one
+			\node (q0) [state, black, scale = 1.3, initial above, accepting, initial distance = 4mm, initial text = {Αρχή},
+			top color = green!65, bottom color = red!65, double
+			distance = 3pt, double = red!20,] {$q_{0}$};
+			% Final Node
+			\node (q1) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q0] {$q_{1}$};
+			% Draw Arrows/Connections
+			\path [-stealth, thick]
+			(q0) edge [bend left] node [above] {$a$}(q1)
+			(q0) edge [loop left] node [left] {$b$} (q0)
+			(q1) edge [bend left] node [below] {$a$} (q0)
+			(q1) edge [loop right] node [right] {$b$} (q1);
+		\end{tikzpicture}
+		%\end{flushleft}
+		\caption{DFA $M_{1}$ : \\  $L = \{w \in \{a,\, b\}^* \;\vert\; [\,\forall k \in \mathbb{N}^0\,]\;(\,\vert w\vert_a =
+		2k)\,\}$}
+		\label{fig:sub1}
+	\end{subfigure}
+	\begin{subfigure}{.50\textwidth}
+		%\end{minipage}
+		%\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
+			% Help grid
+			%	\draw [help lines] (-1,4) grid (8,-10);
+			% Start Node : Every other node is measured based to this one
+			\node (q0) [state, black, scale = 1.3, initial left, initial distance = 4mm, initial text = {Αρχή},
+			top color = green!80, bottom color = green!20] {$q_{0}$};
+
+			% Middle Nodes
+			\node (q2) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, below = of q0] {$q_{2}$};
+
+			\node (q1) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q2] {$q_{1}$};
+
+			% Final Node
+			\node (q3) [state, black, scale = 1.3, accepting, top color = red!80, bottom color = red!20, double
+			distance = 3pt, double = red!20, left = of q2] {$q_{3}$};
+
+
+			% Draw Arrows/Connections
+			\path [-stealth, thick]
+			(q0) edge [loop right] node [right] {$a$}(q0)
+			(q0) edge [] node [right] {$b$} (q1)
+			(q1) edge [loop above] node [above] {$a$} (q1)
+			(q1) edge [] node [below] {$b$} (q2)
+			(q2) edge [loop above] node [below] {$a$} (q2)
+			(q2) edge [] node [below] {$b$} (q3)
+			(q3) edge [loop above] node [above] {$a$} (q3)
+			(q3) edge [] node [left] {$b$} (q0);
+		\end{tikzpicture}
+		% \end{flushright}
+	%\end{minipage}
+	\caption{DFA $M_{2}$ : \\ $L = \{w \in \{a,\, b\}^* \,\vert\, [\forall k \in \mathbb{N}^0]\,(\vert w\vert_b =4k+3)\}$ }
+	\label{fig:sub1}
+\end{subfigure}
+\caption{Αποδόμηση προβλήματος (2.β)} \label{fig:M1}
+\end{figure}
+
+\hfill \break
+
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\par
+Είμαστε έτοιμοι να συνθέσουμε το τελικό αυτόματο $M_{\text{Τ}}$ με $Q_{\text{Τ}} = Q_{1} \bm{\times} Q_{2}
+=$\\ $\{(q_1,\, q_2) \;\vert\; q_1 \in Q_1 \in M1, q_2 \in Q_2 \in M2\}$, όθεν επίσης δείχνει ότι έχουμε\\ $\vert
+Q_{1}\vert \bm{\cdot} \vert Q_{2}\vert = \vert
+Q_{\text{Τ}}\vert_{max} \Longrightarrow 2\bm{\cdot} 4 = 8$:
+\clearpage
+
+Κόμβοι:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\begin{multicols}{4}
+\begin{itemize}
+	\itemsep0em
+	\item $q_T^{0} = (q_1^{0}, q_2^{0})$
+	\item $q_T^{1} = (q_1^{0}, q_2^{1})$
+
+	\item $q_T^{2} = (q_1^{0}, q_2^{2})$
+	\item $q_T^{3} = (q_1^{0}, q_2^{3})$
+
+	\item $q_T^{4} = (q_1^{1}, q_2^{0})$
+	\item $q_T^{5} = (q_1^{1}, q_2^{1})$
+
+	\item $q_T^{6} = (q_1^{1}, q_2^{2})$
+	\item $q_T^{7} = (q_1^{1}, q_2^{3})$
+\end{itemize}
+\end{multicols}
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\par Μεταβάσεις
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\begin{multicols}{2}
+\begin{itemize}
+	\itemsep0em
+	\item $q_T^{0} = (q_1^{0}, q_2^{0}) \bm{\rightarrow^{a}} (q_1^{1}, q_2^{0}) = q_T^{4}$
+	\item $q_T^{1} = (q_1^{0}, q_2^{1}) \bm{\rightarrow^{a}} (q_1^{1}, q_2^{1}) = q_T^{5}$
+	\item $q_T^{2} = (q_1^{0}, q_2^{2}) \bm{\rightarrow^{a}} (q_1^{1}, q_2^{2}) = q_T^{6}$
+	\item $q_T^{3} = (q_1^{0}, q_2^{3}) \bm{\rightarrow^{a}} (q_1^{1}, q_2^{3}) = q_T^{7}$ %%%%
+	\item $q_T^{4} = (q_1^{1}, q_2^{0}) \bm{\rightarrow^{a}} (q_1^{0}, q_2^{0}) = q_T^{0}$
+	\item $q_T^{5} = (q_1^{1}, q_2^{1}) \bm{\rightarrow^{a}} (q_1^{0}, q_2^{1}) = q_T^{1}$
+	\item $q_T^{6} = (q_1^{1}, q_2^{2}) \bm{\rightarrow^{a}} (q_1^{0}, q_2^{2}) = q_T^{2}$
+	\item $q_T^{7} = (q_1^{1}, q_2^{3}) \bm{\rightarrow^{a}} (q_1^{0}, q_2^{3}) = q_T^{3}$ %%%%
+
+	\item $q_T^{0} = (q_1^{0}, q_2^{0}) \bm{\rightarrow^{b}} (q_1^{0}, q_2^{1}) = q_T^{1}$
+	\item $q_T^{1} = (q_1^{0}, q_2^{1}) \bm{\rightarrow^{b}} (q_1^{0}, q_2^{2}) = q_T^{2}$
+	\item $q_T^{2} = (q_1^{0}, q_2^{2}) \bm{\rightarrow^{b}} (q_1^{0}, q_2^{3}) = q_T^{3}$
+	\item $q_T^{3} = (q_1^{0}, q_2^{3}) \bm{\rightarrow^{b}} (q_1^{0}, q_2^{0}) = q_T^{0}$ %%%%
+	\item $q_T^{4} = (q_1^{1}, q_2^{0}) \bm{\rightarrow^{b}} (q_1^{1}, q_2^{1}) = q_T^{5}$
+	\item $q_T^{5} = (q_1^{1}, q_2^{1}) \bm{\rightarrow^{b}} (q_1^{1}, q_2^{2}) = q_T^{6}$
+	\item $q_T^{6} = (q_1^{1}, q_2^{2}) \bm{\rightarrow^{b}} (q_1^{1}, q_2^{3}) = q_T^{7}$
+	\item $q_T^{7} = (q_1^{1}, q_2^{3}) \bm{\rightarrow^{b}} (q_1^{1}, q_2^{0}) = q_T^{4}$ %%%%
+\end{itemize}
+\end{multicols}
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\par
+Έχουμε DFA $M_{\text{Τ}}$ με εξής μη ενδιαμέσους κόμβους:\\
+αρχικό $s_{\text{Τ}} \in M_{\text{Τ}} = \{(q_1,\, q_2) \;\vert\; q_1 = s_1 \in M_1, q_2 = s_2 \in M_2 \}
+\Longrightarrow q_{\text{Τ}}^0 = {q_1^0, q_2^0}$,\\
+τελικό $F_{\text{Τ}}\in M_{\text{Τ}} =\{(q_1,\, q_2) \;\vert\; q_1\in F_1 \in M_1, q_2\in F_2\in M_2 \}
+\Longrightarrow q_{\text{Τ}}^3 = {q_1^0, q_2^3}$\\
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\hfill \break
+DFA $ M_{\text{Τ}} = (\; \{\,q0,\, q1,\, q2,\, q3,\, q4,\, q5,\,q_6,\,q_7\,\},\; \{\,a,\, b\,\},\\
+\{\; δ(q0,\; a)=q4,\; δ(q0, b)=q1,\; δ(q1, a)=q5,\; δ(q1, b)=q2,\\
+δ(q2, a)=q6,\; δ(q2, b)=q3,\; δ(q3, a)=q7,\; δ(q3, b)=q0,\\
+δ(q4, a)=q0,\; δ(q4, b)=q5,\; δ(q5, a)=q1,\; δ(q5, b)=q6,\\
+δ(q6, a)=q2,\; δ(q6, b)=q7,\; δ(q7, a)=q3,\; δ(q7, b)=q4\;\},\\
+q0,\; \{\,q3\,\}\;)$
+
+%\par
+\begin{comment}
+\begin{figure}[!htb]
+	\centering
+	%\begin{minipage}{0.45\textwidth}
+	%\begin{flushleft}
+	\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q0) [state, black, scale = 1.3, initial below, initial distance = 10mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q_{0}$};
+
+		% Final Node
+		\node (q3) [state, black, scale = 1.3,accepting, top color = red!80, bottom color = red!20, double
+		distance = 3pt, double = red!20, left = of q0] {$q_{3}$};
+
+		\node (q1) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q0] {$q_{1}$};
+
+		\node (q2) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q1] {$q_{2}$};
+
+		\node (q4) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, above = of q0] {$q_{4}$};
+
+		\node (q5) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q4] {$q_{5}$};
+
+		\node (q6) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q5] {$q_{6}$};
+
+		\node (q7) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, left = of q4] {$q_{7}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+
+		% 0,0 => 1,0 || 0,1
+		(q0) edge [bend left] node [left] {$a$}(q4)
+		(q0) edge [] node [below] {$b$} (q1)
+		% 0,1 => 1,1 || 0,2
+		(q1) edge [bend left] node [left] {$a$} (q5)
+		(q1) edge [] node [below] {$b$} (q2)
+		% 0,2 => 1,2 || 0,3
+		(q2) edge [bend left] node [left] {$a$} (q6)
+		(q2) edge [bend left] node [above] {$b$} (q3)
+		% 0,3 => 1,3 || 0,0
+		(q3) edge [bend left] node [left] {$a$} (q7)
+		(q3) edge [] node [below] {$b$} (q0)
+		% 1,0 => 0,0 || 1,1
+		(q4) edge [bend left] node [right] {$a$} (q0)
+		(q4) edge [] node [above] {$b$} (q5)
+		% 1,1 => 0,1 || 1,2
+		(q5) edge [bend left] node [right] {$a$} (q1)
+		(q5) edge [] node [above] {$b$} (q6)
+		% 1,2 => 0,2 || 1,3
+		(q6) edge [bend left] node [right] {$a$} (q2)
+		(q6) edge [bend right] node [below] {$b$} (q7)
+		% 1,3 => 0,3 || 1,0
+		(q7) edge [bend left] node [right] {$a$} (q3)
+		(q7) edge [] node [above] {$b$} (q4);
+	\end{tikzpicture}
+	\caption{DFA $M_{1}$ : \\ $L = \{\,w\; \vert \; (w \in \{a, b\}^*) \; [\vert w \vert$ περιττό$]\}$}
+	\label{fig:sub1}
+\end{figure}
+\end{comment}
+
+\vfill
+\clearpage
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = DFA $M_{\text{τελικό}}$]
+	\centering
+	\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q0) [state, black, scale = 1.3, initial below, initial distance = 10mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q_{0}$};
+
+		% Final Node
+		\node (q3) [state, black, scale = 1.3,accepting, top color = red!80, bottom color = red!20, double
+		distance = 3pt, double = red!20, left = of q0] {$q_{3}$};
+
+		\node (q1) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q0]
+		{$q_{1}$};
+
+		\node (q2) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q1]
+		{$q_{2}$};
+
+		\node (q4) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, above = of q0]
+		{$q_{4}$};
+
+		\node (q5) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q4]
+		{$q_{5}$};
+
+		\node (q6) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q5]
+		{$q_{6}$};
+
+		\node (q7) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, left = of q4] {$q_{7}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+
+		% 0,0 => 1,0 || 0,1
+		(q0) edge [bend left] node [left] {$a$}(q4)
+		(q0) edge [] node [below] {$b$} (q1)
+		% 0,1 => 1,1 || 0,2
+		(q1) edge [bend left] node [left] {$a$} (q5)
+		(q1) edge [] node [below] {$b$} (q2)
+		% 0,2 => 1,2 || 0,3
+		(q2) edge [bend left] node [left] {$a$} (q6)
+		(q2) edge [bend left] node [above] {$b$} (q3)
+		% 0,3 => 1,3 || 0,0
+		(q3) edge [bend left] node [left] {$a$} (q7)
+		(q3) edge [] node [below] {$b$} (q0)
+		% 1,0 => 0,0 || 1,1
+		(q4) edge [bend left] node [right] {$a$} (q0)
+		(q4) edge [] node [above] {$b$} (q5)
+		% 1,1 => 0,1 || 1,2
+		(q5) edge [bend left] node [right] {$a$} (q1)
+		(q5) edge [] node [above] {$b$} (q6)
+		% 1,2 => 0,2 || 1,3
+		(q6) edge [bend left] node [right] {$a$} (q2)
+		(q6) edge [bend right] node [below] {$b$} (q7)
+		% 1,3 => 0,3 || 1,0
+		(q7) edge [bend left] node [right] {$a$} (q3)
+		(q7) edge [] node [above] {$b$} (q4);
+	\end{tikzpicture}
+\end{tcolorbox}
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+%\clearpage

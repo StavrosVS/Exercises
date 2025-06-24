@@ -1,0 +1,49 @@
+\section{Άσκηση 3η - Mη ντετερμινισμός και κανονικότητα αυτομάτων:}
+\label{sec:Exercise_3}
+\doublespacing
+
+[25\%] Έστω το μη ντετερμινιστικό αυτόματο $M$ που εικονίζεται παρακάτω:
+
+\bm{\textcolor{blue}{(α)}} Κατασκευάστε αναλυτικά ένα ισοδύναμο ντετερμινιστικό αυτόματο $M'$
+
+\bm{\textcolor{blue}{(β)}} Κατασκευάστε αναλυτικά την κανονική έκφραση για την $L(Μ)$ με σειρά απαλοιφής
+$q3,\,q1,\,q5,\,q2.$
+
+\hfill \break
+\begin{figure}[!htb] \centering
+	\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q2) [state, black, scale = 1.3, initial below, initial distance = 4mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q_{2}$};
+
+		% Middle Nodes
+		\node (q1) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, left = of q2] {$q_{1}$};
+		\node (q5) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q2]
+		{$q_{5}$};
+		\node (q3) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q5]
+		{$q_{3}$};
+
+		% Final Node
+		\node (q4) [state, black, scale = 1.3, accepting, top color = red!80, bottom color = red!20, , double
+		distance = 3pt, double = red!20, right = of q3] {$q_{4}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+		(q2) edge [bend left = 20] node [above] {$a,\,b$}(q5)
+		(q1) edge [] node [above] {$\mathcal{ε}$} (q2)
+		(q5) edge [] node [above] {$a$} (q3)
+		(q5) edge [bend right = 60] node [below] {$a$} (q1)
+		(q5) edge [bend left = 20] node [below] {$b$} (q2)
+		(q3) edge [bend left = 60] node [above] {$\mathcal{ε}$} (q2)
+		(q3) edge [] node [above] {$b$} (q4);
+
+	\end{tikzpicture}
+	%\end{flushleft}
+	\captionsetup{labelformat=empty}
+	\caption{Αρχικό DFA}
+	%\label{fig:sub1}
+\end{figure}
+
+\clearpage
