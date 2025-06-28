@@ -1,149 +1,94 @@
-\subsection{Απάντηση Υποερωτήματος (α)}
-\label{ssec:Solution_2.1}
+\subsection{Απάντηση Υποερωτήματος (β)}
+\label{ssec:Solution_2.2}
 \doublespacing
-Έχουμε $L = \{w \in \{a,\,b\}^* \;\vert\; (\forall n \in \mathbb{N}^0)\;[\exists w \ni (\bigcup\limits_{k =
-|w|-1}^{|w|}w_k = bb \land \vert w \vert = 2n+1\,)\,]\,\}$, \\
-όθεν $\vert w\vert_{min} = 3$.\\
- Προς εύρεση αυτομάτου αναγνωρίζων τη δοθέντα γλώσσα το πρόβλημα
-θα αποδομηθεί βάση περιορισμών και θα κατασκευασθούν αυτόματα που αναγνωρίζουν έκαστη εκ
-των δύο συνθηκών απομονωμένα.
-
+Έχουμε να κατασκευάσουμε PDA για CFL $L_1 = \{b^n a^k b^k a^n : k, n \in  \mathbb{N}^0 \}$\\
+Από τον τύπο δυνάμεθα να εξάγουμε τα εξής δεδομένα, για συμβολοσειρά $w \in L_1$:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \begin{itemize}
 	\itemsep0em
-	\item Το 1ο αυτόματο $M_{1}$ θα αναγνωρίζει λέξη περιττού πλήθους χαρακτήρων.
-	\item Το 2ο αυτόματο $M_{2}$ θα αναγνωρίζει συμβολοσειρά, λήγουσα σε $bb$.
+	\item $\vert w \vert_{min} = 0 \Longrightarrow n,\,k = 0 \Longrightarrow w = ε$, \quad $\vert w \vert_{max} =
+	\aleph_0$, \quad $|w| = 2(n+k) = \text{Άρτιο}$
+	\item $ n + k - 2nk = 1  \Longrightarrow |w|_{min} = 2 \Longrightarrow w = ba \cup ab$
+	\item $ n, k = 1 \Longrightarrow \vert w \vert_{min} = 4 \Longrightarrow w = baba$, \qquad $L \subseteq \{xx^R
+	\vert x \in \Sigma^* \}$
+	\item Για μεγαλύτερα $n, k$ έχουμε συμβολοσειρές όπως $bbabaa, baabba, bbaabbaa...$
 \end{itemize}
-
-\begin{figure}[!htb]
-	\begin{subfigure}{.50\textwidth}
-		%\begin{minipage}{0.45\textwidth}
-		\centering
-		\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
-			% Help grid
-			%	\draw [help lines] (-1,4) grid (8,-10);
-			% Start Node : Every other node is measured based to this one
-			\node (q0) [state, black, scale = 1.3, initial left, initial distance = 4mm, initial text = {Αρχή},
-			top color = green!80, bottom color = green!20] {$q_{0}$};
-			% Final Node
-			\node (q1) [state, black, scale = 1.3, accepting, top color = red!80, bottom color = red!20, double
-			distance = 3pt, double = red!20, right = of q0] {$q_{1}$};
-			% Draw Arrows/Connections
-			\path [-stealth, thick]
-			(q0) edge [bend left] node [below] {$a$}(q1)
-			(q0) edge [bend left = 60] node [above] {$b$} (q1)
-			(q1) edge [bend left] node [above] {$a$} (q0)
-			(q1) edge [bend left = 60] node [below] {$b$} (q0);
-		\end{tikzpicture}
-		%\end{flushleft}
-		\caption{DFA $M_{1}$ :\\$L = \{\,w\in \{a, b\}^* \vert\,  \vert w \vert = 2n+1,\, n \in \mathbb{N}^0\}$}
-		\label{fig:sub1}
-	\end{subfigure}
-	\begin{subfigure}{.50\textwidth}
-		%\end{minipage}
-		%\begin{minipage}{0.45\textwidth}
-		\centering
-		\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
-			% Help grid
-			%	\draw [help lines] (-1,4) grid (8,-10);
-			% Start Node : Every other node is measured based to this one
-			\node (q0) [state, black, scale = 1.3, initial left, initial distance = 4mm, initial text = {Αρχή},
-			top color = green!80, bottom color = green!20] {$q_{0}$};
-
-			% Final Node
-			\node (q2) [state, black, scale = 1.3, accepting, top color = red!80, bottom color = red!20, double
-			distance = 3pt, double = red!20, above right = of q0] {$q_{2}$};
-
-			% Middle Nodes
-			\node (q1) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, distance = 3pt, below right =
-			of q2]
-			{$q_{1}$};
-
-			% Draw Arrows/Connections
-			\path [-stealth, thick]
-			(q0) edge [out = 100, in = 130, loop] node [left] {$a$}(q1)
-			(q0) edge [bend left] node [below] {$b$} (q1)
-			(q1) edge [bend left] node [above] {$a$} (q0)
-			(q1) edge [bend right] node [below] {$b$} (q2)
-			(q2) edge [bend right] node [right] {$a$} (q0)
-			(q2) edge [out = 180, in = 150,loop] node [left] {$b$} (q2);
-		\end{tikzpicture}
-		% \end{flushright}
-	%\end{minipage}
-	\caption{DFA $M_{2}$ :\\$L = \{\,w \in \{a, b\}^* \vert y=bb, \forall x \in \{a, b\}^*, w = xy\}$}
-	\label{fig:sub1}
-\end{subfigure}
-\caption{Αποδόμηση προβλήματος (2-α)} \label{fig:M1}
-\end{figure}
-
-\hfill \break
-
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace
 \par
-Είμαστε έτοιμοι να συνθέσουμε το τελικό αυτόματο $M_{\text{Τ}}$ με $Q_{\text{Τ}} = Q_{1} \bm{\times} Q_{2}
-=$\\ $\{(q_1,\, q_2) \;\vert\; q_1 \in Q_1 \in M1, q_2 \in Q_2 \in M2\}$, όθεν επίσης δείχνει ότι έχουμε\\ $\vert
-Q_{1}\vert \bm{\cdot} \vert Q_{2}\vert = \vert
-Q_{\text{Τ}}\vert_{max} \Longrightarrow 2\bm{\cdot} 3 = 6$:
-\clearpage
-
-Κόμβοι:
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\begin{multicols}{3}
-	\begin{itemize}
-		\itemsep0em
-		\item $q_T^{0} = (q_1^{0}, q_2^{0})$
-		\item $q_T^{1} = (q_1^{0}, q_2^{1})$
-
-		\item $q_T^{2} = (q_1^{0}, q_2^{2})$
-		\item $q_T^{3} = (q_1^{1}, q_2^{0})$
-
-		\item $q_T^{4} = (q_1^{1}, q_2^{1})$
-		\item $q_T^{5} = (q_1^{1}, q_2^{2})$
-	\end{itemize}
-\end{multicols}
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\par Μεταβάσεις:
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\begin{multicols}{2}
-	\begin{itemize}
-		\itemsep0em
-		\item $q_T^{0} = (q_1^{0}, q_2^{0}) \bm{\rightarrow^{a}} (q_1^{1}, q_2^{0}) = q_T^{3}$
-		\item $q_T^{1} = (q_1^{0}, q_2^{1}) \bm{\rightarrow^{a}} (q_1^{1}, q_2^{0}) = q_T^{3}$
-		\item $q_T^{2} = (q_1^{0}, q_2^{2}) \bm{\rightarrow^{a}} (q_1^{1}, q_2^{0}) = q_T^{3}$
-		\item $q_T^{3} = (q_1^{1}, q_2^{0}) \bm{\rightarrow^{a}} (q_1^{0}, q_2^{0}) = q_T^{0}$
-		\item $q_T^{4} = (q_1^{1}, q_2^{1}) \bm{\rightarrow^{a}} (q_1^{0}, q_2^{0}) = q_T^{0}$
-		\item $q_T^{5} = (q_1^{1}, q_2^{2}) \bm{\rightarrow^{a}} (q_1^{0}, q_2^{0}) = q_T^{0}$
-
-		\item $q_T^{0} = (q_1^{0}, q_2^{0}) \bm{\rightarrow^{b}} (q_1^{1}, q_2^{1}) = q_T^{4}$
-		\item $q_T^{1} = (q_1^{0}, q_2^{1}) \bm{\rightarrow^{b}} (q_1^{1}, q_2^{2}) = q_T^{5}$
-		\item $q_T^{2} = (q_1^{0}, q_2^{2}) \bm{\rightarrow^{b}} (q_1^{1}, q_2^{2}) = q_T^{5}$
-		\item $q_T^{3} = (q_1^{1}, q_2^{0}) \bm{\rightarrow^{b}} (q_1^{0}, q_2^{1}) = q_T^{1}$
-		\item $q_T^{4} = (q_1^{1}, q_2^{1}) \bm{\rightarrow^{b}} (q_1^{0}, q_2^{2}) = q_T^{2}$
-		\item $q_T^{5} = (q_1^{1}, q_2^{2}) \bm{\rightarrow^{b}} (q_1^{0}, q_2^{2}) = q_T^{2}$
-	\end{itemize}
-\end{multicols}
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+Από αυτά κάποια δεν μας λένε κάτι ιδιαίτερα χρήσιμο, άλλα όμως μας φανερώνουν την οδό που θα πρέπει να
+ακολουθήσουμε. Για παράδειγμα, κατά αντιστοιχία με τις αντίστοιχες τεχνικές που ακολουθήσαμε στις
+λύσεις ασκήσεων κανονικών εκφράσεων, τα διάφορα ελάχιστα μας δίνουν την βάση πάνω στην οποία θα χτιστεί το (PD)
+αυτόματο.
 \par
-Έχουμε DFA $M_{\text{Τ}}$ με εξής μη ενδιαμέσους κόμβους:\\
-αρχικό $s_{\text{Τ}} \in M_{\text{Τ}} = \{(q_1,\, q_2) \;\vert\; q_1 = s_1 \in M_1, q_2 = s_2 \in M_2 \}
-\Longrightarrow q_{\text{Τ}}^0 = {q_1^0, q_2^0}$,\\
-τελικό $F_{\text{Τ}}\in M_{\text{Τ}} =\{(q_1,\, q_2) \;\vert\; q_1\in F_1 \in M_1, q_2\in F_2\in M_2 \}
-\Longrightarrow q_{\text{Τ}}^5 = {q_1^1, q_2^2}$\\
-\hfill \break
-DFA $ M_{\text{Τ}} = (\; \{\,q0,\, q1,\, q2,\, q3,\, q4,\, q5\,\}, \{\,a,\, b\,\},\\
-\{\,δ(q0,\, a)=q3,\, δ(q0, b)=q4,\, δ(q1, a)=q3,\, δ(q1, b)=q5,\\
-δ(q2, a)=q3,\, δ(q2, b)=q5,\, δ(q3, a)=q0,\, δ(q3, b)=q1,\\
-δ(q4, a)=q0,\, δ(q4, b)=q2,\, δ(q5, a)=q0,\, δ(q5, b)=q2\,\},\\
-q0,\; \{\,q5\,\}\;)$
+Ως εκ τούτου έχουμε φαινομενικά τέσσερεις ελάχιστες περιπτώσεις, που η
+συγκεκριμένη γλώσσα επιτρέπει:
+$w_0 = ε \lor w_1 = ab \lor w_2 = ba \lor w_3 = baba$ αλλά προσοχή, το $w = baba$
+αποτελεί παρεμβολή του $w_1$ εντός του $w_2$ και όχι $(ba)^*$
+\par
+Αυτό με τη σειρά του δείχνει ότι ουσιαστικά, το $w_3$ αποτελεί επέκταση της $w_2$ μετά αρχικού $b$ και άρα δεν
+είναι μέρος της καθολικής βάσης του αυτομάτου. Θα μας χρειαστεί όμως, αφού δείχνει ότι όταν ο
+αλγόριθμος θα μπαίνει στη διαδρομή που διαβάζει $ba$, θα διακλαδώνεται σε δύο εναλλακτικές βάση του
+αν αυτό που έπεται του $b$ είναι $a$ ή $aba$.
+\par Τέλος αφού $n, k \in \mathbb{N_0}$ τότε μπορούν όλοι αυτοί οι χαρακτήρες να είναι (μετρήσιμα) άπειροι αλλά υπό
+τον όρο ότι τηρείται το γενικό μοτίβο.
+\par Άρα, θεωρητικά, έχουμε 3 αρχικούς κλάδους και  και σε έναν από αυτούς άλλη μία διάσπαση σε δύο. Θα δούμε
+τελικά ότι ακριβώς αυτό συμβαίνει και στην πράξη (τουλάχιστον στη συγκεκριμένη επίλυση) και ότι γενικά είναι καλή
+πρακτική. Ξεκινάμε την κατασκευή του αυτομάτου, αρχικά δίνοντας την μαθηματική περιγραφή και κατόπιν το αντίστοιχο
+διάγραμμα:
 
-
-\hfill \break
 \begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
-	fonttitle=\bfseries\Large, title = DFA $M_{\text{Τ}}$]
-%\begin{figure}[!htb]
+	fonttitle=\bfseries\Large, title = {PDA $M = (K,\, \Sigma,\, \Gamma,\, \Delta,\, s,\, F)$}]
+	\begin{itemize}
+		\itemsep0em
+		\item $K \,=\, \{q1,\, q2,\, q3,\, q4,\, q5,\, q6\}$
+		\item $\Sigma \,=\, \{a,\, b\}$
+		\item $\Gamma \,=\, \{A,\, B,\, \$\}$
+		\item $\Delta \,=\,$
+		\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item $(q1,\,ε,\,ε)\rightarrow(q2,\,\$)$
+
+
+
+				\item $(q2,\,b,\,\$)\rightarrow(q2,\,B\$)$
+				\item $(q2,\,b,\,B)\rightarrow(q2,\,BB)$
+
+				\item $(q2,\,ε,\,\$)\rightarrow(q6,\,ε)$
+				\item $(q2,\,a,\,\$)\rightarrow(q3,\,A\$)$
+				\item $(q2,\,a,\,B)\rightarrow(q3,\,AB)$
+				\item $(q2,\,a,\,B)\rightarrow(q5,\,ε)$
+
+
+
+				\item $(q3,\,a,\,A)\rightarrow(q3,\,AA)$
+
+				\item $(q3,\,b,\,A)\rightarrow(q4,\,ε)$
+
+
+
+				\item $(q4,\,b,\,A)\rightarrow(q1,\,ε)$
+
+				\item $(q4,\,a,\,B)\rightarrow(q5,\,ε)$
+				\item $(q4,\,ε,\,\$)\rightarrow(q6,\,ε)$
+
+
+
+				\item $(q5,\,a,\,B)\rightarrow(q5,\,ε)$
+
+				\item $(q5,\,ε,\,\$)\rightarrow(q6,\,ε)$
+			\end{enumerate}
+		\end{multicols}
+		\item $s \,=\, q_1$
+		\item $F \,=\, q_6$
+	\end{itemize}
+\end{tcolorbox}
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+
+%\par
+\begin{comment}
+	\begin{figure}[!htb]
 		\centering
 		%\begin{minipage}{0.45\textwidth}
 		%\begin{flushleft}
@@ -151,58 +96,119 @@ q0,\; \{\,q5\,\}\;)$
 			% Help grid
 			%	\draw [help lines] (-1,4) grid (8,-10);
 			% Start Node : Every other node is measured based to this one
-			\node (q0) [state, black, scale = 1.3, initial left, initial distance = 14mm, initial text = {Αρχή},
+			\node (q0) [state, black, scale = 1.3, initial below, initial distance = 10mm, initial text = {Αρχή},
 			top color = green!80, bottom color = green!20] {$q_{0}$};
 
-			\node (q3) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, distance = 3pt, right = of
-			q0]
-			{$q_{3}$};
+			% Final Node
+			\node (q3) [state, black, scale = 1.3,accepting, top color = red!80, bottom color = red!20, double
+			distance = 3pt, double = red!20, left = of q0] {$q_{3}$};
 
-			\node (q1) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, distance = 3pt,
-			below right = of q3] {$q_{1}$};
+			\node (q1) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q0]
+			{$q_{1}$};
 
-			\node (q4) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, distance = 3pt, below left =
-			of q0]
-			{$q_{4}$};
-
-			\node (q2) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, distance = 3pt, below right =
-			of q4]
+			\node (q2) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q1]
 			{$q_{2}$};
 
-			% Final Node
-			\node (q5) [state, black, scale = 1.3, accepting, top color = red!80, bottom color = red!20, double
-			distance = 3pt, double = red!20, right = of q2] {$q_{5}$};
+			\node (q4) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, above = of q0]
+			{$q_{4}$};
+
+			\node (q5) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q4]
+			{$q_{5}$};
+
+			\node (q6) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q5]
+			{$q_{6}$};
+
+			\node (q7) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, left = of q4]
+			{$q_{7}$};
+
 			% Draw Arrows/Connections
 			\path [-stealth, thick]
 
-			% 0,0 => 1,0 || 1,1
-			(q0) edge [bend left] node [above] {$a$}(q3)
-			(q0) edge [bend right] node [left] {$b$} (q4)
-			% 0,1 => 1,0 || 1,2
-			(q1) edge [bend left] node [below] {$a$} (q3)
-			(q1) edge [] node [right] {$b$} (q5)
-			% 0,2 => 1,0 || 1,2
-			(q2) edge [bend left = 8] node [left] {$a$} (q3)
-			(q2) edge [bend right] node [below] {$b$} (q5)
-			% 1,0 => 0,0 || 0,1
-			(q3) edge [bend left] node [below] {$a$} (q0)
-			(q3) edge [bend left] node [right] {$b$} (q1)
-			% 1,1 => 0,0 || 0,2
-			(q4) edge [bend right] node [right] {$a$} (q0)
-			(q4) edge [] node [left] {$b$} (q2)
-			% 1,2 => 0,0 || 0,2
-			(q5) edge [bend right = 8] node [right] {$a$} (q0)
-			(q5) edge [bend right] node [above] {$b$} (q2);
+			% 0,0 => 1,0 || 0,1
+			(q0) edge [bend left] node [left] {$a$}(q4)
+			(q0) edge [] node [below] {$b$} (q1)
+			% 0,1 => 1,1 || 0,2
+			(q1) edge [bend left] node [left] {$a$} (q5)
+			(q1) edge [] node [below] {$b$} (q2)
+			% 0,2 => 1,2 || 0,3
+			(q2) edge [bend left] node [left] {$a$} (q6)
+			(q2) edge [bend left] node [above] {$b$} (q3)
+			% 0,3 => 1,3 || 0,0
+			(q3) edge [bend left] node [left] {$a$} (q7)
+			(q3) edge [] node [below] {$b$} (q0)
+			% 1,0 => 0,0 || 1,1
+			(q4) edge [bend left] node [right] {$a$} (q0)
+			(q4) edge [] node [above] {$b$} (q5)
+			% 1,1 => 0,1 || 1,2
+			(q5) edge [bend left] node [right] {$a$} (q1)
+			(q5) edge [] node [above] {$b$} (q6)
+			% 1,2 => 0,2 || 1,3
+			(q6) edge [bend left] node [right] {$a$} (q2)
+			(q6) edge [bend right] node [below] {$b$} (q7)
+			% 1,3 => 0,3 || 1,0
+			(q7) edge [bend left] node [right] {$a$} (q3)
+			(q7) edge [] node [above] {$b$} (q4);
 		\end{tikzpicture}
-%		\caption{DFA $M_{1}$ : \\ $L = \{\,w\; \vert \; (w \in \{a, b\}^*) \; [\vert w \vert$ περιττό$]\}$}
-%		\label{fig:sub1}
-%\end{figure}
+		\caption{DFA $M_{1}$ : \\ $L = \{\,w\; \vert \; (w \in \{a, b\}^*) \; [\vert w \vert$ περιττό$]\}$}
+		\label{fig:sub1}
+	\end{figure}
+\end{comment}
 
+%\vfill
+%\clearpage
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = DFA $M_{\text{τελικό}}$]
+	\centering
+	\begin{tikzpicture} [blue, node distance = 4cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q1) [state, black, scale = 1.3, initial above, initial distance = 10mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q_{1}$};
+
+		\node (q2) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, below = of q1]
+		{$q_{2}$};
+
+		\node (q3) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, below = of q2]
+		{$q_{3}$};
+
+		\node (q4) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, below = of q3]
+		{$q_{4}$};
+
+		\node (q5) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, below right = of q4]
+		{$q_{5}$};
+
+		% Final Node
+		\node (q6) [state, black, scale = 1.3,accepting, top color = red!80, bottom color = red!20, double
+		distance = 3pt, double = red!20, below left = of q4] {$q_{6}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+
+		% 0,0 => 1,0 || 0,1
+		(q1) edge [] node [left] {$ε,\,ε,\,\$$} (q2)
+		% 0,1 => 1,1 || 0,2
+		(q2) edge [bend right = 45] node [left] {$ε,\$,ε$} (q6)
+		(q2) edge [bend left = 45] node [right] {$a,B,ε$} (q5)
+		(q2) edge [] node [left] {$a,\$,A\$$} (q3)
+		(q2) edge [] node [right] {$a,B,AB$} (q3)
+		(q2) edge [loop right] node [right] {$b,\$,B\$$} (q2)
+		(q2) edge [loop left] node [left] {$b,B,BB$} (q2)
+		% 0,2 => 1,2 || 0,3
+		(q3) edge [loop right] node [right] {$a,A,AA$} (q3)
+		(q3) edge [] node [left] {$b,A,ε$} (q4)
+		% 0,3 => 1,3 || 0,0
+		(q4) edge [loop right] node [right] {$b,A,ε$} (q4)
+		(q4) edge [] node [left] {$a,B,ε$} (q5)
+		(q4) edge [] node [left] {$ε,\$,ε$} (q6)
+		% 1,0 => 0,0 || 1,1
+		(q5) edge [loop right] node [right] {$a,B,ε$} (q5)
+		(q5) edge [] node [above] {$ε,\$,ε$} (q6);
+	\end{tikzpicture}
 \end{tcolorbox}
 \begin{center}
 	%\vspace{2em}
 	\noindent\rule{\linewidth}{0.5pt}
 	%\vspace{2em}
 \end{center}
-
-\clearpage
+%\clearpage
