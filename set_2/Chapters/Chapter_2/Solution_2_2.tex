@@ -175,6 +175,24 @@ $w_0 = ε \lor w_1 = abb \lor w_2 = bab \lor w_3 = bba$ αλλά όπως ήδη
 	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = {Υπολογισμός αποδοχής $abbbab$}]
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{adjustwidth}{-0.75em}{}
+		\begin{equation*}
+			\begin{aligned}
+				(q1, abbbab, \varepsilon)
+				&\vdash (q2, abbbab, \$) \vdash (q2, bbbab, AA\$) \vdash (q2, bbab, A\$)\\
+				&\vdash (q2, bab, \$) \vdash (q2, ab, B\$) \vdash (q2, b, A\$) \vdash (q2, \varepsilon, \$)\\
+				&\vdash (q3, \varepsilon, \varepsilon)\qquad\quad \text{ Επιτυχής Ανάγνωση}
+			\end{aligned}
+		\end{equation*}
+	\end{adjustwidth}
+\end{tcolorbox}
+
 \begin{center}
 	%\vspace{2em}
 	\noindent\rule{\linewidth}{0.5pt}
