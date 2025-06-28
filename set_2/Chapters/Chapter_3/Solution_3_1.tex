@@ -1,26 +1,22 @@
 \subsection{Απάντηση Υποερωτήματος (α)}
 \label{ssec:Solution_3.1}
 \doublespacing
-$Q' = \mathcal{P}(Q)\rightarrow$DFA δύναται αποτελείτε το πολύ από $2^5 = 32$ καταστάσεις:
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\begin{equation*}
-	\begin{split}
-		\begin{gathered}
-			Q' = \mathcal{P}(Q) \Rightarrow Q' = \mathcal{P}(\{q_1,\,q_2,\,q_3,\,q_4,\,q_5\}) \Rightarrow
-			\\ Q' = \{\emptyset,\,\{q_1\},\,\{q_2\},\,\{q_3\},\,\{q_4\},\,\{q_5\},
-			\\ \;\{q_1,\,q_2\},\;\{q_1,\,q_3\},\;\{q_1,\,q_4\},\;\{q_1,\,q_5\},
-			\\ \;\{q_2,\,q_3\},\;\{q_2,\,q_4\},\;\{q_2,\,q_5\},
-				\;\{q_3,\,q_4\},\;\{q_3,\,q_5\},\;\{q_4,\,q_5\},
-			\\ \{q_1,\,q_2,\,q_3\},\;\{q_1,\,q_2,\,q_4\},\;\{q_1,\,q_2,\,q_5\},
-				\;\{q_1,\,q_3,\,q_4\},\;\{q_1,\,q_3,\,q_5\},\;\{q_1,\,q_4,\,q_5\},
-			\\ \{q_2,\,q_3,\,q_4\},\;\{q_2,\,q_3,\,q_5\},\;\{q_2,\,q_4,\,q_5\},\;\{q_3,\,q_4,\,q_5\},
-			\\ \{q_1,\,q_2,\,q_3,\,q_4\},\;\{q_1,\,q_2,\,q_3,\,q_5\},
-				\;\{q_1,\,q_2,\,q_4,\,q_5\},\;\{q_1,\,q_3,\,q_4,\,q_5\},
-			\\ \{q_2,\,q_3,\,q_4,\,q_5\},\;\{q_1,\,q_2,\,q_3,\,q_4,\,q_5\}\}
-		\end{gathered}
-	\end{split}
-\end{equation*}
 
+\begin{itemize}
+	\itemsep0em
+
+	\item $\mathcal{P} := \{\forall\,L_{DCF}\in\mathcal L_{\mathrm{DCF}},\;\forall\,L_{reg}\in\mathcal
+	L_{\mathrm{REG}}:
+	\;L_{DCF}\cap L_{reg}\;\in\;\mathcal L_{\mathrm{CF}}\}$
+
+
+	\item $\mathcal{L}_{fin} \subset \mathcal{L}_{reg} \subset \mathcal{L}_{DCF} \subset \mathcal{L}_{NCF} =
+	\mathcal{L}_{CF}$
+
+	\item
+
+	\item
+\end{itemize}
 \par
 Κατόπιν βρίσκουμε $q_{\text{αρχικό}}$ του $ε$-NFA και συνεχίζουμε με όλα τα E(q):
 \hfill \break
@@ -28,63 +24,16 @@ $Q' = \mathcal{P}(Q)\rightarrow$DFA δύναται αποτελείτε το π�
 \setlength{\tabcolsep}{18pt}
 \renewcommand{\arraystretch}{1}
 
-%\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+\[
+\mathcal L_{\mathrm{DCFL}}
+\;\cap\;
+\mathcal L_{\mathrm{REG}}
+\;\subseteq\;
+\mathcal L_{\mathrm{DCFL}}
+\;\subseteq\;
+\mathcal L_{\mathrm{CFL}}.
+\]
 
-\arrayrulecolor[HTML]{000000}
-\begin{figure}[!htb]\rowcolors{2}{gray!70!lightgray!30}{lightgray!35!lightgray!15}
-		\begin{center}
-			\begin{tabular}{ |s|p{2cm}|p{1cm}|  }
-				\hline
-				\rowcolor{olive!80!olive!30} \multicolumn{2}{|c|}{E(q) και $ε$-μεταβάσεις τους} \\
-				\hline
-				\rowcolor{orange!80!orange!30}
-				Ε(q) & $e$ \\
-				\hline
-				%\rowcolor{gray}
-				E($q_{1}$) & \{$q_{1}, q_{2}$\}\\
-				\cellcolor[RGB]{0,128,0} E\{$q_{2}$\} & \cellcolor{green} \{$q_{2}$\}\\
-				E($q_{3}$) & \{$q_{3}, q_{2}$\}\\
-				\cellcolor{red} E($q_{4}$) & \cellcolor{orange} \{$q_{4}$\}\\
-				E($q_{5}$) & \{$q_{5}$\}\\
-				%Andorra & \cellcolor[HTML]{AA0044} AND    \\
-				\hline
-			\end{tabular}
-		\end{center}
-	%	\caption{} \label{fig:M4}
-	\end{figure}
-
-\clearpage
-\par
-Εν συνεχεία βρίσκουμε μη κενές μεταβάσεις από ταύτα σύνολα καταστάσεων και με τον παραγόμενο πίνακα παίρνουμε
-κόμβους DFA M' (αλλά όχι τελικό διότι ίσος προκύψουν απρόσιτες καταστάσεις που θα πρέπει να αναφερθούν):
-\hfill \break
-
-\begin{figure}[!htb]%[!htb]
-	\rowcolors{2}{gray!70!lightgray!30}{lightgray!35!lightgray!15}
-
-		\begin{center}
-			\begin{tabular}{ |p{1.8cm}|p{3cm}|p{2cm}|p{2cm}|  }
-				\hline
-				\rowcolor{olive!80!olive!30} \multicolumn{4}{|c|}{E(q) και μη κενές μεταβάσεις τους} \\
-				\hline
-				\rowcolor{orange!80!orange!30}
-				q(M') & Ε(q) & $a$ & $b$ \\
-				\hline
-				\cellcolor[RGB]{0,128,0} $q_{0}$ & \cellcolor{green} E($q_{2}$) & \{$q_{5}$\} & \{$q_{5}$\}\\
-
-				%\rowcolor{gray}
-				$q_{1}$ & E($q_{5}$) & \{$q_{1}, q_{2}, q_{3}$\} & \cellcolor{green} $\{q_{2}\}$ \\
-
-				$q_{2}$ & E($q_{1}, q_{2}, q_{3}$) & \{$q_{5}$\} & \cellcolor{orange} \{$q_{5}, q_{4}$\}\\
-
-				\cellcolor{red} $q_{3}$ & \cellcolor{orange} E($q_{5}, q_{4}$) & $\{q_{1}, q_{2}, q_{3}\}$ &
-				\cellcolor{green} \{$q_{2}$\}\\
-				%Andorra & \cellcolor[HTML]{AA0044} AND    \\
-				\hline
-			\end{tabular}
-		\end{center}
-		%\caption{} \label{fig:M4}
-	\end{figure}
 
 \par
 Βρήκαμε τον αρχικό, τελικό και ενδιάμεσους κόμβους καθώς και τις μεταβάσεις τους και άρα είμαστε έτοιμοι να
