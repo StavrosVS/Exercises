@@ -6,8 +6,7 @@ $ L_1 = \{a^n, b^m : n, m \in \mathbb{N}_0, 3n \leq m \leq 6n \}$
 άρα $\vert w \vert_{min} = 0$ για $n = 0$ με $a$ να προηγούνται των $b$. Οπότε:
 $\overset{\text{Ελάχιστη περίπτωση}}{\rightarrow} ε\,$ και
 $\;\,\overset{\text{Ελάχιστη μή κενή περίπτωση}}{\rightarrow} abbb$.\\
-Αλλά με το ίδιο $a$ έχουμε επίσης (με κενά για να είναι ευανάγνωστο): $\rightarrow a\,bbb\,b,\;
-a\,bbb\,bb, \; a\,bbb\,bbb$.\\
+Αλλά με το ίδιο $a$ έχουμε επίσης: $\rightarrow a\,bbb\,b,\; a\,bbb\,bb,\; a\,bbb\,bbb$.\\
 Δεν πρέπει όμως να ξεχνάμε ότι μπορούμε να έχουμε έως $|w|_a = \aleph_0$ και αντίστοιχα τα $b$ που αναλογούν σε
 αυτά για να είναι σωστή η συμβολοσειρά. Οτιδήποτε όμως από αυτά είναι ουσιαστικά απλή επανάληψη του κανόνα που
 δημιουργεί όλες τις ενός $a$ συμβολοσειρές. Άρα δεν χρειαζόμαστε κάποιο
@@ -31,6 +30,8 @@ a\,bbb\,bb, \; a\,bbb\,bbb$.\\
 	\item Πιο ευανάγνωστη παραλλαγή:\\
 	$S \rightarrow aSbbM | ε$\\
 	$M \rightarrow b \,|\, bb \,|\, bbb \,|\, bbbb$
+
+	\item Καμία αριστερή αναδρομή.
 \end{itemize}
 
 \begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
@@ -65,122 +66,11 @@ aa\,bbb\,bbb\,b,\,|w| = 9,\, |w|_a = 2,\,|w|_b = 7$:
 \end{center}
 
 Που δίνει:$\qquad\qquad\qquad\;\;\, a\;\;\;\, a\qquad\; bb\;\;\;\, b\;\;\;\, bb\;\;\; bb$\\
-Εναλλακτικά θα μπορούσαμε να ανταλλάξουμε το ένα $\,Μ\,$ με το άλλο και θα φτάναμε πάλι στο ίδιο αποτέλεσμα.
+Εναλλακτικά θα μπορούσαμε να το διαβάσουμε ως $a\,(a(\varepsilon)bb(bb))\,bb\,(b)$.
 
 \end{tcolorbox}
 
-\begin{comment}
-\reducevspace
-%\phantom{\text{Ελάχιστη περίπτωση}}
-\begin{equation*}
-	\overset{\text{Ελάχιστη περίπτωση }}{\rightarrow} ab \cup ba
-	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\end{equation*}
-\begin{equation*}
-	\overset{\vert w \vert_c = 2n }{\rightarrow} (cc)^* [a(cc)^*b \cup b(cc)^*a](cc)^*
-\end{equation*}
-\begin{equation*}
-	\begin{split}
-		&\overset{\text{cacb, acbc, cbca, cabc, cccabc\dots}}{\rightarrow}(cc)^*[(a[cc]^*b) \cup (b[cc]^*a) \cup
-		(cac[cc]^*b) \cup\\
-		&(cbc[cc]^*a) \cup (ca[cc]^*bc) \cup (cb[cc]^*ac) \cup (ac[cc]^*bc) \cup
-		(bc[cc]^*ac)](cc)^*
-	\end{split}
-\end{equation*}
-\par
-Θα τη "σπάσουμε" σε τμήματα χάριν ευκολίας ανάγνωσης:
 
-
-\begin{comment}
-\phantom{\text{Τελική κανονική έκφραση χωρισμένη βάση μοτίβου}}
-\begin{equation*}
-	{\boldmath
-	\begin{split}
-		\begin{gathered}
-			(cc)^*\textcolor{purple}{[}
-			\\ (a[cc]^*b) \cup (b[cc]^*a)
-			\\ \cup
-			\\ (cac[cc]^*b) \cup (cbc[cc]^*a)
-			\\ \cup
-			\\ (ca[cc]^*bc) \cup (cb[cc]^*ac)
-			\\ \cup
-			\\ (ac[cc]^*bc) \cup (bc[cc]^*ac)
-			\\ \textcolor{purple}{]}(cc)^*
-		\end{gathered}
-	\end{split}}
-	\;\;\;\;\;\;\;\;\;\;\text{Τελική κανονική έκφραση χωρισμένη βάση μοτίβου}
-\end{equation*}
-
-
-
-
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\mathversion{bold}
-\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
-	fonttitle=\bfseries\Large, title = Τελική κανονική έκφραση χωρισμένη βάση μοτίβου]
-	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-	\begin{align*}
-		\begin{gathered}
-		(cc)^*(
-		\\ \textcolor{red}{[}\textcolor{blue}{(}a\,[cc]^*\,b\textcolor{blue}{)} \;\;\textcolor{blue}{\cup}\;\;
-		\textcolor{blue}{(}b\,[cc]^*\,a\textcolor{blue}{)}\textcolor{red}{]}
-		\\ \textcolor{red}{\cup}
-		\\ \textcolor{red}{[}\textcolor{blue}{(}cac\,[cc]^*\,b\textcolor{blue}{)} \;\;\textcolor{blue}{\cup}\;\;
-		\textcolor{blue}{(}cbc\,[cc]^*\,a\textcolor{blue}{)}\textcolor{red}{]}
-		\\ \textcolor{red}{\cup}
-		\\ \textcolor{red}{[}\textcolor{blue}{(}ca\,[cc]^*\,bc\textcolor{blue}{)} \;\;\textcolor{blue}{\cup}\;\;
-		\textcolor{blue}{(}cb\,[cc]^*\,ac\textcolor{blue}{)}\textcolor{red}{]}
-		\\ \textcolor{red}{\cup}
-		\\ \textcolor{red}{[}\textcolor{blue}{(}ac\,[cc]^*\,bc\textcolor{blue}{)} \;\;\textcolor{blue}{\cup}\;\;
-		\textcolor{blue}{(}bc\,[cc]^*\,ac\textcolor{blue}{)}\textcolor{red}{]}
-		\\ )(cc)^*
-		\end{gathered}
-	\end{align*}
-\end{tcolorbox}
-\mathversion{normal}
-\end{comment}
-%Έχουμε περιττό πλήθος "$a$" άρα:
-%\[ \{m(a) : \exists n(n \in \mathbb N) \land \ m(a) = 2n+1\} \]
-%Αυτό μας δείχνει ότι έχουμε τουλάχιστον ένα $a$ σε κάθε
-%περίπτωση δηλαδή την λέξη:
-%\[w = a\]
-%Επιπλέον έχουμε ακριβώς δύο "$b$". Άρα οι απλούστερες
-%περιπτώσεις όπου μας δίνουν τις αντίστοιχες κανονικές
-%εκφράσεις
-%ως βάση πάνω στην οποία θα δουλέψουμε είναι:
-%\[ w_{1_a} = abb,\qquad w_{1_b} = bab,\qquad w_{1_c} = bba \]
-%Επειδή δεν έχουμε περιορισμό στο πλήθος "$a$", αρκεί αυτό να
-%είναι περιττό, θα πρέπει να παρέχουμε αυτή τη δυνατότητα. Μόνο
-%προσθέτοντας άρτιο σε περιττό μας δίνει περιττό:
-%\[ m(a) = (2n+1)+(2m) \Leftrightarrow 2n+2m+1 \Leftrightarrow
-%2(n+m)+1 \Leftrightarrow 2k+1\]
-%\[\{(n, m) \in \mathbb N : k = n+m \ \land \ (2 | n \ \lor \ n
-%= 0) \ \land \ 2 \centernot| m\} \]
-%\[ w_{2_a} = a(aa)^{*}b(aa)^{*}b(aa)^{*},\quad w_{2_b} =
-%(aa)^{*}ba(aa)^{*}b(aa)^{*},\quad w_{2_c} =
-%(aa)^{*}b(aa)^{*}ba(aa)^{*} \]
-%Τέλος υπάρχει μία περίπτωση που δεν καλύπτεται από τα
-%προηγούμενα και η οποία είναι:
-%\[w_{1_d} = ababa\]
-%Εφαρμόζοντας τα αντίστοιχα όπως και στις προηγούμενες
-%περιπτώσεις έχουμε:
-%\[w_{2_d} = a(aa)^{*}ba(aa)^{*}ba(aa)^{*}\]
-%Η τελική λύση είναι η ένωση όλων αυτών των κανονικών εκφράσεων:
-%{\centering\fcolorbox{black}{lime}{$a(aa)^{*}b(aa)^{*}b(aa)^{*}
-% \cup (aa)^{*}ba(aa)^{*}b(aa)^{*} \cup
-%(aa)^{*}b(aa)^{*}ba(aa)^{*} \cup
-%a(aa)^{*}ba(aa)^{*}ba(aa)^{*}$}\par}
-%\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-%\vfill %stretches vertical space pushing stuff lower
-%\fancyfoot[C]{\pgfornament[width=15cm, symmetry=c, color = gray!60]{88}}
-%\begin{center}
-	%\pgfornament[width=15cm, symmetry=c, color = gray!60]{88}
-	%\pgfornament[width=15cm, symmetry=c]{89}
-	%\pgfornament[width=15cm, symmetry=c]{62}
-%\end{center}
 
 \begin{center}
 	%\vspace{2em}

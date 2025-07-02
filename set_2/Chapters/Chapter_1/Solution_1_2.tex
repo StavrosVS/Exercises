@@ -2,52 +2,103 @@
 \label{ssec:Solution_1.2}
 \doublespacing
 
-Έχουμε CFL
-$ L_1 = \{w \in \{a, b\}^* : |w|_a = 3 \times |w|_b + 2 \}$
+CFL
+$ L_1 = \{w \in \{a, b\}^* : |w|_a = 3|w|_b + 2 \}$
 άρα $\vert w \vert_{min} = 2$ και συγκεκριμένα $aa$.\\
 Στην περίπτωση όμως που έχουμε έστω και ένα $b$ έχουμε:
-$aaa\,aa\,b$.
-Παρατηρούμε όμως ότι η γλώσσα δεν ορίζει συγκεκριμένη σειρά μεταξύ $a$ και
+$aaa\,aa\,b$.\\
+Παρατηρούμε ότι η γλώσσα δεν ορίζει συγκεκριμένη σειρά μεταξύ $a$ και
 $b$ και άρα θα πρέπει να μπορούν να παραχθούν όλοι οι συνδυασμοί και με βάση τη θέση των συμβόλων και άρα
-επιπρόσθετες συμβολοσειρές: $b\,aaa\,aa,\; a\,b\,aaa\,a,\; aa\,b\,aaa,\; aaa\,b\,aa,\;
-aaa\,a\,b\,a$.\\
-Για να οδηγηθούμε όμως σε κάποιες από αυτές το ελάχιστο $aa$ διαχωρίστηκε, με το $b$ να παρεμβάλλεται ανάμεσα.
-Με βάση την ελάχιστη περίπτωση καταλαβαίνουμε ότι, παρόλα αυτά, τα δύο παραπάνω $a$ (από το τριπλάσιο των $b$)
-μάλλον θα πρέπει να απομονωθούν από τα υπόλοιπα σύμβολα της λέξης σε δικό τους κανόνα.\\
-Μπορούμε όμως να έχουμε έως $|w|_b = \aleph_0$ και αντίστοιχα τα $a$ που αναλογούν σε αυτά για αν
-είναι σωστή η συμβολοσειρά. Αυτό, εφόσον είναι εφικτό, υπονοεί χρήση αναδρομής και συγκεκριμένα όλων των κανόνων
-παραγωγής εκτός του ελάχιστου $aa$.\\
-Συμψηφίζοντας τώρα αυτές τις παρατηρήσεις μπορούμε να περάσουμε στην κατασκευή των κανόνων παραγωγής. Θα το
-προσεγγίσουμε σταδιακά:
+επιπρόσθετες συμβολοσειρές: $b\,aaa\,aa,\; a\,b\,aaa\,a,\;...,\;
+aa\,aaa\,b$.\\
+Για να οδηγηθούμε σε κάποιες από αυτές το ελάχιστο $aa$ διαχωρίστηκε, με το $b$ να παρεμβάλλεται ανάμεσα.
+Με βάση την ελάχιστη περίπτωση καταλαβαίνουμε ότι παρόλα αυτά, τα δύο πρόσθετα $a$ θα πρέπει να απομονωθούν σε δικό
+τους κανόνα.\\
+Έχουμε όμως $|w|_b \in \aleph_0$ και άρα τα ανάλογα $a$, υπονοώντας χρήση αναδρομής και συγκεκριμένα όλων των
+κανόνων παραγωγής εκτός του ελάχιστου $aa$.\\
+Συμψηφίζοντας μπορούμε να περάσουμε στην κατασκευή των κανόνων παραγωγής:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 %\clearpage
 %\begin{multicols}{2}
 \begin{itemize}
 	\itemsep0em
 
-	\item Ελάχιστη περίπτωση:\\
+	\item Ελάχιστη περίπτωση:\\\reducevspace
 	$S \rightarrow aa$
-
-	\item Ελάχιστα $b$:\\
-	$S \rightarrow aaR \,|\, aRa \,|\, Raa$\\
-	$R \rightarrow baaa \,|\, abaa \,|\, aaab \,|\, aaab \,|\, \varepsilon$\\
-
-	\item $|w| = \aleph_0$:\\
-	$S \rightarrow aaR \,|\, aRa \,|\, Raa$\\
-	$M \rightarrow RbRaaa \,|\, aRbRaa \,|\, aaRbR \,|\, aaaRbR \,|\, \varepsilon$\\
-
-	\item Σύμπτυξη:\\
-	$S \rightarrow RaRaR$\\
-	$M \rightarrow RbRaaa \,|\, aRbRaa \,|\, aaRbR \,|\, aaaRbR \,|\, \varepsilon$\\
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\item Ελάχιστα $b$:\\\reducevspace
+	$S \rightarrow aaR \,|\, aRa \,|\, Raa$\\\reducevspace
+	$R \rightarrow baaa \,|\, abaa \,|\, aaba \,|\, aaab \,|\, \varepsilon$\\
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\item $|w| = \aleph_0$:\\\reducevspace
+	$S \rightarrow aaR \,|\, aRa \,|\, Raa$\\\reducevspace
+	$R \rightarrow RbRaaa \,|\, aRbRaa \,|\, aaRbR \,|\, aaaRbR \,|\, \varepsilon$\\
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\item Σύμπτυξη:\\\reducevspace
+	$S \rightarrow RaRaR$\\\reducevspace
+	$M \rightarrow bRaaa \,|\, abRaa \,|\, aabRa \,|\, aaaRbR \,|\, \varepsilon$\\
 \end{itemize}
 %\end{multicols}
+
+Για να καταλάβουμε για πιο λόγο έφυγε η αναδρομή πριν από το $b$ σε όλες τις παραλλαγές του $R$ εκτός την $aaaRbR$
+και άρα να υπάρχει κάποια αιτιολόγηση θα πρέπει να δώσουμε κάποια βασικά παραδείγματα:\\
+
+\begin{itemize}
+	\itemsep0em
+
+	\item $bb\,aaa\,aaa\,aa \;:\; S\rightarrow RaRaR \rightarrow (baaa)aRaR \rightarrow (bRaaa)aRaR \rightarrow
+			(b(bRaaa)aaa)aRaR \rightarrow (b(b\varepsilon aaa)aaa)aRaR \rightarrow (bb\,aaa\,aaa)a\varepsilon a
+			\varepsilon \rightarrow bb\,aaa\,aaa\,aa$
+
+	\item $a\,bb\,aaa\,aaa\,a \;:\; S\rightarrow RaRaR \rightarrow \varepsilon aRa\varepsilon \rightarrow
+	a(bRaaa)a \rightarrow a(b(bRaaa)aaa)a \rightarrow a(b(b\varepsilon aaa)aaa)a \rightarrow a\,bb\,aaa\,aaa\,a$
+
+	\item $aa\,bbaaa\,aaa \;:\; S\rightarrow RaRaR \rightarrow \varepsilon a\varepsilon aR \rightarrow
+	aa(bRaaa) \rightarrow aa(b(bRaaa)aaa) \rightarrow aa(b(b\varepsilon aaa)aaa) \rightarrow aa\,bb\,aaa\,aaa$
+
+	\item $...$
+
+	\item $aa\,aaa\,bb\,aaa \;:\; S\rightarrow RaRaR \rightarrow \varepsilon a\varepsilon aR \rightarrow aa(aaabR)
+	\rightarrow aa(aaab(bRaaa)) \rightarrow aa(aaab(b\varepsilon aaa)) \rightarrow aa\,aaa\,bb\,aaa$
+
+	\item $...$
+
+	\item $aaa\,aaa\,bb\,aa \;:\; S\rightarrow RaRaR \rightarrow Ra\varepsilon a\varepsilon \rightarrow
+	(aaab)aa \rightarrow (aaaRb)aa \rightarrow (aaa(aaaRb)b)aa \rightarrow (aaa(aaa\varepsilon b)b)aa \rightarrow
+	aaa\,aaa\,bb\,aa$
+
+	\item Είδαμε ότι για τις συγκεκριμένες υποπεριπτώσεις χρειαζόμαστε $bRaaa$, $aaaRb$ και $aaabR$. Θυμόμαστε ότι
+	τα $R$ δεν είναι παρά αναδρομές στον ίδιο κανόνα παραγωγής και παρατηρούμε ότι το $aaa(R)b$ και το $aaab(R)$
+	είναι ουσιαστικά η ίδια (σταθερή) συμβολοσειρά απλά με αναδρομή είτε πριν, είτε μετά το $b$. Άρα μπορούμε να
+	αντικαταστήσουμε και τα δύο με το να πάρουμε τα σταθερά σύμβολα, όπου είναι κοινά και να τοποθετήσουμε αναδρομή
+	και στις δύο πλευρές του $b$ παίρνοντας έτσι $aaaRbR$.
+
+	\item Για να σιγουρευτούμε για το αν όντως δεν χρειάζονται κανόνες τύπου $RbRaaa,\,aRbRaa,\,aaRbRa,\,aaaRbR$,
+	έχουμε αναλύσει όλες τις παραλλαγές για ορθές συμβολοσειρές με δύο $"b"$ και σταθερές υποσυμβολοσειρές
+	$bb,\,bab,\,baab,\,...,\,baaaaaaaab$, δλδ με τα υπόλοιπα $a$ να μετακινούνται σε όλες τις πιθανές ακραίες
+	θέσεις, καθώς και άλλες, συμπεριλαμβανομένων και κάποιων βασικών μη ορθών, αλλά δεν τις συμπεριλαμβάνουμε για
+	προφανείς λόγους (άνω των 150 παραλλαγών). Αυτό δεν σημαίνει ότι δεν γίνεται να μας έχει ξεφύγει κάτι.
+
+	\item Τέλος αν πούμε ότι η CFG μας δεν περιέχει αριστερή αναδρομή.
+\end{itemize}
+
+\par
+Γενικά θα πρέπει να έχουμε κατά νου ότι είναι πάρα πολύ χρήσιμο έως και απαραίτητο, εκτός των ελάχιστων περιπτώσεων
+βάση συνόλου (πχ $\in \mathbb{N}_0$ ή και ελάχιστων περιπτώσεων για μη μηδενικό σύνολο (ουσιαστικά λαμβάνοντας
+υπόψιν αποδοχή κενής συμβολοσειράς εάν επιτρέπεται και ελάχιστης μή κενής), καλό θα είναι να ελέγχουμε και για
+διπλές εμφανίσεις των ελάχιστων μή κενών πχ $\{\forall w \neq \varepsilon \,|\, w_{min} = xy,\, \exists w_{double}
+= xxyy \cup xyxy \cup xyyx \cup yxxy \cup yxyx \cup yyxx \}$
+
+\par
+Υπόψιν ότι εκτός κάποιον πολύ απλών περιπτώσεων, στις CFL δεν μπορούμε πάντα να είμαστε σίγουροι ότι η CFG μας
+καλύπτει όλες τις πιθανές ορθές συμβολοσειρές της γλώσσας ή ότι είναι ελάχιστη.
 
 \begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
 	fonttitle=\bfseries\Large, title = Γραμματική και συντακτικό δένδρο]
 	Είμαστε έτοιμοι να προχωρήσουμε στην πλήρη περιγραφή της γραμματικής μας:\\
-
-	$G_2 = (\{a, b\},\, \{aa, ε\},\, \{S\rightarrow aa\,|\,aMa\,|\,MaaM\\
-	Μ\rightarrow A_1 bM A_2 \,|\, A_2 bM A_1 \,|\, A_1 A_2 bM \,|\, Mb A_1 A_2 \,|\, ε,\;
-	A_1 \rightarrow a,\; A_2 \rightarrow aa\},\, S)$
+	$G_2 = (\{a, b\},\, \{aa, ε\},\, \{S\rightarrow RaRaR\\
+	R\rightarrow bRaaa \,|\, abRaa \,|\, aabRa \,|\, aaaRbR \,|\, \varepsilon\},\, S)$
 
 	Ήρθε η στιγμή να δώσουμε το συντακτικό δένδρο για συμβολοσειρά (τα κενά για ευκολότερη ανάγνωση) $w =
 	aa\,b\,aaa\,b\,aaa,\,|w| = 10,\, |w|_a = 8,\,|w|_b = 2$:
@@ -55,36 +106,38 @@ aaa\,a\,b\,a$.\\
 
 	\begin{center}
 		\Tree
-		[.S
-			[.$M$
-				[.$A_2$
-					[.$aa$ ]
+		[.{S}
+			[.{R}
+				[.{$aab$} ]
+				[.{R}
+					[.{$\varepsilon$} ]
 				]
-				[.$b$ ]
-				[.$M$
-					[.$ε$ ]
-				]
-				[.$A_1$
-					[.$a$ ]
-				]
+				[.{$a$} ]
 			]
-			[.$aa$ ]
-			[.$M$
-				[.$b$ ]
-				[.$M$
-					[.$ε$ ]
+			[.{$a$} ]
+			[.{R}
+				[.{$ab$} ]
+				[.{R}
+					[.{$\varepsilon$} ]
 				]
-				[.$A_1$
-					[.$a$ ]
-				]
-				[.$A_2$
-					[.$aa$ ]
-				]
+				[.{$aa$} ]
+			]
+			[.{$a$} ]
+			[.{R}
+				[.{$\varepsilon$} ]
 			]
 		]
 	\end{center}
 
 
-	Που δίνει:$\qquad\qquad\;\;\, aa\quad b\qquad\;\;\; a\quad\,  aa\;\;\; b\qquad\;\;\; a\quad\, aa$
+	Που δίνει:$\qquad\qquad\quad\, aab\qquad\;\, a\;\;\; a\;\;\; ab\qquad\; aa\;\;\; a$\\
+	Εναλλακτικά θα μπορούσαμε να το διαβάσουμε ως $(\varepsilon)\,a\,(ab(\varepsilon) aa)\,a\,(b(\varepsilon)aaa)$.
 
 \end{tcolorbox}
+
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+\clearpage
