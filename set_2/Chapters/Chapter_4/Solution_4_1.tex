@@ -2,15 +2,297 @@
 \label{ssec:Solution_4.1}
 \doublespacing
 
-Ζητούμενο η μετατροπή σε κανονική μορφή Chomsky:
+Ζητούμενο η μετατροπή σε κανονική μορφή Chomsky (CNF) CFG's:\\
+ $G = (V,\, \Sigma,\, R,\, S)$, όπου $V=\{S,\,A,\,L,\,D,\,a,\,b\}$, $\Sigma=\{a,\,b\}$ και \\
+$R=\{S\rightarrow A,\,S\rightarrow L,\,A\rightarrow LbADa,\,A\rightarrow LaD,\,L\rightarrow Da,\,L\rightarrow
+e,\,D\rightarrow b\}$.
 
 \par
-Αφαίρεση
+Καταρχήν να θυμηθούμε τον ορισμό του τί εννοούμε "κανονική μορφή Chomsky":
+
+\begin{itemize}
+	\itemsep0em
+
+	\item Ξεκινώντας να αναφέρω ότι, ότι γράφουμε από εδώ και έπειτα εκτός την δοθέντα CFG, θα είναι με βάση της
+	εναλλακτικής μαθηματικής περιγραφής CFG / CNF που θεωρεί ότι το $V$ ως σύνολο μη τερματικών συμβόλων.\\
+	Δηλαδή $V\cap\Sigma = \varnothing$, όπως περιγράφεται σε εξίσου μεγάλο μέρος της βιβλιογραφίας (πχ Sipser). Υπό
+	αυτό το πρίσμα το $V$ μεταφράζεται ως "(V)ariables" σε αντίθεση με όταν ισχύει $V\cap\Sigma = \Sigma$ όπου
+	μεταφράζεται ως "(V)ocabulary". Αυτό διαφέρει από την περιγραφή που δίδεται στο μάθημα, αλλά δεν είναι λιγότερο
+	ή περισσότερο ορθή, απλά διαφορετική.
+
+	\item $A,\, B,\, C \in V$
+
+	\item $a \in \Sigma$
+
+	\item Επιτρέπονται μόνο οι παρακάτω τύπου παραγωγές:
+		\begin{enumerate}
+			\item $A\rightarrow BC$
+
+			\item $A\rightarrow a$
+
+			\item Σε ειδικές περιπτώσεις απαιτείται δημιουργία νέου εναρκτήριου κανόνα παραγωγής $S_0\rightarrow S$
+
+			\item $\varepsilon \in L(G) \Leftrightarrow S_0\rightarrow S \,|\, \varepsilon$
+		\end{enumerate}
+
+\end{itemize}
+
+
 
 %\hfill \break
 
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Μετατροπή $CFG\rightarrow CNF$ 1/3]
+
+\begin{itemize}
+	\itemsep0em
+
+	\item Εισαγωγή νέας κατάστασης
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\begin{enumerate}
+
+			\item Στη συγκεκριμένη γραμματική ισχύει $S \in S, S\rightarrow L\rightarrow \varepsilon
+			\Leftrightarrow \varepsilon \in L(G)$ αλλά το $S$ δεν υπάρχει στη δεξιά μεριά κανενός κανόνα παραγωγής
+			και άρα δεν απαιτείτε κατασκευή νέου κανόνα παραγωγής $S_0\rightarrow S\,|\,\varepsilon$.
+
+		\end{enumerate}
+
+	\item Απαλοιφή κενής παραγωγής
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{enumerate}
+
+				\item $S\rightarrow A \,|\, L$
+
+				\item $A\rightarrow LbADa \,|\, LaD$
+
+				\item $L\rightarrow Da \,|\, \varepsilon$
+
+				\item $D\rightarrow b$
+
+			\end{enumerate}
+		\end{minipage}%
+		\hfill
+		% right list: 65% of text width
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{enumerate}
+
+				\item $S\rightarrow Α \,|\, L \,|\, \varepsilon$
+
+				\item $A\rightarrow LbADa \,|\, bADa \,|\\
+									LaD \,|\, aD$
+
+				\item $L\rightarrow Da$
+
+				\item $D\rightarrow b$
+			\end{enumerate}
+		\end{minipage}
+
+	\bigskip \medskip
+	\item Απαλοιφή μοναδιαίων παραγωγών (μη τερματικών συμβόλων)
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+
+	\begin{minipage}[t]{0.5\textwidth}
+			\begin{enumerate}
+
+				\item $S\rightarrow Α \,|\, L \,|\, \varepsilon$
+
+				\item $A\rightarrow LbADa \,|\, bADa \,|\\
+									LaD \,|\, aD$
+
+				\item $L\rightarrow Da$
+
+				\item $D\rightarrow b$
+			\end{enumerate}
+	\end{minipage}%
+	\hfill
+	% right list: 65% of text width
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{enumerate}
 
 
+
+			\item $S\rightarrow LbADa \,|\, bADa \,|\, LaD \,|\\
+								aD \,|\, Da \,|\, \varepsilon$
+
+			\item $A\rightarrow LbADa \,|\, bADa \,|\, LaD \,|\\
+					 			aD$
+
+			\item $L\rightarrow Da$
+
+			\item $D\rightarrow b$
+		\end{enumerate}
+	\end{minipage}
+
+	\bigskip \medskip
+	\item Απαλοιφή μη προσβάσιμων συμβόλων
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\begin{enumerate}
+			\item Όλα τα σύμβολα είναι προσβάσιμα $\rightarrow$ καμία αλλαγή.
+		\end{enumerate}
+
+
+
+\end{itemize}
+
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Μετατροπή $CFG\rightarrow CNF$ 2/3]
+
+	\begin{itemize}
+		\itemsep0em
+
+		\item Απομόνωση τερματικών συμβόλων
+		\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{enumerate}
+				\item $S\rightarrow LbADa \,|\, bADa \,|\, LaD \,|\\
+									aD \,|\, Da \,|\, \varepsilon$
+				\reducevspace
+				\item $A\rightarrow LbADa \,|\, bADa \,|\, LaD \,|\\
+									aD$
+				\reducevspace
+				\item $L\rightarrow Da$
+				\reducevspace
+				\item $D\rightarrow b$
+			\end{enumerate}
+		\end{minipage}%
+		\hfill
+		% right list: 65% of text width
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{enumerate}
+				\item $S\rightarrow LDADD_a \,|\, DADD_a \,|\\
+				LD_aD \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+				\reducevspace
+				\item $A\rightarrow LDADD_a \,|\, DADD_a \,|\\
+				LD_aD \,|\, D_aD$
+				\reducevspace
+				\item $L\rightarrow DD_a$
+				\reducevspace
+				\item $D\rightarrow b$
+				\reducevspace
+				\item $D_a\rightarrow a$
+			\end{enumerate}
+		\end{minipage}
+
+		\bigskip \smallskip
+		\item Απαλοιφή τριαδικών+ παραγωγών
+		\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{enumerate}
+				\item $S\rightarrow LDADD_a \,|\, DADD_a \,|\\
+				LD_aD \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+				\reducevspace
+				\item $A\rightarrow LDADD_a \,|\, DADD_a \,|\\
+				LD_aD \,|\, D_aD$
+				\reducevspace
+				\item $L\rightarrow DD_a$
+				\reducevspace
+				\item $D\rightarrow b$
+				\reducevspace
+				\item $D_a\rightarrow a$
+			\end{enumerate}
+		\end{minipage}%
+		\hfill
+		% right list: 65% of text width
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{enumerate}
+				\item $S\rightarrow LX_1X_2 \,|\, X_1X_2 \,|\\
+				LX_3 \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+				\reducevspace
+				\item $A\rightarrow LX_1X_2 \,|\, X_1X_2 \,|\\
+				LX_3 \,|\, D_aD$
+				\reducevspace
+				\item $L\rightarrow DD_a$
+				\reducevspace
+				\item $D\rightarrow b$
+				\reducevspace
+				\item $D_a\rightarrow a$
+				\reducevspace
+				\item $X_1\rightarrow DA$
+				\reducevspace
+				\item $X_2\rightarrow DD_a$
+				\reducevspace
+				\item $X_3\rightarrow D_aD$
+			\end{enumerate}
+		\end{minipage}
+
+	\end{itemize}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Μετατροπή $CFG\rightarrow CNF$ 3/3]
+
+	\begin{itemize}
+			\item Απαλοιφή τριαδικών+ παραγωγών
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{enumerate}
+			\item $S\rightarrow LX_1X_2 \,|\, X_1X_2 \,|\\
+			LX_3 \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+
+			\item $A\rightarrow LX_1X_2 \,|\, X_1X_2 \,|\\
+			LX_3 \,|\, D_aD$
+
+			\item $L\rightarrow DD_a$
+
+			\item $D\rightarrow b$
+
+			\item $D_a\rightarrow a$
+
+			\item $X_1\rightarrow DA$
+
+			\item $X_2\rightarrow DD_a$
+
+			\item $X_3\rightarrow D_aD$
+		\end{enumerate}
+	\end{minipage}%
+	\hfill
+	% right list: 65% of text width
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{enumerate}
+			\item $S\rightarrow LX_4 \,|\, X_1X_2 \,|\\
+			LX_3 \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+
+			\item $A\rightarrow LX_4 \,|\, X_1X_2 \,|\\
+			LX_3 \,|\, D_aD$
+
+			\item $L\rightarrow DD_a$
+
+			\item $D\rightarrow b$
+
+			\item $D_a\rightarrow a$
+
+			\item $X_1\rightarrow DA$
+
+			\item $X_2\rightarrow DD_a$
+
+			\item $X_3\rightarrow D_aD$
+
+			\item $X_4\rightarrow X_1X_2$
+		\end{enumerate}
+	\end{minipage}
+
+	\bigskip \medskip
+
+	\item $G_{CNF} = (\{S,\,A,\,L,\,D,\,D_a,\,X_1,\,X_2,\,X_3,\,X_4\},\,\{a,\,b\},\\
+	\{S\rightarrow \varepsilon,\, S\rightarrow LX_4,\, S\rightarrow X_1X_2,\, S\rightarrow LX_3,\,
+	S\rightarrow D_aD,\, S\rightarrow DD_a,\\
+	A\rightarrow LX_4,\, A\rightarrow X_1X_2,\, A\rightarrow LX_3,\, A\rightarrow D_aD,\\
+	L\rightarrow DD_a,\, D\rightarrow b,\, D_a\rightarrow a,\, X_1\rightarrow DA,\, X_2\rightarrow DD_a,\,
+	X_3\rightarrow D_aD,\, X_4\rightarrow X_1X_2\},\, S)$
+
+	\end{itemize}
+
+\end{tcolorbox}
+\vfill
 \begin{center}
 	%\vspace{2em}
 	\noindent\rule{\linewidth}{0.5pt}
