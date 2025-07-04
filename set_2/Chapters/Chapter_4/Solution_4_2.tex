@@ -2,7 +2,142 @@
 \label{ssec:Solution_4.2}
 \doublespacing
 
+Χρησιμοποιούμαι το παρακάτω ως αναφορά για τους κανόνες παραγωγής καθώς με αρίθμηση για να μπορούμε να διαχωρίσουμε
+αυτούς που ξεκινάνε από ίδιο μη τερματικό σύμβολο:
 
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item $S\rightarrow LX_4$
+	    \item $S\rightarrow LX_3$
+		\item $S\rightarrow X_1X_2$
+		\item $S\rightarrow D_aD$
+		\item $S\rightarrow DD_a$
+		\item $S\rightarrow \varepsilon$
+
+		\item $A\rightarrow LX_4$
+		\item $A\rightarrow LX_3$
+		\item $A\rightarrow X_1X_2$
+		\item $A\rightarrow D_aD$
+
+		\item $L\rightarrow DD_a$
+
+		\item $D\rightarrow b$
+
+		\item $D_a\rightarrow a$
+
+		\item $X_1\rightarrow DA$
+
+		\item $X_2\rightarrow DD_a$
+
+		\item $X_3\rightarrow D_aD$
+
+		\item $X_4\rightarrow X_1X_2$
+	\end{enumerate}
+\end{multicols}
+\vfill
+\clearpage
+
+
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = {Πίνακας συντακτικής ανάλυσης για $w = babba$}]
+
+\begin{itemize}
+	\itemsep0em
+	\item Κατασκευάζουμε πίνακα $|w|$ στηλών και για κάθε στήλη $n = \in [1,\, |w|_{max}]$ ξεκινώντας να μετράμε
+	από αριστερά ως 1η, έχουμε $n$ κελιά.
+
+	\item Στο κορυφαίο κελί κάθε στήλης (δηλαδή το $n$), τοποθετούμε το αντίστοιχο σύμβολο της λέξης (δηλαδή το
+	$w_n$).
+	\item Κάθε ένα από αυτά τα σύμβολα ουσιαστικά αποτελεί κανόνα παραγωγής τερματικού συμβόλου.
+
+	\item Ανά στήλη, σε κελί $k,\, k \in [2,\, n]$ με $k_{max}$ να βρίσκεται στη βάση του πίνακα και
+	$k_{min}$ ακριβώς στο κελί κάτω από αυτό στην κορυφή της στήλης του, τοποθετούμε τους κανόνες παραγωγής (τα μη
+	τερματικά σύμβολα) τα οποία δύνανται να οδηγήσουν σε αριστερότερο τμήμα της $w$ μήκους υποσυμβολοσειράς $x$ με
+	$|x| = k,\, x= \displaystyle \sum_{i=1}^{k} w_i $
+
+	\item Όταν ολοκληρώσουμε περιμένουμε να βρούμε στη κάτω δεξιά γωνία κάποια κανόνα παραγωγής, από το αρχικό (μη
+	τερματικό προφανώς) σύμβολο. Εάν αυτό υπάρχει τότε $w \in G$, ειδάλλως $w \notin G$.
+
+\end{itemize}
+
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\begin{center}
+\resizebox{\textwidth}{!}{%
+	\begin{tabular}{llll|l|}
+		\cline{5-5}
+		&                       &                        &      & a                                 \\ \cline{4-5}
+		&                       & \multicolumn{1}{l|}{}  & b    & L{[}11{]}, $X_2${[}15{]}, S{[}5{]} \\ \cline{3-5}
+		& \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{b} & $\emptyset$ & $\emptyset$
+		\\ \cline{2-5}
+		\multicolumn{1}{l|}{} &
+		\multicolumn{1}{l|}{a} &
+		\multicolumn{1}{l|}{S{[}4{]}, A{[}10{]}, $X_3${[}16{]}} &
+		$\emptyset$ &
+		$\emptyset$ \\ \hline
+		\multicolumn{1}{|l|}{b} &
+		\multicolumn{1}{l|}{L{[}11{]}, $X_2${[}15{]}, S{[}5{]}} &
+		\multicolumn{1}{l|}{$X_1${[}14{]}} &
+		$\emptyset$ &
+		A{[}9{]}, S{[}3{]}, $X_4${[}17{]} \\ \hline
+	\end{tabular}%
+}
+\end{center}
+\end{tcolorbox}
+\clearpage
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = {Δέντρο συντακτικής ανάλυσης για $w = babba$}]
+
+	\begin{itemize}
+		\itemsep0em
+		\item Κατασκευάζουμε δέντρο συντακτικής ανάλυσης βάση αντίστροφης χρήσης των αποτελεσμάτων του πίνακα,
+		δηλαδή ξεκινώντας από την κάτω δεξιά γωνία και συγκεκριμένα την αντίστοιχη εκδοχή αρχικού σύμβολου εφόσον η
+		$w$ όντως ανήκει στη γραμματική μας.
+
+		\item Σε κάθε βήμα ακολουθούμε κλάδο βάση κανόνων παραγωγής αυτής της εκδοχής συμβόλου και ακολουθείτε από
+		την εκάστοτε εκδοχή επόμενων με τερματικών συμβόλων που έχουν βρεθεί στο αντίστοιχο βήμα στο πίνακα, έως να
+		φτάσουμε διαδοχικά στα κατάλληλα τερματικά σύμβολα που κατασκευάζουν τη λέξη που μας δόθηκε.
+
+	\end{itemize}
+
+	\begin{center}
+	\Tree
+	[.{S[3]}
+		[.{$X_{1}$[14]}
+			[.{$D$[12]}
+				[.{$b$} ]
+			]
+			[.{$A$[10]}
+				[.{$D_a$[13]}
+					[.{$a$} ]
+				]
+				[.{$D$[12]}
+					[.{$b$} ]
+				]
+			]
+		]
+		[.{$X_{2}$[15]}
+			[.{$D$[12]}
+				[.{$b$} ]
+			]
+			[.{$D_a$[13]}
+				[.{$a$} ]
+			]
+		]
+	]
+\end{center}
+
+
+Που δίνει:$\qquad\qquad\quad b\qquad\quad a\qquad\quad b\qquad\;\;\; b\qquad\quad a$
+\end{tcolorbox}
+
+\vfill
 
 \begin{center}
 	%\vspace{2em}
