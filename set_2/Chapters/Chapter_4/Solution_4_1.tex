@@ -67,7 +67,7 @@ e,\,D\rightarrow b\}$.
 
 				\item $A\rightarrow LbADa \,|\, LaD$
 
-				\item $L\rightarrow Da \,|\, \varepsilon$
+				\item $L\rightarrow Da$\textcolor{red}{\boldmath{$\,|\,\varepsilon$}}
 
 				\item $D\rightarrow b$
 
@@ -78,10 +78,9 @@ e,\,D\rightarrow b\}$.
 		\begin{minipage}[t]{0.5\textwidth}
 			\begin{enumerate}
 
-				\item $S\rightarrow Α \,|\, L \,|\, \varepsilon$
+				\item $S\rightarrow Α \,|\, L $\textcolor{blue}{\boldmath{$\,|\,\varepsilon$}}
 
-				\item $A\rightarrow LbADa \,|\, bADa \,|\\
-									LaD \,|\, aD$
+				\item $A\rightarrow LbADa \,|\, LaD$\textcolor{blue}{\boldmath{$\,|\,\\bADa \,|\, aD$}}
 
 				\item $L\rightarrow Da$
 
@@ -96,10 +95,11 @@ e,\,D\rightarrow b\}$.
 	\begin{minipage}[t]{0.5\textwidth}
 			\begin{enumerate}
 
-				\item $S\rightarrow Α \,|\, L \,|\, \varepsilon$
+				\item $S\rightarrow$
+				\textcolor{purple}{\boldmath{$Α$}}$\,|\,$\textcolor{purple}{\boldmath{$L$}}$\,|\, \varepsilon$
 
-				\item $A\rightarrow LbADa \,|\, bADa \,|\\
-									LaD \,|\, aD$
+				\item $A\rightarrow LbADa \,|\, LaD \,|\\
+									bADa \,|\, aD$
 
 				\item $L\rightarrow Da$
 
@@ -110,14 +110,13 @@ e,\,D\rightarrow b\}$.
 	% right list: 65% of text width
 	\begin{minipage}[t]{0.5\textwidth}
 		\begin{enumerate}
+			\item
+			$S\rightarrow$\textcolor{violet}{\boldmath{$LbADa$}}$\,|\,$\textcolor{violet}{\boldmath{$LaD$}}$\,|\,$
+			\textcolor{violet}{\boldmath{$bADa$}}$\,|$\textcolor{violet}{\boldmath{\\$aD$}}$\,|$
+			\textcolor{violet}{\boldmath{$Da$}}$\,|\, \varepsilon$
 
-
-
-			\item $S\rightarrow LbADa \,|\, bADa \,|\, LaD \,|\\
-								aD \,|\, Da \,|\, \varepsilon$
-
-			\item $A\rightarrow LbADa \,|\, bADa \,|\, LaD \,|\\
-					 			aD$
+			\item $A\rightarrow LbADa \,|\, LaD \,|\, bADa \,|$\\
+					 			$aD$
 
 			\item $L\rightarrow Da$
 
@@ -150,13 +149,16 @@ e,\,D\rightarrow b\}$.
 
 		\begin{minipage}[t]{0.5\textwidth}
 			\begin{enumerate}
-				\item $S\rightarrow LbADa \,|\, bADa \,|\, LaD \,|\\
-									aD \,|\, Da \,|\, \varepsilon$
+				\item $S\rightarrow$\textcolor{purple}{\boldmath{$LbADa$}}$\,|\,$
+				\textcolor{purple}{\boldmath{$LaD$}}$\,|\,$\textcolor{purple}{\boldmath{$bADa$}}$\,|$\\
+									\textcolor{purple}{\boldmath{$aD$}}$\,|\,$
+									\textcolor{purple}{\boldmath{$Da$}}$\,|\, \varepsilon$
 				\reducevspace
-				\item $A\rightarrow LbADa \,|\, bADa \,|\, LaD \,|\\
-									aD$
+				\item $A\rightarrow$\textcolor{purple}{\boldmath{$LbADa$}}$\,|\,$
+				\textcolor{purple}{\boldmath{$LaD$}}$\,|\,$\textcolor{purple}{\boldmath{$bADa$}}$\,|$\\
+				\textcolor{purple}{\boldmath{$aD$}}
 				\reducevspace
-				\item $L\rightarrow Da$
+				\item $L\rightarrow D$\textcolor{teal}{\boldmath{$a$}}
 				\reducevspace
 				\item $D\rightarrow b$
 			\end{enumerate}
@@ -165,31 +167,34 @@ e,\,D\rightarrow b\}$.
 		% right list: 65% of text width
 		\begin{minipage}[t]{0.5\textwidth}
 			\begin{enumerate}
-				\item $S\rightarrow LDADD_a \,|\, DADD_a \,|\\
-				LD_aD \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+				\item $S\rightarrow$\textcolor{violet}{\boldmath{$LDADD_a$}}$\,|\,$
+				\textcolor{violet}{\boldmath{$LD_aD$}}$\,|\\$\textcolor{violet}{\boldmath{$DADD_a$}}$\,|\,$
+				\textcolor{violet}{\boldmath{$D_aD$}}$\,|\,$\textcolor{violet}{\boldmath{$DD_a$}}$\,|\, \varepsilon$
 				\reducevspace
-				\item $A\rightarrow LDADD_a \,|\, DADD_a \,|\\
-				LD_aD \,|\, D_aD$
+				\item $A\rightarrow$\textcolor{violet}{\boldmath{$LDADD_a$}}$\,|\,$
+				\textcolor{violet}{\boldmath{$LD_aD$}}$\,|\\$\textcolor{violet}{\boldmath{$DADD_a$}}$\,|$
+				\textcolor{violet}{\boldmath{$D_aD$}}
 				\reducevspace
-				\item $L\rightarrow DD_a$
+				\item $L\rightarrow D$\textcolor{violet}{\boldmath{$D_a$}}
 				\reducevspace
 				\item $D\rightarrow b$
 				\reducevspace
-				\item $D_a\rightarrow a$
+				\item \textcolor{blue}{\boldmath{$D_a\rightarrow$}}\textcolor{teal}{\boldmath{$a$}}
 			\end{enumerate}
 		\end{minipage}
 
 		\bigskip \smallskip
-		\item Απαλοιφή τριαδικών+ παραγωγών
+		\item Απαλοιφή τριαδικών+ παραγωγών (1ο πέρασμα)
 		\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 
 		\begin{minipage}[t]{0.5\textwidth}
 			\begin{enumerate}
-				\item $S\rightarrow LDADD_a \,|\, DADD_a \,|\\
-				LD_aD \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+				\item $S\rightarrow$\textcolor{purple}{\boldmath{$LDADD_a$}}$\,|\,$
+				\textcolor{purple}{\boldmath{$LD_aD$}}$\,|\\$\textcolor{purple}{\boldmath{$DADD_a$}}$\,|\,$
+				$D_aD\,|\,DD_a\,|\, \varepsilon$
 				\reducevspace
-				\item $A\rightarrow LDADD_a \,|\, DADD_a \,|\\
-				LD_aD \,|\, D_aD$
+				\item $A\rightarrow$\textcolor{purple}{\boldmath{$LDADD_a$}}$\,|\,$
+				\textcolor{purple}{\boldmath{$LD_aD$}}$\,|\\$\textcolor{purple}{\boldmath{$DADD_a$}}$\,|\,D_aD$
 				\reducevspace
 				\item $L\rightarrow DD_a$
 				\reducevspace
@@ -202,11 +207,12 @@ e,\,D\rightarrow b\}$.
 		% right list: 65% of text width
 		\begin{minipage}[t]{0.5\textwidth}
 			\begin{enumerate}
-				\item $S\rightarrow LX_1X_2 \,|\, X_1X_2 \,|\\
-				LX_3 \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+				\item $S\rightarrow$\textcolor{violet}{\boldmath{$LX_1X_2$}}$\,|\,$
+				\textcolor{violet}{\boldmath{$LX_3$}}$\,|\\$\textcolor{violet}{\boldmath{$X_1X_2$}}$\,|\,$
+				$D_aD\,|\,DD_a\,|\, \varepsilon$
 				\reducevspace
-				\item $A\rightarrow LX_1X_2 \,|\, X_1X_2 \,|\\
-				LX_3 \,|\, D_aD$
+				\item $A\rightarrow$\textcolor{violet}{\boldmath{$LX_1X_2$}}$\,|\,$
+				\textcolor{violet}{\boldmath{$LX_3$}}$\,|\\$\textcolor{violet}{\boldmath{$X_1X_2$}}$\,|\,D_aD$
 				\reducevspace
 				\item $L\rightarrow DD_a$
 				\reducevspace
@@ -214,11 +220,11 @@ e,\,D\rightarrow b\}$.
 				\reducevspace
 				\item $D_a\rightarrow a$
 				\reducevspace
-				\item $X_1\rightarrow DA$
+				\item \textcolor{blue}{\boldmath{$X_1\rightarrow DA$}}
 				\reducevspace
-				\item $X_2\rightarrow DD_a$
+				\item \textcolor{blue}{\boldmath{$X_2\rightarrow DD_a$}}
 				\reducevspace
-				\item $X_3\rightarrow D_aD$
+				\item \textcolor{blue}{\boldmath{$X_3\rightarrow D_aD$}}
 			\end{enumerate}
 		\end{minipage}
 
@@ -230,16 +236,16 @@ e,\,D\rightarrow b\}$.
 	fonttitle=\bfseries\Large, title = Μετατροπή $CFG\rightarrow CNF$ 3/3]
 
 	\begin{itemize}
-			\item Απαλοιφή τριαδικών+ παραγωγών
+			\item Απαλοιφή τριαδικών+ παραγωγών (2ο πέρασμα)
 	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 
 	\begin{minipage}[t]{0.5\textwidth}
 		\begin{enumerate}
-			\item $S\rightarrow LX_1X_2 \,|\, X_1X_2 \,|\\
-			LX_3 \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+			\item $S\rightarrow$\textcolor{purple}{\boldmath{$LX_1X_2$}}$\,|\, LX_3 \,|\\
+			 X_1X_2\,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
 
-			\item $A\rightarrow LX_1X_2 \,|\, X_1X_2 \,|\\
-			LX_3 \,|\, D_aD$
+			\item $A\rightarrow$\textcolor{purple}{\boldmath{$LX_1X_2$}}$\,|\, LX_3 \,|\\
+			X_1X_2 \,|\, D_aD$
 
 			\item $L\rightarrow DD_a$
 
@@ -258,11 +264,11 @@ e,\,D\rightarrow b\}$.
 	% right list: 65% of text width
 	\begin{minipage}[t]{0.5\textwidth}
 		\begin{enumerate}
-			\item $S\rightarrow LX_4 \,|\, X_1X_2 \,|\\
-			LX_3 \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
+			\item $S\rightarrow$\textcolor{violet}{\boldmath{$LX_4$}}$\,|\, LX_3 \,|\\
+			X_1X_2 \,|\, D_aD \,|\, DD_a \,|\, \varepsilon$
 
-			\item $A\rightarrow LX_4 \,|\, X_1X_2 \,|\\
-			LX_3 \,|\, D_aD$
+			\item $A\rightarrow$\textcolor{violet}{\boldmath{$LX_4$}}$\,|\, LX_3 \,|\\
+			X_1X_2 \,|\, D_aD$
 
 			\item $L\rightarrow DD_a$
 
@@ -276,7 +282,7 @@ e,\,D\rightarrow b\}$.
 
 			\item $X_3\rightarrow D_aD$
 
-			\item $X_4\rightarrow X_1X_2$
+			\item \textcolor{blue}{\boldmath{$X_4\rightarrow X_1X_2$}}
 		\end{enumerate}
 	\end{minipage}
 
