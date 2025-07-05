@@ -6,6 +6,12 @@
 	\item{\makebox[2cm]{$\mathcal{L}_{reg}$ \hfill} Σύνολο κανονικών γλωσσών}
 	\item{\makebox[2cm]{$\mathcal{L}_{irr}$ \hfill} Σύνολο μη κανονικών γλωσσών}
 	\item{\makebox[2cm]{$\mathcal{L}_{fin}$ \hfill} Σύνολο πεπερασμένων γλωσσών}
+	\item{\makebox[2cm]{$\mathcal{L}_{dcf}$ \hfill} Σύνολο ντετερμινιστικών ασύμφραστων γλωσσών}
+	\item{\makebox[2cm]{$\mathcal{L}_{ncf}$ \hfill} Σύνολο μή ντετερμινιστικών ασύμφραστων γλωσσών}
+	\item{\makebox[2cm]{$\mathcal{L}_{cf}$ \hfill} Σύνολο ασύμφραστων γλωσσών}
+	\item{\makebox[2cm]{$G_{cf}$ \hfill} Ασύμφραστη γραμματική (αντίστοιχα "ncf", "dcf" όπως οι γλώσσες)\\
+		\makebox[2.15cm]{\hfill}$G=(V,\,\Sigma,\,R,\,S)$}
+	\item{\makebox[2cm]{$CNF$ \hfill} Κανονική Μορφή Chomsky}
 	\item{\makebox[2cm]{$\approx L$ \hfill} Ισοδυναμία γλώσσας κατά Myhill-Nerode}
 	\item{\makebox[2cm]{$\sim{M}$ \hfill} Ισοδυναμία DFA κατά Myhill-Nerode}
 	%\item{\makebox[2cm]{ΠΓ \hfill} Πεπερασμένη γλώσσα}
@@ -17,21 +23,22 @@
 	\item{\makebox[2cm]{$F$ \hfill} Σύνολο τελικών καταστάσεων (αυτομάτου)}
 	\item{\makebox[2cm]{$Δ$ \hfill} Σύνολο σχέσεων μεταβάσεων (αυτομάτου)}
 	\item{\makebox[2cm]{$w,x,y,z$ \hfill} Συμβολοσειρά / Υποσυμβολοσειρές}
+	\item{\makebox[2cm]{$PDA$ \hfill} Αυτόματο στοίβας Μ = $(K,\,\Sigma,\,\Gamma,\,\Delta,\,s,\,F)$}
 	\item{\makebox[2cm]{$DFA$ \hfill} Ντετερμινιστικό Πεπερασμένο Αυτόματο Μ = (Q,\,$\Sigma$,\,δ,\,s,\,F)}
 	\item{\makebox[2cm]{$NFA$ \hfill} Μη Ντετερμινιστικό Πεπερασμένο Αυτόματο}
 	\item{\makebox[2cm]{$ε-NFA$ \hfill} Μη Ντετερμινιστικό Πεπερασμένο Αυτόματο με κενές μεταβάσεις}
 	\item{\makebox[2cm]{$M$ \hfill} Αυτόματο}
 	\item{\makebox[2cm]{$M'$ \hfill} Πρότυπο/Ελάχιστο Αυτόματο\\
-		\makebox[2.14cm]{\hfill}Εναλλακτικά DFA παραγόμενο ενός άλλου DFA / NFA.}
+		\makebox[2.15cm]{\hfill}Εναλλακτικά DFA παραγόμενο ενός άλλου DFA / NFA.}
 	\item{\makebox[2cm]{$\mathbb{N}^0$ \hfill} Σύνολο φυσικών αριθμών (συμπεριλαμβανομένου και του μηδενός)}
 	\item{\makebox[2cm]{$\aleph_0$ \hfill} Πληθάριθμος συνόλου φυσικών αριθμών\\
-		\makebox[2.14cm]{\hfill}Ο ελάχιστος μετρήσιμα άπειρος αριθμός}
+		\makebox[2.15cm]{\hfill}Ο ελάχιστος μετρήσιμα άπειρος αριθμός}
 	\item{\makebox[2cm]{$|w|$ \hfill} πληθάριθμος συνόλου $w$ / συμβολοσειράς $w$}
 	\item{\makebox[2cm]{$|w|_c$ \hfill} πληθάριθμος συνόλου $w$ / συμβολοσειράς $w$ για σύμβολο $c$}
 	\item{\makebox[2cm]{$|w|_{min}$ \hfill} ελάχιστος δυνατός πληθάριθμος συνόλου $w$ / συμβολοσειράς $w$}
 	\item{\makebox[2cm]{$c$ \hfill} Ακριβώς μία εμφάνιση συμβόλου $c$.\\
-		\makebox[2.14cm]{\hfill}Αντίστοιχα για $w = cc..c, \vert w \vert_c = n$ τότε ακριβώς $n$ εμφανίσεις\\
-		\makebox[2.14cm]{\hfill}συμβόλου $c$}
+		\makebox[2.15cm]{\hfill}Αντίστοιχα για $w = cc..c, \vert w \vert_c = n$ τότε ακριβώς $n$ εμφανίσεις\\
+		\makebox[2.15cm]{\hfill}συμβόλου $c$}
 	\item{\makebox[2cm]{$c^+$ \hfill} Τουλάχιστον μία εμφάνιση συμβόλου $c$}
 	\item{\makebox[2cm]{$c^*$ \hfill} Τουλάχιστον μηδέν εμφανίσεις συμβόλου $c$}
 	\item{\makebox[2cm]{$ε$ ή $e$ \hfill} Κενό σύμβολο}
@@ -41,10 +48,10 @@
 	\item{\makebox[2cm]{$\dots$ \hfill} "και ούτω καθεξής", συνέχιση ακολουθίας βάση εμφανούς μοτίβου}
 	\item{\makebox[2cm]{$|$ ή $:$ ή $\ni$ \hfill} Έτσι Ώστε}
 	\item{\makebox[2cm]{$\mathcal{P}(Q)$ \hfill} Δυναμοσύνολο συνόλου $Q$.\\
-		\makebox[2.14cm]{\hfill}Για $Q = \{a, b, c\} \overset{\emptyset \subseteq \text{all sets}}{\rightarrow}
+		\makebox[2.15cm]{\hfill}Για $Q = \{a, b, c\} \overset{\emptyset \subseteq \text{all sets}}{\rightarrow}
 		\mathcal{P}(Q) = \{\emptyset, a, b, c, ab, ac, bc, 	abc\}$\\
 		\makebox[2.14cm]{\hfill}Συνεπάγεται ότι $\vert\mathcal{P}(Q)\vert = 2^{\vert Q\vert}$}
-	\item{\makebox[2cm]{$\mathcal{P}$ ή $\mathcal{Q}$ κοκ \hfill} Λογικές προτάσεις}
+	\item{\makebox[2cm]{$\mathcal{P}$ ή $\mathcal{Q}$ \hfill} Λογικές προτάσεις}
 	\item{\makebox[2cm]{$T$ / $F$ \hfill} (Λογικό) Αληθές / Ψευδές}
 	\item{\makebox[2cm]{$\cup$ \hfill} Ένωση}
 	\item{\makebox[2cm]{$\cap$ \hfill} Τομή}
@@ -55,7 +62,7 @@
 	\item{\makebox[2cm]{$\lor$ \hfill} Λογική Διάζευξη}
 	\item{\makebox[2cm]{$\neg{}$ \hfill} Λογική Άρνηση}
 	\item{\makebox[2cm]{$\Sigma^*$ \hfill} Σύνολο πεπερασμένου μήκους συμβολοσειρών αλφάβητου $\Sigma$\\
-		 \makebox[2.14cm]{\hfill}συμπεριλαμβανομένης της κενής συμβολοσειράς $ε$}
+		 \makebox[2.15cm]{\hfill}συμπεριλαμβανομένης της κενής συμβολοσειράς $ε$}
 \end{itemize}
 
 \clearpage
