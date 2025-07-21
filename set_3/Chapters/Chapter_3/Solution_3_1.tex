@@ -1,0 +1,145 @@
+\subsection{Απάντηση Υποερωτήματος (α)}
+\label{ssec:Solution_3.1}
+\doublespacing
+Η πρόταση "η τομή μίας ντετερμινιστικής γλώσσας χωρίς συμφραζόμενα με μία πεπερασμένη γλώσσα είναι πάντα γλώσσα
+χωρίς συμφραζόμενα" είναι αληθής όπως θα αποδείξουμε παρακάτω:
+
+
+\reducevspace\reducevspace\reducevspace
+
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Απόδειξη]
+	\centering
+\begin{itemize}
+	\itemsep0em
+
+	\item $\mathcal{P} := \{\forall\,L_{DCF}\in\mathcal L_{\mathrm{DCF}},\;\forall\,L_{REG}\in\mathcal
+	L_{\mathrm{REG}}:\;L_{DCF}\cap L_{REG}\;\in\;\mathcal L_{\mathrm{CF}}\}$
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{3.1.1}{\bf{(1)}}\end{flushright}
+
+
+	\item $\mathcal{L}_{FIN} \subset \mathcal{L}_{REG} \subset \mathcal{L}_{DCF} \subset \mathcal{L}_{NCF} =
+	\mathcal{L}_{CF}$
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{3.1.2}{\bf{(2)}}\end{flushright}
+
+	\item $\forall (A,\, B) \ni A \subset B \rightarrow A \cap B = A,\, Α\subset B$
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{3.1.3}{\bf{(3)}}\end{flushright}
+
+	\item $A \subset B \subset...\subset N \Rightarrow A \subset N$
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{3.1.4}{\bf{(4)}}\end{flushright}
+
+	\item $\overset{\hyperlink{3.1.2}{(2)} \hyperlink{3.1.4}{(4)}}{\Longrightarrow} \mathcal{L}_{FIN} \subset
+	\mathcal{L}_{DCF}$
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{3.1.5}{\bf{(5)}}\end{flushright}
+
+	\item $\mathcal{L}_{FIN} \cap \mathcal{L}_{DCF}\!\!\overset{\hyperlink{3.1.3}{(3)}\hyperlink{3.1.5}{(5)}}{=}\!\!
+	\mathcal{L}_{FIN} \subset \mathcal{L}_{DCF} \subset \mathcal{L}_{CF}
+	\overset{\hyperlink{3.1.4}{(4)}}{\Rightarrow} \mathcal{L}_{FIN} \subset \mathcal{L}_{CF} \Rightarrow
+	\mathcal{L}_{FIN} \in \mathcal{L}_{CF}$
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{3.1.6}{\bf{(6)}}\end{flushright}
+
+	\item $\mathcal{Q} \overset{\hyperlink{3.1.6}{(6)}}{:=} \{\forall\,L_{DCF}\in\mathcal
+	L_{\mathrm{DCF}},\;\forall\,L_{REG}\in\mathcal
+	L_{\mathrm{REG}}:\;L_{DCF}\cap L_{REG}\;\in\;\mathcal L_{\mathrm{CF}}\}$
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{flushright}\hypertarget{3.1.7}{\bf{(7)}}\end{flushright}
+
+	\item $\mathcal{P}^{\hyperlink{3.1.1}{(1)}} = \mathcal{Q}^{\hyperlink{3.1.7}{(7)}} = $ True $ \Rightarrow
+	\mathcal{P} = $ True
+
+\end{itemize}
+\end{tcolorbox}
+
+\clearpage
+Για να εξηγήσω την λογική, δείξαμε ότι:
+\begin{enumerate}
+	\item Tομή μεταξύ ενός συνόλου με ενός υποσυνόλου (γνησίου ή μη) παράγει μόνο το ίδιο το υποσύνολο.
+	Αποδεικνύεται μέσω της απόδειξης για του νόμου της απορρόφησης μεταξύ υποσυνόλου και συνόλου. Θα παραθέσω τις
+	όποιες αποδείξεις παρακάτω.
+
+	\item Tο χρησιμοποιήσαμε για να δείξουμε ότι τομή πεπερασμένων γλωσσών και ντετερμινιστικών χωρίς
+	συμφραζόμενα γλωσσών, παράγει αποκλειστικά πεπερασμένες γλώσσες. Ο λόγος είναι ότι οι πεπερασμένες είναι
+	υποσύνολο των DCFL.
+
+	\item Κατόπιν δείξαμε ότι λόγο του ότι αν έχουμε μία αλυσίδα συνόλων με κάθε επόμενο να είναι
+	υπερσύνολο του κάθε προηγούμενου (έστω και γνήσιο) τότε μπορούμε να πούμε ότι οποιοδήποτε μικρότερο
+	σύνολο είναι εντός οποιουδήποτε μεγαλύτερου. Αποδεικνύεται, διαισθητικά, μέσω του ιδίου παίρνοντας οποιοδήποτε
+	στοιχείο από το οποιοδήποτε μικρότερο σύνολο και δείχνοντας ότι ανήκει σε όλα τα υπερσύνολα.
+
+	\item Τα συνδυάσαμε συλλογιζόμενοι ότι τομή πεπερασμένης με DCFL παράγει πεπερασμένη και αφού η
+	πεπερασμένη είναι υποσύνολο κανονικής, που είναι υποσύνολο DCFL, που είναι υποσύνολο CFL, τότε η
+	πεπερασμένη γλώσσα που παίρνουμε ως {αποτέλεσμα τομής πεπερασμένης με DCFL}, είναι επίσης υποσύνολο CFL γλωσσών
+	και άρα κάθε στοιχείο της είναι και στοιχείο των CFL γλωσσών.
+
+	\item Άρα η τομή πεπερασμένης γλώσσας και ντετερμινιστικής γλώσσας χωρίς συμφραζόμενα παράγει πάντα πεπερασμένη
+	γλώσσα και αφού οι πεπερασμένες γλώσσες είναι υποσύνολα των γλωσσών χωρίς συμφραζόμενα, τότε οποιαδήποτε
+	πεπερασμένη γλώσσα, συμπεριλαμβανομένης και αυτής που παράγει τομή πεπερασμένης με DCFL, ανήκει στις γλώσσες
+	χωρίς συμφραζόμενα.
+
+\end{enumerate}
+
+\clearpage
+
+Απόδειξη $A \subset B \rightarrow A \cap B \Rightarrow A$ και $A \subset B \subset C \Rightarrow A \subset C$:
+\begin{enumerate}
+	\item Ορισμός γνήσιου υποσυνόλου:\\
+	$Α\subset B \overset{def}{=}  \bigl[\forall x(x\in A \Rightarrow x\in B)\bigr]\land \bigl[\exists y(y\in B
+	\land y\notin A)\bigr]$
+
+	 \item Απόδειξη $A \subset B \subset C \Rightarrow A\subset C$:\\
+	 $B\subset C = \forall x(x\in B \Rightarrow x\in C)$,\qquad
+	 $A\subset B = \forall x(x\in A \Rightarrow x\in B)$\\
+	 $A \subset B \subset C = \bigl[\forall x(x\in A \Rightarrow x\in B \Rightarrow x\in C)\bigr]\land
+	  \bigl[\exists y(y\in C \land y\notin B \Rightarrow y\notin A)\bigr]\Rightarrow$\\
+	  $\Rightarrow [\forall x(x\in A \Rightarrow x\in C)]\land [\exists y(y\in C \land y\notin A)] = A\subset C$
+
+	 \item Ορισμός τομής:\\
+	 $A\cap B \overset{def}{=}\{x\,|\,x\in A, x\in B\}$
+
+	 \item Απόδειξη $A\subset B \rightarrow A\cap B = A$:\\
+	 $A\cap B = C \rightarrow \forall x\bigl[(x\in A \land x\in B)\Leftrightarrow x\in C\bigr]$ αλλά $A\subset B
+	 \rightarrow \forall x(x\in A \Rightarrow x\in B)$\\
+	 οπότε στη συγκεκριμένη περίπτωση (και όλες τις αντίστοιχες) έχουμε:\\
+	 $A\cap B = C \rightarrow \bigl[\forall x(x\in A \Rightarrow x\in B \Rightarrow x\in C)\bigr]\land
+	 \bigl[\exists y(y\notin A \land y\in B \Rightarrow y\notin C)\bigr] \Rightarrow\\
+	 \bigl[\forall x(x\in A \Rightarrow x\in C)\bigr] \land \bigl[\forall y(y\notin A \Rightarrow y\notin C)\bigr]
+	 \Rightarrow A = C
+	 \Rightarrow A\cap B = A$
+
+\end{enumerate}
+
+
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+\clearpage

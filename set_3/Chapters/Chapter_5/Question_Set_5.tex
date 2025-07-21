@@ -1,0 +1,69 @@
+\section{Άσκηση 5η - Ελαχιστοποίηση Καταστάσεων:}
+\label{sec:Exercise_5}
+\doublespacing
+
+[25\%]  ΄Εστω το ντετερμινιστικό αυτόματο M που εικονίζεται παρακάτω:
+
+\bm{\textcolor{blue}{(α)}}  Κατασκευάστε αναλυτικά το ισοδύναμο πρότυπο αυτόματο $M'$
+
+\bm{\textcolor{blue}{(β)}} Πόσες κλάσεις ισοδυναμίας έχει κάθε μία από τις παρακάτω σχέσεις; $\sim M,\, \sim M',\\
+\approx{L}(M),\, \approx{L}(M')$.
+
+\bm{\textcolor{blue}{(γ)}} Περιγράψτε τις κλάσεις ισοδυναμίας της σχέσης $\sim M$
+
+\bm{\textcolor{blue}{(δ)}} Δώστε ένα αντιπροσωπευτικό στοιχείο της κάθε κλάσης της σχέσης $\approx{L}(M)$.
+
+\hfill \break
+
+\begin{figure}[!htb] \centering
+	\begin{tikzpicture} [blue, node distance = 3cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q1) [state, black, scale = 1, initial left, initial distance = 4mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q_{1}$};
+
+		% Middle Nodes
+		\node (q2) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below = of q1]
+		{$q_{2}$};
+
+		\node (q5) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, right = of q1]{$q_{5}$};
+
+		\node (q3) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, right = of q5]{$q_{3}$};
+
+		\node (q4) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, right = of q3]{$q_{4}$};
+
+		\node (q6) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, right = of q2]{$q_{6}$};
+
+		\node (q8) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below = of q4]{$q_{8}$};
+
+		% Final Node
+		\node (q7) [state, black, scale = 1, accepting, top color = red!80, bottom color = red!20,
+		double distance = 3pt, double = red!20, right = of q6] {$q_{7}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+		(q1) edge [loop above] node [left] {$a$}(q1)
+		(q1) edge [] node [left] {$b$} (q2)
+		(q2) edge [bend right = 40] node [above] {$a$} (q7)
+		(q2) edge [] node [left] {$b$} (q5)
+		(q3) edge [bend left = 20] node [right] {$a$} (q7)
+		(q3) edge [bend left = 20] node [below] {$b$} (q5)
+		(q4) edge [bend right = 40] node [below] {$a$} (q5)
+		(q4) edge [bend left = 20] node [right] {$b$} (q8)
+		(q5) edge [] node [above] {$a$} (q1)
+		(q5) edge [bend left = 20] node [above] {$b$} (q3)
+		(q6) edge [] node [right] {$a$} (q5)
+		(q6) edge [bend right = 40] node [above] {$b$} (q8)
+		(q7) edge [] node [above] {$a$} (q6)
+		(q7) edge [bend left] node [left] {$b$} (q3)
+		(q8) edge [bend left = 20] node [left] {$a$} (q4)
+		(q8) edge [out = 55, in = 25, min distance = 6.5cm] node [above] {$b$} (q1);
+
+	\end{tikzpicture}
+	%\end{flushleft}
+	\captionsetup{labelformat=empty}
+	\caption{Αρχικό DFA}
+	\label{fig:sub1}
+\end{figure}
+\clearpage

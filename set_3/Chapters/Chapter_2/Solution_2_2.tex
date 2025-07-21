@@ -1,0 +1,141 @@
+\subsection{Απάντηση Υποερωτήματος (β)}
+\label{ssec:Solution_2.2}
+\doublespacing
+Έχουμε να κατασκευάσουμε PDA για CFL $L_2 = \{w \in \{a,\,b\}^* : |w|_b = 2|w|_a \}$\\
+Από τον τύπο δυνάμεθα να εξάγουμε τα εξής δεδομένα, για συμβολοσειρά $w \in L_1$:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\begin{itemize}
+	\itemsep0em
+	\item $\vert w \vert_{min} = 0 \Longrightarrow w_{min} = ε$, \quad $\vert w \vert_{max} =
+	\aleph_0$, \quad $|w| \equiv |w|_a \pmod{2}$
+	\item $\{w \in \{a,\,b\}^+ \;\vert\; |w| = 3,\, |w|_a = 1,\, |w|_b = 2\} \Longrightarrow |w| = 3|w|_a$
+	\item $|w| = 3\,:\, abb, bab, bba$
+	\item $|w| > 3\,:\, aabbbb,\, bbbbaa,\, abbbba,\, babbab,\, ababbb,\, bbbaba,\, bbaabb,\,...$
+	\item Κανένας περιορισμός οποιουδήποτε συμβόλου ως προς την θέση.
+\end{itemize}
+\reducevspace\reducevspace
+\par
+Έχουμε φαινομενικά τέσσερεις ελάχιστες περιπτώσεις, που η συγκεκριμένη γλώσσα επιτρέπει:
+$w_0 = ε \lor w_1 = abb \lor w_2 = bab \lor w_3 = bba$ αλλά όπως ήδη είπαμε δεν υπάρχει περιορισμός ως προς την
+θέση αντίθετα με το προηγούμενο πρόβλημα στην άσκηση 2.1 (υποερώτημα (α)).
+\par
+Αυτό με τη σειρά του δείχνει ότι πιθανώς να μην χρειαστεί κάποια διακλάδωση και να μπορούν να γίνουν όλες οι
+διαδικασίες αναδρομικά στον ίδιο κόμβο.
+\par Άρα, υποθέτουμε ένα κόμβο για όλη την ανάγνωση βασιζόμενοι σε σύνθετες αναδρομές, συν επιπρόσθετους
+βοηθητικούς κόμβους (Εναρκτήριο με μετάβαση αρχικοποίησης σωρού με δείκτη τελευταίου κελιού και τελικό με μετάβαση
+προς αυτόν όπου αδειάζει τον δείκτη από τον σωρό). Ξεκινάμε την κατασκευή του αυτομάτου, αρχικά δίνοντας την
+μαθηματική περιγραφή και κατόπιν το αντίστοιχο διάγραμμα:
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = {PDA $M = (K,\, \Sigma,\, \Gamma,\, \Delta,\, s,\, F)$}]
+\begin{itemize}
+	\itemsep0em
+	\item $K \,=\, \{q1,\, q2,\, q3\}$
+	\reducevspace\reducevspace\reducevspace
+	\item $\Sigma \,=\, \{a,\, b\}$
+	\reducevspace\reducevspace\reducevspace
+	\item $\Gamma \,=\, \{A,\, B,\, \$\}$
+	\reducevspace\reducevspace\reducevspace
+	\item $\Delta \,=\,$
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\begin{multicols}{2}
+		\begin{enumerate}
+			\item $(q1,\,ε,\,ε)\rightarrow(q2,\,\$)$
+
+
+
+			\item $(q2,\,b,\,\$)\rightarrow(q2,\,B\$)$
+			\item $(q2,\,b,\,B)\rightarrow(q2,\,BB)$
+			\item $(q2,\,b,\,Α)\rightarrow(q2,\,ε)$
+
+			\item $(q2,\,a,\,\$)\rightarrow(q2,\,AA\$)$
+			\item $(q2,\,a,\,A)\rightarrow(q2,\,AAA)$
+			\item $(q2,\,a,\,BB)\rightarrow(q2,\,ε)$
+			\item $(q2,\,a,\,B\$)\rightarrow(q2,\,A\$)$
+
+			\item $(q2,\,ε,\,\$)\rightarrow(q3,\,ε)$
+		\end{enumerate}
+		\end{multicols}
+		\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\item $s \,=\, q_1$
+	\reducevspace\reducevspace\reducevspace
+	\item $F \,=\, q_3$
+\end{itemize}
+\end{tcolorbox}
+\reducevspace\reducevspace\reducevspace\reducevspace
+
+
+
+%\vfill
+%\clearpage
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = DFA $M_{\text{τελικό}}$]
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\centering
+	\begin{tikzpicture} [blue, node distance = 4cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q1) [state, black, scale = 1.3, initial left, initial distance = 10mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q_{1}$};
+
+		\node (q2) [state, black, scale = 1.3, top color = gray!80, bottom color = gray!20, right = of q1]
+		{$q_{2}$};
+
+		% Final Node
+		\node (q3) [state, black, scale = 1.3,accepting, top color = red!80, bottom color = red!20, double
+		distance = 3pt, double = red!20, right = of q2] {$q_{3}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+
+		% 0,0 => 1,0 || 0,1
+		(q1) edge [] node [above] {$ε,\,ε,\,\$$} (q2)
+		% 0,1 => 1,1 || 0,2
+		(q2) edge [loop above] node [pos=0.5, yshift=-10pt, inner sep=1pt]
+			{$\begin{array}{c}
+				a,\$,AA\$ \\[-30pt]
+				a,A,AAA \\[-30pt]
+				a,B\$,A\$ \\[-30pt]
+				a,BB,ε
+			\end{array}$} (q2)
+		(q2) edge [loop below] node [pos=0.5, yshift=20pt, inner sep=1pt]
+		{$\begin{array}{c}
+				b,\$,B\$ \\[-30pt]
+				b,A,ε \\[-30pt]
+				b,B,BB
+			\end{array}$} (q2)
+
+		(q2) edge [] node [above] {$ε,\$,ε$} (q3);
+	\end{tikzpicture}
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = {Υπολογισμός αποδοχής $abbbab$}]
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{adjustwidth}{-0.75em}{}
+		\begin{equation*}
+			\begin{aligned}
+				(q1, abbbab, \varepsilon)
+				&\vdash (q2, abbbab, \$) \vdash (q2, bbbab, AA\$) \vdash (q2, bbab, A\$)\\
+				&\vdash (q2, bab, \$) \vdash (q2, ab, B\$) \vdash (q2, b, A\$) \vdash (q2, \varepsilon, \$)\\
+				&\vdash (q3, \varepsilon, \varepsilon)\qquad\quad \text{ Επιτυχής Ανάγνωση}
+			\end{aligned}
+		\end{equation*}
+	\end{adjustwidth}
+\end{tcolorbox}
+
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+%\clearpage

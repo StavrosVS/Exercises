@@ -1,0 +1,320 @@
+% Paper Style Packages
+\documentclass[twoside, openright, hidelinks, a4paper, 12pt]{book}%was report before
+%\usepackage[showframe]{geometry}
+\usepackage[
+%showframe,
+a4paper,                % paper size
+twoside,                % two-sided document
+bindingoffset=10mm,     % extra space for binding
+top=25mm,
+bottom=30mm,
+inner=30mm,
+outer=20mm,
+headheight=0.5cm,
+headsep=0.5cm,
+footskip=20mm,
+includehead,
+includefoot
+]{geometry}
+\usepackage{xcolor}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{changepage}
+
+
+%\usepackage{nicematrix}
+
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
+
+\usepackage{tcolorbox}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{amsmath}
+
+%\setlength{\headsep}{10pt} %30
+%\setlength{\footskip}{15pt} %30
+\usepackage{tocbibind}
+\setlength{\tolerance}{1}                   % Prevent hyphenation / overflowing
+\setlength{\emergencystretch}{\maxdimen}    % -//-
+\setlength{\hyphenpenalty}{10000}           % -//-
+\setlength{\hbadness}{10000}                % -//-
+\usepackage{fancyhdr}           % Page numerating style
+%\setlength{\headheight}{15pt}   % -//-
+\pagestyle{fancy}               % -//-
+\fancyhf{}                      % -//-
+\fancyhead[L]{\leftmark}        % -//-
+\fancyfoot[R]{\thepage}         % -//-
+\pagestyle{fancy}
+\usepackage{bm}
+\usepackage{amsthm}
+
+
+% Language Packages
+
+%\usepackage{polyglossia}
+%\usepackage[unicode]{hyperref}
+
+%\usepackage{fontspec}
+
+
+%
+
+%\defaultfontfeatures{Renderer=Harfbuzz,Ligatures=TeX}
+% Select a font with known good Greek support; adjust the name as needed.
+
+
+\usepackage[unicode, pdfauthor={Stavros Vasileiadis Stratidakis}, pdftitle={ToC 1st exercises set 2025},
+pdfsubject={Theory of Computation}, pdfcreator={Stavros Vasileiadis Stratidakis}, pdfproducer={Stavros Vasileiadis
+Stratidakis}, colorlinks, linkcolor=blue, citecolor=green, urlcolor=magenta]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[LGR, T1]{fontenc}
+\usepackage[english, greek]{babel}
+\usepackage{alphabeta}
+\usepackage{newtxtext,newtxmath}
+\usepackage{tgpagella}
+%\usepackage{tgtermes}
+%\usepackage{kerkis}
+%\usepackage{libertine}
+\DeclareTextCompositeCommand{\acctonos}{PU}{\textalpha}{\9003\254}
+\DeclareTextCompositeCommand{\acctonos}{PU}{\textepsilon}{\9003\255}
+\DeclareTextCompositeCommand{\acctonos}{PU}{\texteta}{\9003\256}
+\DeclareTextCompositeCommand{\acctonos}{PU}{\textiota}{\9003\257}
+\DeclareTextCompositeCommand{\acctonos}{PU}{\textomicron}{\9003\314}
+\DeclareTextCompositeCommand{\acctonos}{PU}{\textomega}{\9003\316}
+\DeclareTextCommand{\textfinalsigma}{PU}{\9003\302}
+\usepackage{csquotes}
+\usepackage{dirtytalk}
+
+
+% Bibliography Packages
+\usepackage[backend=biber, style=numeric, natbib=true, sorting=none]{biblatex}
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+
+
+% Graphic Packages
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[table]{xcolor}
+%\usepackage{amssymb}
+\usepackage[section]{placeins}
+\usepackage{sectsty}
+\usepackage{titlesec}
+
+% Required packages and libraries
+\usepackage{tikz}
+\usetikzlibrary{automata, arrows.meta, positioning}
+
+% Paragraph Packages
+\usepackage{indentfirst}            % Indent at the start of every paragraph
+\setlength{\parindent}{2em}         % Size of indent
+\setlength{\parskip}{1em}           % Space between paragraphs
+
+
+
+% HERE BE DRAGONS
+\usepackage{draftwatermark}
+\SetWatermarkText{Created by Stavros Vasileiadis Stratidakis}
+\SetWatermarkScale{0.3}
+\SetWatermarkColor[gray]{0.997}
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{1.61}
+
+\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+
+\arrayrulecolor[HTML]{DB5800}
+
+\setlength{\intextsep}{2pt}
+\setlength{\textfloatsep}{2pt}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{2pt}
+% HERE NOT BE DRAGONS
+\newcommand{\reducevspace}{\vspace{-0.1em}}
+%
+\usepackage{stackengine}
+\stackMath
+\newcommand\asterism{%
+	\stackon[1pt]{\stackon[1pt]{\textasteriskcentered}{\textasteriskcentered}}{\textasteriskcentered}%
+}
+\usepackage{pgfornament}
+\usepackage{eso-pic}
+
+\newcommand\AtPageUpperRight[1]{\AtPageUpperLeft{%
+		\put(\LenToUnit{\paperwidth},\LenToUnit{0\paperheight}){#1}%
+}}%
+\newcommand\AtPageLowerRight[1]{\AtPageLowerLeft{%
+		\put(\LenToUnit{\paperwidth},\LenToUnit{0\paperheight}){#1}%
+}}%
+
+ \newcommand{\beautify}{%
+	\AddToShipoutPictureBG{%
+		\AtPageUpperLeft{\put(0,-25){\pgfornament[width=1.75cm]{61}}}
+		\AtPageUpperRight{\put(-50,-25){\pgfornament[width=1.75cm,symmetry=v]{61}}}
+		\AtPageLowerLeft{\put(0,25){\pgfornament[width=1.75cm,symmetry=h]{61}}}
+		\AtPageLowerRight{\put(-50,25){\pgfornament[width=1.75cm,symmetry=c]{61}}}
+	}
+}
+
+\newcommand{\simplify}{%
+	%\leardoublepage\ClearShipoutPictureBG
+}
+
+
+
+
+
+
+
+%\newcommand{\Cross}{\mathbin{\tikz [x=1.4ex,y=1.4ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}%
+
+\setstretch{1.15}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\
+	\thechapter}{18pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+
+
+
+
+
+
+
+\usepackage{tocloft}
+
+% Document Details
+\title{\color{teal}3η Σειρά Ασκήσεων}
+\author{Βασιλειάδης Σταύρος}
+
+\usepackage[colorlinks]{hyperref}
+\begin{document}
+	%\doublespacing
+	\input{title/title.tex}
+
+	\selectlanguage{english}
+
+
+
+% Define names of report parts
+\renewcommand{\contentsname}{Περιεχόμενα}
+\renewcommand{\listfigurename}{Λίστα Σχημάτων}
+\renewcommand{\listtablename}{Λίστα Πινάκων}
+\renewcommand{\chaptername}{\centering{ΜΕΡΟΣ}}
+\renewcommand{\appendixname}{Παράρτημα}
+\renewcommand{\bibname}{Βιβλιογραφία}
+\renewcommand\thesection{\color{violet}\arabic{section}}
+%\renewcommand\thesubsection{\thesection.\alph{subsection}}
+\chapterfont{\color{magenta}}
+
+\makeatletter
+\newcommand*{\greek}[1]{%
+	\expandafter\@greek\csname c@#1\endcsname
+}
+\newcommand*{\@greek}[1]{%
+	$\ifcase#1\or\alpha\or\beta\or\gamma\or\delta\or\varepsilon
+	\or\zeta\or\eta\or\theta\or\iota\or\kappa\or\lambda
+	\or\mu\or\nu\or\xi\or o\or\pi\or\varrho\or\sigma
+	\or\tau\or\upsilon\or\phi\or\chi\or\psi\or\omega
+	\else\@ctrerr\fi$
+}
+
+\renewcommand{\thesubsection}{\thesection\;-\;\greek{subsection}}
+
+%[]
+
+%\pagenumbering{roman}
+\setlength{\parskip}{0.5em}     % Space between paragraphs
+
+
+\setlength{\parskip}{1em}       % Space between paragraphs
+%\newpage
+%\thispagestyle{empty}
+%\null
+%\newpage
+\begingroup
+\pagestyle{empty}
+\tocloftpagestyle{empty}
+
+	\tableofcontents
+	%\clearpage
+	%\newpage
+\endgroup
+	%\pagenumbering{arabic}
+
+	%\doublespacing
+	%\beautify
+	\clearpage
+	%\clearpage
+
+	\cleardoublepage
+	\pagenumbering{roman}
+\doublespacing
+\chapter{Κατάλογος συμβόλων και συντομογραφίες}
+\label{ch:ChapterName}
+\simplify
+	\include{Chapters/Glossary/Glossary}
+\clearpage
+
+\cleardoublepage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+	%\beautify
+	\chapter{Λύσεις Ασκήσεων}
+	\label{ch:ChapterName}
+	\simplify
+
+
+	\include{Chapters/Chapter_1/Question_Set_1}
+	\input{Chapters/Chapter_1/Solution_1_1}
+	%\newpage
+	\input{Chapters/Chapter_1/Solution_1_2}
+	\newpage
+	%\input{Chapters/Chapter_1/Solution_1_3}
+	%\newpage
+
+	\input{Chapters/Chapter_2/Question_Set_2}
+	\newpage
+	\input{CHapters/Chapter_2/Solution_2_1}
+	\newpage
+	\input{CHapters/Chapter_2/Solution_2_2}
+	\hfill \break
+	\newpage
+	%\input{CHapters/Chapter_2/Solution_2_3}
+
+	\input{Chapters/Chapter_3/Question_Set_3}
+	\newpage
+	\input{CHapters/Chapter_3/Solution_3_1}
+	\newpage
+	\input{CHapters/Chapter_3/Solution_3_2}
+	\newpage
+
+	\input{Chapters/Chapter_4/Question_Set_4}
+	\newpage
+	\input{CHapters/Chapter_4/Solution_4_1}
+	%\hfill \break
+	\newpage
+	\input{CHapters/Chapter_4/Solution_4_2}
+
+	\newpage
+	\newpage
+	\thispagestyle{empty}
+	\null
+	\newpage
+\end{document}

@@ -1,0 +1,80 @@
+\subsection{Απάντηση Υποερωτήματος (α)}
+\label{ssec:Solution_1.1}
+\doublespacing
+Έχουμε CFL
+$ L_1 = \{a^n, b^m : n, m \in \mathbb{N}_0, 3n \leq m \leq 6n \}$
+άρα $\vert w \vert_{min} = 0$ για $n = 0$ με $a$ να προηγούνται των $b$. Οπότε:
+$\overset{\text{Ελάχιστη περίπτωση}}{\rightarrow} ε\,$ και
+$\;\,\overset{\text{Ελάχιστη μή κενή περίπτωση}}{\rightarrow} abbb$.\\
+Αλλά με το ίδιο $a$ έχουμε επίσης: $\rightarrow a\,bbb\,b,\; a\,bbb\,bb,\; a\,bbb\,bbb$.\\
+Δεν πρέπει όμως να ξεχνάμε ότι μπορούμε να έχουμε έως $|w|_a = \aleph_0$ και αντίστοιχα τα $b$ που αναλογούν σε
+αυτά για να είναι σωστή η συμβολοσειρά. Οτιδήποτε όμως από αυτά είναι ουσιαστικά απλή επανάληψη του κανόνα που
+δημιουργεί όλες τις ενός $a$ συμβολοσειρές. Άρα δεν χρειαζόμαστε κάποιο
+επιπρόσθετο κανόνα παραγωγής αλλά έχουμε αναδρομή.\\
+Συμψηφίζοντας τώρα αυτές τις παρατηρήσεις μπορούμε να περάσουμε στην κατασκευή των κανόνων παραγωγής. Θα το
+προσεγγίσουμε σταδιακά:
+\begin{itemize}
+	\itemsep0em
+
+	\item Ελάχιστη περίπτωση:\\
+	$S \rightarrow ε$
+
+	\item Ελάχιστα $a$:\\
+	$S \rightarrow aΜ \,|\, ε$\\
+	$M \rightarrow bbb \,|\, bbbb \,|\, bbbbb \,|\, bbbbbb$
+
+	\item $|w| = \aleph_0$:\\
+	$S \rightarrow aSM \,|\, ε$\\
+	$M \rightarrow bbb \,|\, bbbb \,|\, bbbbb \,|\, bbbbbb$
+
+	\item Πιο ευανάγνωστη παραλλαγή:\\
+	$S \rightarrow aSbbM | ε$\\
+	$M \rightarrow b \,|\, bb \,|\, bbb \,|\, bbbb$
+
+	\item Καμία αριστερή αναδρομή.
+\end{itemize}
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Γραμματική και συντακτικό δένδρο]
+Είμαστε έτοιμοι να προχωρήσουμε στην πλήρη περιγραφή της γραμματικής μας:\\
+
+$G_1 = (\{a, b\},\, \{ε\},\, \{S\rightarrow aSbbM\,|\,ε,\; Μ\rightarrow b \;|\; bb \;|\; bbb \;|\; bbbb\},\, S)$
+
+Ήρθε η στιγμή να δώσουμε το συντακτικό δένδρο για συμβολοσειρά (τα κενά για ευκολότερη ανάγνωση) $w =
+aa\,bbb\,bbb\,b,\,|w| = 9,\, |w|_a = 2,\,|w|_b = 7$:
+
+
+\begin{center}
+	\Tree
+	[.S
+		[.$a$ ]
+		[.{S}
+			[.$a$ ]
+			[.{S}
+				[.$ε$ ]
+			]
+			[.{$bb$} ]
+			[.{M}
+				[.$b$ ]
+			]
+		]
+		[.{$bb$} ]
+		[.{M}
+			[.{$bb$} ]
+		]
+	]
+\end{center}
+
+Που δίνει:$\qquad\qquad\qquad\;\;\, a\;\;\;\, a\qquad\; bb\;\;\;\, b\;\;\;\, bb\;\;\; bb$\\
+Εναλλακτικά θα μπορούσαμε να το διαβάσουμε ως $a\,(a(\varepsilon)bb(bb))\,bb\,(b)$.
+
+\end{tcolorbox}
+
+
+
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+%\clearpage

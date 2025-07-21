@@ -1,0 +1,54 @@
+\subsection{Απάντηση Υποερωτήματος (β)}
+\label{ssec:Solution_3.2}
+\doublespacing
+
+Ζητείται να αποδείξουμε άν η $L = \{a^mb^nc^k\,:\,n,\,k,\,m\in\mathbb{N}_0,\, n=3m+2k\}$ είναι CF.
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\par
+Αυτό μπορεί να γίνει μεταξύ άλλων με απόπειρα κατασκευής CFG της γλώσσαςL, ενώ μία άλλη μέθοδος είναι μέσω λήμματος άντλησης
+κα.
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = Απόδειξη με απόπειρα κατασκευής CFG]
+	\begin{itemize}
+		\itemsep1em
+
+		\item Προτεραιότητα συμβόλων: $w= \{xyz \,\vert\, x = \{a\}^m,\, y = \{b\}^{3m+2k},\, z = \{c\}^k\}$.
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\item Λόγο συγκεκριμένης προτεραιότητας τα σύμβολα δεν αναμιγνύονται πχ δεν υπάρχει bbabbcb παρόλο που η αναλογία
+		συμβόλων είναι ορθή). Ακριανά σύμβολα ($a,\,c$) καθορίζουν το πλήθος των μεσαίων ($b$). Άρα μπορούμε να σπάσουμε όλες
+		τις συμβολοσειρές της γλώσσας σε δύο μέρη: ένα αριστερό:\\
+		$L_{LHS} = \{w = \{a^m\, b^{3m}\}^* \,:\, m \in \mathbb{N}_0\}$\\
+		και ένα δεξιό:\\
+		$L_{RHS} = \{ w = \{b^{2k}\, c^k\}^* \,:\, k \in \mathbb{N}_0 \}$\\
+		Η λύση θα είναι η σύνθεση αυτών τον δύο και συγκεκριμένα:\\
+		$\{w \in L,\, w_1 \in L_{LHS},\, w_2 \in L_{RHS} \,\vert\, w = w_1 w_2\}$
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\item Για $L_{LHS} \;:\; S \rightarrow \varepsilon \,|\, A,\quad A \rightarrow \varepsilon \,|\, aAbbb $
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\item Για $L_{RHS} \;:\; S \rightarrow \varepsilon \,|\, C,\quad C \rightarrow \varepsilon \,|\, bbCc $
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\item Άρα $\,:\, S \rightarrow \varepsilon \,|\, AC,\quad A \rightarrow \varepsilon \,|\, aAbbb,\quad C
+		\rightarrow \varepsilon \,|\, bbCc$
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\item $G = (\{a,\,b,\,c\},\quad \{\varepsilon\},$\\
+		$\{S \rightarrow \varepsilon \,|\, AC,\; A \rightarrow \varepsilon \,|\, aAbbb,\; C \rightarrow \varepsilon
+		\,|\, bbCc\},\quad S)$
+
+
+	\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+\clearpage

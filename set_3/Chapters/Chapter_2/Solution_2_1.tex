@@ -1,0 +1,176 @@
+\subsection{Απάντηση Υποερωτήματος (β)}
+\label{ssec:Solution_2.2}
+\doublespacing
+Έχουμε να κατασκευάσουμε PDA για CFL $L_1 = \{b^n a^k b^k a^n : k, n \in  \mathbb{N}^0 \}$\\
+Από τον τύπο δυνάμεθα να εξάγουμε τα εξής δεδομένα, για συμβολοσειρά $w \in L_1$:
+
+\begin{itemize}
+	\itemsep0em
+	\item $\vert w \vert_{min} = 0 \Longrightarrow n,\,k = 0 \Longrightarrow w = ε$, \quad $\vert w \vert_{max} =
+	\aleph_0$, \quad $|w| = 2(n+k) = \text{Άρτιο}$
+	\item $ n + k - 2nk = 1  \Longrightarrow |w|_{min} = 2 \Longrightarrow w = ba \cup ab$
+	\item $ n, k = 1 \Longrightarrow \vert w \vert_{min} = 4 \Longrightarrow w = baba$, \qquad $L \subseteq \{xx^R
+	\vert x \in \Sigma^* \}$
+	\item Για μεγαλύτερα $n, k$ έχουμε συμβολοσειρές όπως $bbabaa, baabba, bbaabbaa...$
+\end{itemize}
+
+\par
+Από αυτά κάποια δεν μας λένε κάτι ιδιαίτερα χρήσιμο, άλλα όμως μας φανερώνουν την οδό που θα πρέπει να
+ακολουθήσουμε. Για παράδειγμα, κατά αντιστοιχία με τις αντίστοιχες τεχνικές που ακολουθήσαμε στις
+λύσεις ασκήσεων κανονικών εκφράσεων, τα διάφορα ελάχιστα μας δίνουν την βάση πάνω στην οποία θα χτιστεί το (PD)
+αυτόματο.
+\par
+Ως εκ τούτου έχουμε φαινομενικά τέσσερεις ελάχιστες περιπτώσεις, που η
+συγκεκριμένη γλώσσα επιτρέπει:
+$w_0 = ε \lor w_1 = ab \lor w_2 = ba \lor w_3 = baba$ αλλά προσοχή, το $w = baba$
+αποτελεί παρεμβολή του $w_1$ εντός του $w_2$ και όχι $(ba)^*$
+\par
+Αυτό με τη σειρά του δείχνει ότι ουσιαστικά, το $w_3$ αποτελεί επέκταση της $w_2$ μετά αρχικού $b$ και άρα δεν
+είναι μέρος της καθολικής βάσης του αυτομάτου. Θα μας χρειαστεί όμως, αφού δείχνει ότι όταν ο
+αλγόριθμος θα μπαίνει στη διαδρομή που διαβάζει $ba$, θα διακλαδώνεται σε δύο εναλλακτικές βάση του
+αν αυτό που έπεται του $b$ είναι $a$ ή $aba$.
+\vfill
+\clearpage
+\par Τέλος αφού $n, k \in \mathbb{N_0}$ τότε μπορούν όλοι αυτοί οι χαρακτήρες να είναι (μετρήσιμα) άπειροι αλλά υπό
+τον όρο ότι τηρείται το γενικό μοτίβο.
+\par Άρα, υποθετικά, έχουμε τρεις αρχικούς κλάδους και σε έναν από αυτούς μία διάσπαση σε δύο. Θα δούμε ότι ακριβώς
+αυτό συμβαίνει και στην πράξη (τουλάχιστον στη συγκεκριμένη επίλυση) και ότι γενικά είναι καλή
+πρακτική. Ξεκινάμε κατασκευή αυτομάτου, αρχικά δίνοντας μαθηματική περιγραφή και κατόπιν αντίστοιχο
+διάγραμμα:
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = {PDA $M = (K,\, \Sigma,\, \Gamma,\, \Delta,\, s,\, F)$}]
+	\begin{itemize}
+		\itemsep0em
+		\item $K \,=\, \{q1,\, q2,\, q3,\, q4,\, q5,\, q6\}$
+		\item $\Sigma \,=\, \{a,\, b\}$
+		\item $\Gamma \,=\, \{A,\, B,\, \$\}$
+		\item $\Delta \,=\,$
+		\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item $(q1,\,ε,\,ε)\rightarrow(q2,\,\$)$
+
+
+
+				\item $(q2,\,b,\,\$)\rightarrow(q2,\,B\$)$
+				\item $(q2,\,b,\,B)\rightarrow(q2,\,BB)$
+
+				\item $(q2,\,ε,\,\$)\rightarrow(q6,\,ε)$
+				\item $(q2,\,a,\,\$)\rightarrow(q3,\,A\$)$
+				\item $(q2,\,a,\,B)\rightarrow(q3,\,AB)$
+				\item $(q2,\,a,\,B)\rightarrow(q5,\,ε)$
+
+
+
+				\item $(q3,\,a,\,A)\rightarrow(q3,\,AA)$
+
+				\item $(q3,\,b,\,A)\rightarrow(q4,\,ε)$
+
+
+
+				\item $(q4,\,b,\,A)\rightarrow(q1,\,ε)$
+
+				\item $(q4,\,a,\,B)\rightarrow(q5,\,ε)$
+				\item $(q4,\,ε,\,\$)\rightarrow(q6,\,ε)$
+
+
+
+				\item $(q5,\,a,\,B)\rightarrow(q5,\,ε)$
+
+				\item $(q5,\,ε,\,\$)\rightarrow(q6,\,ε)$
+			\end{enumerate}
+		\end{multicols}
+		\reducevspace\reducevspace\reducevspace\reducevspace
+		\item $s \,=\, q_1$
+		\item $F \,=\, q_6$
+	\end{itemize}
+\end{tcolorbox}
+
+%\vfill
+%\clearpage
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = DFA $M_{\text{τελικό}}$]
+	\centering
+	\begin{tikzpicture} [blue, node distance = 2.5cm, on grid, font=\sffamily\large\bfseries]
+		% Help grid
+		%	\draw [help lines] (-1,4) grid (8,-10);
+		% Start Node : Every other node is measured based to this one
+		\node (q1) [state, black, scale = 1, initial above, initial distance = 5mm, initial text = {Αρχή},
+		top color = green!80, bottom color = green!20] {$q_{1}$};
+
+		\node (q2) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below = of q1]
+		{$q_{2}$};
+
+		\node (q3) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below = of q2]
+		{$q_{3}$};
+
+		\node (q4) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below = of q3]
+		{$q_{4}$};
+
+		\node (q5) [state, black, scale = 1, top color = gray!80, bottom color = gray!20, below right = of q4]
+		{$q_{5}$};
+
+		% Final Node
+		\node (q6) [state, black, scale = 1, accepting, top color = red!80, bottom color = red!20, double
+		distance = 3pt, double = red!20, below left = of q4] {$q_{6}$};
+
+		% Draw Arrows/Connections
+		\path [-stealth, thick]
+
+		% 0,0 => 1,0 || 0,1
+		(q1) edge [] node [left] {$ε,\,ε,\,\$$} (q2)
+		% 0,1 => 1,1 || 0,2
+		(q2) edge [bend right = 60, looseness = 1.2] node [left] {$ε,\$,ε$} (q6)
+		(q2) edge [bend left = 60, looseness = 1.2] node [right] {$a,B,ε$} (q5)
+		(q2) edge [] node [left] {$a,\$,A\$$} (q3)
+		(q2) edge [] node [right] {$a,B,AB$} (q3)
+		(q2) edge [loop right, out = 350, in = 20, looseness = 8] node [right] {$b,\$,B\$$} (q2)
+		(q2) edge [loop left, out = 190, in = 160, looseness = 8] node [left] {$b,B,BB$} (q2)
+		% 0,2 => 1,2 || 0,3
+		(q3) edge [loop right, out = 345, in = 315, looseness = 8] node [right] {$a,A,AA$} (q3)
+		(q3) edge [] node [left] {$b,A,ε$} (q4)
+		% 0,3 => 1,3 || 0,0
+		(q4) edge [loop right] node [right] {$b,A,ε$} (q4)
+		(q4) edge [] node [left] {$a,B,ε$} (q5)
+		(q4) edge [] node [left] {$ε,\$,ε$} (q6)
+		% 1,0 => 0,0 || 1,1
+		(q5) edge [loop right] node [right] {$a,B,ε$} (q5)
+		(q5) edge [] node [below] {$ε,\$,ε$} (q6);
+	\end{tikzpicture}
+\end{tcolorbox}
+
+\reducevspace\reducevspace\reducevspace
+
+
+\begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
+	fonttitle=\bfseries\Large, title = {Υπολογισμός αποδοχής $bbbabaaa$}]
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+	\begin{adjustwidth}{-0.75em}{}
+		\begin{equation*}
+			\begin{aligned}
+				(q1, bbbabaaa, \varepsilon)
+				&\vdash (q2, bbbabaaa, \$) \vdash (q2, bbabaaa, Β\$) \vdash (q2, babaaa, BB\$) \\
+				&\vdash (q2, abaaa, BBB\$) \vdash
+				\left\{
+				\begin{array}{l}
+					(q3, baaa, ABBB\$) \\
+					(q5, baaa, BB\$) \nvdash \text{Αποτυχία Κλώνου}
+				\end{array}
+				\right. \\
+				&\vdash (q4, aaa, BBB\$) \vdash (q5, aa, BB\$) \vdash (q5, a, B\$) \vdash (q5, \varepsilon, \$)\\
+				&\vdash (q6, \varepsilon, \varepsilon)\qquad\quad \text{ Επιτυχής Ανάγνωση}
+			\end{aligned}
+		\end{equation*}
+	\end{adjustwidth}
+\end{tcolorbox}
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\begin{center}
+	%\vspace{2em}
+	\noindent\rule{\linewidth}{0.5pt}
+	%\vspace{2em}
+\end{center}
+%\clearpage
