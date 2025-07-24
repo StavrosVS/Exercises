@@ -132,6 +132,13 @@ R}}}\overset{x \in \{a,\,b\}}{\longrightarrow}\, M_2\]
 	\textcolor{green}{\ding{51}}
 \end{itemize}
 
+Δεν μας ενοχλεί το επιπλέον κενό τέρμα δεξιά διότι ούτως ή άλλως επί θεωρητικού μοντέλου η ταινία της μηχανής
+εκτίνεται άπειρα προς τα δεξιά και οποιαδήποτε από αυτές της μετρήσιμα άπειρες θέσεις δεν περιέχει συγκεκριμένο
+χαρακτήρα θεωρείτε αυτόματα ότι περιέχει τον κενό χαρακτήρα (αναπαριστώμενος στο δικό μας κείμενο με $\sqcup$).\\
+Άρα είναι αναπόφευκτο να μην έχουμε μετρήσιμα άπειρους κενούς χαρακτήρες, δεξιότερα του τελευταίου μη κενού συμβόλου που
+περιέχει η ταινία μετά και την επεξεργασία από την μηχανή. Ως εκ τούτου το ότι εμείς το δείχνουμε (επειδή η κεφαλή έφτασε
+μέχρι εκεί και άρα το είδε) δεν αλλάζει τίποτε.
+
 \par Σχεδιάζουμε γραφικά τη διασύνδεση των μηχανών μεταξύ τους και κατόπιν επανασχεδιάζουμε αντικαθιστώντας τες με τα
 αντίστοιχα διαγράμματα εσωτερικής λειτουργίας τους, έτσι ώστε να καταλήξουμε στην ζητούμενη μηχανή.
 
@@ -155,26 +162,37 @@ R}}}\overset{x \in \{a,\,b\}}{\longrightarrow}\, M_2\]
 
 \begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
 	fonttitle=\bfseries\Large, title = Γραφική αναπαράσταση τελικής πρότυπης μηχανής Turing]
-
+\medskip
 \begin{center}
-	\begin{tikzpicture}[->,>=stealth, shorten >=1pt,semithick,node distance=3.0cm,auto]
+	\begin{tikzpicture}[->,>=stealth, shorten >=1pt,semithick,node distance=4.0cm,auto]
 
 		\node(q_1)                  {$\,>R\,$};
 		\node(q_2) [right of = q_1] {$\,\$\,R^2_\sqcup\,x\,L_\$\,x\,R\,$};
 		\node(q_3) [below of = q_2] {$\,R\,$};
 		\node(q_4) [below of = q_1] {$\,L_\triangleright\,R\,$};
+		\node(q_31) [right of = q_3] {$\,\sqcup\,L\,x\,L_\$\,x\,R_\sqcup\,$};
 
 		\draw[->] (q_1) -- node {$x\in\{a,\,b\}$} (q_2);
 		\draw[->] (q_1) -- node {$\sqcup$} (q_4);
-		\draw[->] (q_2) -- node {$x\in\{a,\,b\}$} (q_2);
+		\draw[->, thick, rounded corners=0pt] (q_2)
+		-- ++(2.5cm,0)
+		-- ++(0,1.5cm)
+		-- ++(-2.5cm,0)
+		-- ++(0,-1.2cm)
+		node[midway, right]  {$x\in\{a,\,b\}$} (q_2);
 		\draw[->] (q_2) -- node {$\sqcup$} (q_3);
 		\draw[->] (q_3) -- node {$\sqcup$} (q_4);
+		\draw[->] (q_3) -- node {$x\in\{a,\,b\}$} (q_31);
+		\draw[->, thick, rounded corners=0pt] (q_31)
+		-- ++(0,-1cm)
+		-- ++(-4cm,0)
+		-- ++(0,0.7cm)
+		node[midway, right]  {$$} (q_3);
 	\end{tikzpicture}
 	\vspace{-0.3cm}
 \end{center}
-
+\bigskip
 \end{tcolorbox}
-
 
 
 \begin{center}
