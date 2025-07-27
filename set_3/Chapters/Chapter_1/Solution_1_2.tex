@@ -2,24 +2,176 @@
 \label{ssec:Solution_1.2}
 \doublespacing
 
-CFL
-$ L_1 = \{w \in \{a, b\}^* : |w|_a = 3|w|_b + 2 \}$
-άρα $\vert w \vert_{min} = 2$ και συγκεκριμένα $aa$.\\
-Στην περίπτωση όμως που έχουμε έστω και ένα $b$ έχουμε:
-$aaa\,aa\,b$.\\
-Παρατηρούμε ότι η γλώσσα δεν ορίζει συγκεκριμένη σειρά μεταξύ $a$ και
-$b$ και άρα θα πρέπει να μπορούν να παραχθούν όλοι οι συνδυασμοί και με βάση τη θέση των συμβόλων και άρα
-επιπρόσθετες συμβολοσειρές: $b\,aaa\,aa,\; a\,b\,aaa\,a,\;...,\;
-aa\,aaa\,b$.\\
-\clearpage
-Για να οδηγηθούμε σε κάποιες από αυτές το ελάχιστο $aa$ διαχωρίστηκε, με το $b$ να παρεμβάλλεται ανάμεσα.
-Με βάση την ελάχιστη περίπτωση καταλαβαίνουμε ότι παρόλα αυτά, τα δύο πρόσθετα $a$ θα πρέπει να απομονωθούν σε δικό
-τους κανόνα.\\
-Έχουμε όμως $|w|_b \in \aleph_0$ και άρα τα ανάλογα $a$, υπονοώντας χρήση αναδρομής και συγκεκριμένα όλων των
-κανόνων παραγωγής εκτός του ελάχιστου $aa$.\\
-Συμψηφίζοντας μπορούμε να περάσουμε στην κατασκευή των κανόνων παραγωγής:
+\par Η μηχανή μας δέχεται ουσιαστικά δέχεται ακριβώς δύο τιμές του δυαδικού συστήματος αρίθμησης, ίσου μήκους
+μεταξύ τους και συμπεριλαμβανομένης της κενής λέξης (και άρα καμία τιμής).\\
+Οι εγγραφές της ταινίας αρχίζουν και τελειώνουν υποχρεωτικά με κενό καθώς και οι δύο λέξεις διαχωρίζονται με κενό
+ανάμεσα τους.\\
+Άρα από τα δύο πρώτα ήδη καταλαβαίνουμε ότι αν οι λέξεις μας είναι κενές τότε έχουμε απλά τρία συνεχόμενα κενά στην
+ταινία. Αυτό με τη σειρά του σημαίνει ότι έχουμε ουσιαστικά άπειρα κενά δεδομένου ότι η ταινία του θεωρητικού
+μοντέλου είναι απείρου μήκους και κάθε θέση δεξιότερα του δεξιότερου (πλην κενού) συμβόλου, αποτελείτε από κενές
+θέσεις.\\
+Σε αυτή τη περίπτωση ουσιαστικά η έξοδος της μηχανής ισούται ακριβώς με την είσοδο (τρία κενά δίδονται, τρία κενά
+λαμβάνονται).\\
+Η άλλη περίπτωση είναι οι λέξεις αυτές να έχουν μη μηδενικό μήκος.\\
+Στην περίπτωση αυτή η μηχανή θα αντικαταστήσει την αριστερή λέξη με το αποτέλεσμα της λογικής πράξης NAND μεταξύ
+των δύο δυαδικών τιμών και την δεξιότερη με το αποτέλεσμα της λογικής πράξης AND μεταξύ τους.
+
+\par
+Εφόσον μπορούμε να λάβουμε κενές τιμές τότε βέλτιστο θα ήταν να τις ελέγξουμε εξ αρχής και άρα το πρώτο βήμα που
+επιλέγουμε θα είναι ο έλεγχος για κενή πρώτη συμβολοσειρά.\\
+Εφόσον όπως είπαμε ήδη οι δύο τιμές θα πρέπει να είναι ίσου μήκους, εάν η πρώτη μας συμβολοσειρά δεν περιέχει
+κανένα σύμβολο τότε δεν θα περιέχει ούτε η δεύτερη.\\
+Αυτό σημαίνει ότι απλά με μία κίνηση κεφαλής δεξιά και ανάγνωση μπορούμε ήδη να γνωρίζουμε αν η ταινία αποτελείτε
+μόνο από κενές θέσεις ή όχι και να δρομολογήσουμε ανάλογα.
+
+\par
+Έπειτα παρατηρούμε ότι θα πρέπει να εκτελέσουμε τις λογικές πράξεις AND και NAND και να προβούμε σε αντικατάσταση
+των αρχικών τιμών με τα αντίστοιχα αποτελέσματα αυτών των πράξεων.\\
+Παρατηρούμε ότι για να εκτελέσουμε τη NAND ουσιαστικά εκτελούμε μία AND και κατόπιν παίρνουμε την άρνηση της, όντως
+μία πιο περίπλοκη διαδικασία η μία της άλλης.\\
+Άρα βάση αυτού αποφασίζομαι ότι θα ήταν βέλτιστο να υπολογίσουμε μόνο την AND και κατόπιν για την τιμή αποτέλεσμα
+της NAND απλά να πάρουμε την άρνηση του προηγούμενου αποτελέσματος, κάνοντας έτσι ουσιαστικά δύο λογικές πράξεις
+αντί για τρεις, συνολικά και για τις δύο τιμές μαζί.\\
+Ουσιαστικά οι δύο διαδικασίες έχουν κοινό (αρχικό) μέρος και αντί να κατασκευάσουμε και να εκτελέσουμε δύο φορές
+τον ίδιο αλγόριθμο, το κάνουμε μία φορά, με έναν υπολογισμό και για τα δύο και απλά προσθέτουμε τον επιπρόσθετο
+υπολογισμό στο NAND τμήμα.\\
+Τέλος με το πέρας των υπολογισμών και των μετατροπών, η κεφαλή θα πρέπει να μεταφέρεται ξανά πίσω στο πρώτο κενό
+(όπου και βρίσκεται κατά την εκκίνηση).
+
+\par
+Τώρα παρατηρούμε ότι είναι πιθανότατο να έχουμε πρόβλημα με την απομνημόνευση του πια σύμβολα έχουν
+αναγνωσθεί/υπολογισθεί, πια έχουν αντικατασταθεί και πια ακόμη περιμένουν τη σειρά τους. Με λίγα λόγια θα πρέπει να
+βρούμε τρόπο ο αλγόριθμος να θυμάται τί έχει περάσει ή πειράξει.\\
+Έχουμε σκεφθεί δύο μεθόδους, αλλά όπως πάντα είναι σχεδόν βέβαιο ότι υπάρχουν παραπάνω και επίσης δεν σημαίνει ότι
+αυτές που δίδουμε είναι απαραίτητα οι πλέον αποδοτικές. Παρόλα αυτά πιστεύουμε ότι είναι επαρκώς αποδοτικές και
+κατανοητές και δεν θα αφιερώσουμε παραπάνω χρόνο στην εύρεση κάτι καλύτερου που δεν γνωρίζουμε κατά πόσο υπάρχει
+και με αμφίβολο το αν αξίζει τον επιπλέον κόπο.\\
+Η πρώτη μέθοδος που δεν θα ακολουθηθεί τελικά, είναι να γράψουμε τα αποτελέσματα μετά το τρίτο εν σειρά κενό της
+ταινίας (δηλαδή πέρα της όλης αρχικής εισόδου που απαιτεί η μηχανή) και κατόπιν να τα μεταφέρουμε (ταυτόχρονα
+αντικαθιστώντας το σύμβολο στην θέση τους με κενό χαρακτήρα) επικαλύπτοντας τις αρχικές τιμές (σκεφτείτε το σαν
+cut-paste). Με αυτόν τον τρόπο απαλλασσόμαστε μέρους της ανάγκης εισαγωγής πολλών επιπλέον προσωρινών συμβόλων που
+θα εκτελούσαν χρέη δεικτών ώστε να γνωρίζουμε μέχρι που και τί έχουμε κάνει.\\
+Η μέθοδος αυτή δεν θα προτιμηθεί διότι εάν μία τέτοια διαδικασία υλοποιηθεί, θα απαιτήσει πολλές παραπάνω και
+μεγαλύτερες μετακινήσεις της κεφαλή, προκαλώντας έτσι μεγαλύτερες καθυστερήσεις στην παραλαβή της εξόδου και
+αυξημένες φθορές στον όλο μηχανισμό (καθώς και επιπλέων καταναλώσεις ενέργειας κοκ). Το ερώτημα δεν μας ζητά να
+λάβουμε κάτι τέτοιο υπόψιν και γνωρίζουμε ότι όσο αφορά τις ασκήσεις αυτές μιλάμε ξεκάθαρα για θεωρητικά μοντέλα
+και μόνο, παρόλα αυτά θεωρούμε ότι είναι ορθό να σκεφτόμαστε με αυτόν τον τρόπο γενικότερα. Με λίγα λόγια στην δική
+μας επίλυση, έμφαση θα δοθεί στην οικονομία κινήσεων της κεφαλής, επιπροσθέτως της ορθής επίλυσης.\\
+Η δεύτερη λοιπόν μέθοδος και αυτή που τελικά θα επιλεχθεί, απαιτεί την χρήση παραπάνω χαρακτήρων των ελάχιστων που
+απαιτούνται. Αυτοί οι παραπάνω χαρακτήρες θα είναι τουλάχιστον δύο καινούργια σύμβολα, το $T$ και το $F$, το πρώτο
+από το True που θα αντικαθιστά τα 1 και το άλλο από το False που θα αντικαθιστά τα 0. Με αυτό το τρόπο πετυχαίνουμε
+δύο πράγματα ταυτόχρονα: με ένα και μόνο σύμβολο γνωρίζει η μηχανή και τί έχει αντικατασταθεί ήδη με το αποτέλεσμα
+της NAND ή AND και ταυτόχρονα τί τιμή έχει. Ενδεχομένως να χρειαστεί και τρίτο σύμβολο κατά την ανάγνωση ώστε να
+θυμάται το σύστημα μέχρι που έχει φτάσει αυτή (η ανάγνωση) όπου σε αυτή τη περίπτωση θα χρησιμοποιήσουμε το σύμβολο
+$\$$.\\
+Τέλος θα πούμε ότι όπως και στην προηγούμενη άσκηση, έτσι και σε αυτή θα κατασκευάσουμε ανεξάρτητες μηχανές Turing
+όπου η κάθε μία θα αναλαμβάνει μέρος του έργου (διαίρει και βασίλευε) και κατόπιν θα τις συνενώνουμε σε μία
+παίρνοντας το ζητούμενο.
+
+\par Η μηχανή $M_{S}$ θέλουμε απλά να ελέγχει αν η ταινία είναι κενή (ελέγχοντας αν υπάρχει έστω ένας χαρακτήρας
+στη λέξη $x$) και αν ναι να μετακινεί την κεφαλή στη πρώτη θέση μετά την αρχή της ταινίας, η οποία θέση θα πρέπει
+απαραίτητα να είναι κενή. Αυτό το πετυχαίνει κάνοντας μία μετακίνηση δεξιά ώστε να βρεθεί η κεφαλή εκεί που
+αναμένετε (υποχρεωτικά) το πρώτο σύμβολο της λέξης και κατόπιν ελέγχει εάν αυτό όντως ανήκει στα σύμβολα της λέξης
+ή όχι (άρα κενό) και δρομολογεί ανάλογα στην αντίστοιχη επόμενη μηχανή. Τον λόγο για τον οποίο δεν ελέγχουμε και το
+$y$ τον έχουμε ήδη αναφέρει και είναι ότι απλά, $x$ και $y$ έχουν ίδιο μήκος και άρα αν το ένα είναι κενό, θα είναι
+και το άλλο.
+\[\text{Έλεγχος κενής λέξης}\,:\, M_S\,:\quad
+L\,\overset{\sqcup}{\longleftarrow}\overset{\lor}{{\text{\large\bfseries
+			R}}}\overset{0}{\longrightarrow}\, M_{0LR}\]
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\[\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\;\;\overset{1}{\longrightarrow}\, M_{1LR}\]
+\par Δοκιμή:
+\begin{itemize}
+	\itemsep0em
+	\item $|x| = |y| = |z| = |w| = 0 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, \sqcup \sqcup
+	\xrightarrow{R} \triangleright\, \sqcup\, \underline{\sqcup}\, \sqcup \xrightarrow{\sqcup}
+	\triangleright\, \underline{\sqcup}\,  \sqcup\, \sqcup  \quad$
+	\textcolor{green}{\ding{51}}
+
+	\item{ $|x| = |y| = |z| = |w| = n, n \geq 1 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, x_1\,...\,y_n
+	\sqcup\, y_1\,...\,y_n\, \sqcup \xrightarrow{R}\\ \triangleright\, \sqcup\, \underline{x_1}\,...\,x_n\,
+	\sqcup\,
+	y_1\,...\,y_n\, \xrightarrow{0} M_{0LR} \quad$ \textcolor{green}{\ding{51}}\\
+	\makebox[4cm]{\hfill}$\xrightarrow{1} M_{1LR} \quad$ \textcolor{green}{\ding{51}}}
+\end{itemize}
+
+
+\par Η μηχανή $M_{0LR}$ διαβάζει, υπολογίζει και αντικαθιστά από αριστερά προς τα δεξιά για $x_n\,=\,0$.
+\[\text{Υπολογισμός/Αντικατάσταση Αριστερά προς Δεξιά}\,:\, M_{0LR}\,:\]
+\[{\text{\scriptsize T, F}}\qquad\quad\]
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\[\overset{\lor}{{\text{\large\bfseries T}}}\,R_\sqcup\, \longrightarrow\, \overset{\botcircleleft}{R}
+\overset{0,\,1}{\longrightarrow}\,
+F\,R\,\xrightarrow{0} M_{0RL}\]
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\[\qquad\qquad\qquad\qquad\quad\;\;\;\,\xrightarrow{1}\, M_{1RL}\]
+
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\[\qquad\qquad\qquad\qquad\qquad\quad\;\;\,\xrightarrow{\sqcup}\, R_\sqcup \rightarrow M_T\]
+\par Δοκιμή:
+\begin{itemize}
+	\itemsep0em
+	\item $|x| = |y| = |z| = |w| = 0 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, \sqcup \sqcup
+	\xrightarrow{R} \triangleright\, \sqcup\, \underline{\sqcup}\, \sqcup \xrightarrow{\sqcup} M_4 \quad$
+	\textcolor{green}{\ding{51}}
+
+	\item $|x| = |y| = |z| = |w| = n, n \geq 1 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, x_1\,...\,y_n
+	\sqcup\, y_1\,...\,y_n\, \sqcup \xrightarrow{R}\\ \triangleright\, \sqcup\, \underline{x_1}\,...\,x_n\,
+	\sqcup\,
+	y_1\,...\,y_n\, \xrightarrow{x \in \{0,\,1\}} M_2 \quad$
+	\textcolor{green}{\ding{51}}
+\end{itemize}
+
+
+\par Η μηχανή $M_{0RL}$ διαβάζει, υπολογίζει και αντικαθιστά από δεξιά προς τα αριστερά για $y_n\,=\,0$.
+\[\text{Υπολογισμός/Αντικατάσταση Δεξιά προς Αριστερά}\,:\, M_{0LR}\,:\]
+\[{\text{\scriptsize 0, 1}}\qquad\quad\]
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\[\overset{\lor}{{\text{\large\bfseries F}}}\,L_\sqcup\, \longrightarrow\, \overset{\botcircleleft}{L}
+\overset{F,\,T}{\longrightarrow}\, R\,T\,R\,\xrightarrow{0} M_{0RL}\]
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\[\qquad\qquad\qquad\qquad\qquad\;\;\,\xrightarrow{1}\, M_{1RL}\]
+
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\[\qquad\qquad\qquad\qquad\qquad\qquad\;\;\xrightarrow{\sqcup}\, R_\sqcup \rightarrow M_T\]
+\par Δοκιμή:
+\begin{itemize}
+	\itemsep0em
+	\item $|x| = |y| = |z| = |w| = 0 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, \sqcup \sqcup
+	\xrightarrow{R} \triangleright\, \sqcup\, \underline{\sqcup}\, \sqcup \xrightarrow{\sqcup} M_4 \quad$
+	\textcolor{green}{\ding{51}}
+
+	\item $|x| = |y| = |z| = |w| = n, n \geq 1 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, x_1\,...\,y_n
+	\sqcup\, y_1\,...\,y_n\, \sqcup \xrightarrow{R}\\ \triangleright\, \sqcup\, \underline{x_1}\,...\,x_n\,
+	\sqcup\,
+	y_1\,...\,y_n\, \xrightarrow{x \in \{0,\,1\}} M_2 \quad$
+	\textcolor{green}{\ding{51}}
+\end{itemize}
+
+
+
+
 %\clearpage
 %\begin{multicols}{2}
 \begin{itemize}
