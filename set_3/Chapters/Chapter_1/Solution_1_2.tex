@@ -83,7 +83,9 @@ L\,\overset{\sqcup}{\longleftarrow}\overset{\lor}{{\text{\large\bfseries
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \[\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\;\;\overset{1}{\longrightarrow}\, M_{1LR}\]
-\par Δοκιμή:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+Δοκιμή:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \begin{itemize}
 	\itemsep0em
 	\item $|x| = |y| = |z| = |w| = 0 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, \sqcup \sqcup
@@ -93,20 +95,17 @@ L\,\overset{\sqcup}{\longleftarrow}\overset{\lor}{{\text{\large\bfseries
 
 	\item{ $|x| = |y| = |z| = |w| = n, n \geq 1 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, x_1\,...\,y_n
 	\sqcup\, y_1\,...\,y_n\, \sqcup \xrightarrow{R}\\ \triangleright\, \sqcup\, \underline{x_1}\,...\,x_n\,
-	\sqcup\,
-	y_1\,...\,y_n\, \xrightarrow{0} M_{0LR} \quad$ \textcolor{green}{\ding{51}}\\
-	\makebox[4cm]{\hfill}$\xrightarrow{1} M_{1LR} \quad$ \textcolor{green}{\ding{51}}}
+	\sqcup\, y_1\,...\,y_n\, \sqcup \xrightarrow{0} M_{0LR} \quad$ \textcolor{green}{\ding{51}}\\
+	\makebox[4.3cm]{\hfill}$\xrightarrow{1} M_{1LR} \quad$ \textcolor{green}{\ding{51}}}
 \end{itemize}
+\clearpage
 
-
-\par Η μηχανή $M_{0LR}$ διαβάζει, υπολογίζει και αντικαθιστά από αριστερά προς τα δεξιά για $x_n\,=\,0$.
-\[\text{Υπολογισμός/Αντικατάσταση Αριστερά προς Δεξιά}\,:\, M_{0LR}\,:\]
-\[{\text{\scriptsize T, F}}\qquad\quad\]
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\[\overset{\lor}{{\text{\large\bfseries T}}}\,R_\sqcup\, \longrightarrow\, \overset{\botcircleleft}{R}
+\par Η $M_{0LR}$ διαβάζει, υπολογίζει και αντικαθιστά από αριστερά προς τα δεξιά για $x_n\,=\,0$.
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+%\[\text{Υπολογισμός/Αντικατάσταση Αριστερά προς Δεξιά}\,:\, M_{0LR}\,:\]
+\[\overset{\lor}{{\text{\large\bfseries T}}}\,R_\sqcup\, \longrightarrow\,
+\overset{F,\,T}{\overset{\botcircleleft}{R}}
 \overset{0,\,1}{\longrightarrow}\,
 F\,R\,\xrightarrow{0} M_{0RL}\]
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
@@ -120,29 +119,37 @@ F\,R\,\xrightarrow{0} M_{0RL}\]
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \[\qquad\qquad\qquad\qquad\qquad\quad\;\;\,\xrightarrow{\sqcup}\, R_\sqcup \rightarrow M_T\]
-\par Δοκιμή:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+Δοκιμή:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \begin{itemize}
 	\itemsep0em
-	\item $|x| = |y| = |z| = |w| = 0 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, \sqcup \sqcup
-	\xrightarrow{R} \triangleright\, \sqcup\, \underline{\sqcup}\, \sqcup \xrightarrow{\sqcup} M_4 \quad$
-	\textcolor{green}{\ding{51}}
+	\item $x\,=\,0,\; y\,=c,\; c\in\{0,\,1\} \;\xRightarrow{M_S}\;
+	\triangleright\, \sqcup\, \underline{0}\, \sqcup\, c\, \sqcup\,\xrightarrow{TR_\sqcup}\;
+	\triangleright\, \sqcup\, T\, \underline{\sqcup}\, c\, \sqcup\,
+	\xrightarrow{\overset{F,\,T}{\overset{\botcircleleft}{R}}\xrightarrow{0,\,1}F}\;
+	\triangleright\, \sqcup\, T\, \sqcup\, \underline{F}\, \sqcup\, \xrightarrow{R}\;
+	\triangleright\, \sqcup\, T\, \sqcup\, F\, \underline{\sqcup}\, \xrightarrow{\xrightarrow{\sqcup}R_\sqcup}\;
+	\triangleright\, \sqcup\, T\, \sqcup\, F\, \sqcup\, \underline{\sqcup}\, \xrightarrow{} M_T
+	\quad$ \textcolor{green}{\ding{51}}
 
-	\item $|x| = |y| = |z| = |w| = n, n \geq 1 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, x_1\,...\,y_n
-	\sqcup\, y_1\,...\,y_n\, \sqcup \xrightarrow{R}\\ \triangleright\, \sqcup\, \underline{x_1}\,...\,x_n\,
-	\sqcup\,
-	y_1\,...\,y_n\, \xrightarrow{x \in \{0,\,1\}} M_2 \quad$
-	\textcolor{green}{\ding{51}}
-\end{itemize}
+	\item $x\,=\,0c,\; y\,=cd,\; c\in\{0,\,1\},\,d\in\{0,\,1\} \;\xRightarrow{M_S}\;
+	\triangleright\, \sqcup\, \underline{0}\, c\, \sqcup\, c\, d\, \sqcup\,\xrightarrow{TR_\sqcup}\;$\\$
+	\triangleright\, \sqcup\, T\, c\, \underline{\sqcup}\, c\, d\, \sqcup\,
+	\xrightarrow{\overset{F,\,T}{\overset{\botcircleleft}{R}}\xrightarrow{0,\,1}F}\;
+	\triangleright\, \sqcup\, T\, c\, \sqcup\, \underline{F}\, d\, \sqcup\, \xrightarrow{R}\;
+	\triangleright\, \sqcup\, T\, c\, \sqcup\, F\, \underline{d}\, \sqcup\, \xrightarrow{0}\; M_{0RL}
+	\quad$\textcolor{green}{\ding{51}}\\
+	\makebox[10.5cm]{\hfill} $\xrightarrow{1}\; M_{1RL}\quad$ \textcolor{green}{\ding{51}}
+	\end{itemize}
 
 
-\par Η μηχανή $M_{0RL}$ διαβάζει, υπολογίζει και αντικαθιστά από δεξιά προς τα αριστερά για $y_n\,=\,0$.
-\[\text{Υπολογισμός/Αντικατάσταση Δεξιά προς Αριστερά}\,:\, M_{0LR}\,:\]
-\[{\text{\scriptsize 0, 1}}\qquad\quad\]
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
-\[\overset{\lor}{{\text{\large\bfseries F}}}\,L_\sqcup\, \longrightarrow\, \overset{\botcircleleft}{L}
+\par Η $M_{0RL}$ διαβάζει, υπολογίζει και αντικαθιστά από δεξιά προς τα αριστερά για $y_n\,=\,0$.
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+%\[\text{Υπολογισμός/Αντικατάσταση Δεξιά προς Αριστερά}\,:\, M_{0LR}\,:\]
+\[\overset{\lor}{{\text{\large\bfseries F}}}\,L_\sqcup\, \longrightarrow\,
+\overset{0,\,1}{\overset{\botcircleleft}{L}}
 \overset{F,\,T}{\longrightarrow}\, R\,T\,R\,\xrightarrow{0} M_{0RL}\]
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
@@ -155,20 +162,32 @@ F\,R\,\xrightarrow{0} M_{0RL}\]
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \[\qquad\qquad\qquad\qquad\qquad\qquad\;\;\xrightarrow{\sqcup}\, R_\sqcup \rightarrow M_T\]
-\par Δοκιμή:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+Δοκιμή:
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \begin{itemize}
 	\itemsep0em
-	\item $|x| = |y| = |z| = |w| = 0 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, \sqcup \sqcup
-	\xrightarrow{R} \triangleright\, \sqcup\, \underline{\sqcup}\, \sqcup \xrightarrow{\sqcup} M_4 \quad$
-	\textcolor{green}{\ding{51}}
-
-	\item $|x| = |y| = |z| = |w| = n, n \geq 1 \;\Rightarrow\;\triangleright\, \underline{\sqcup}\, x_1\,...\,y_n
-	\sqcup\, y_1\,...\,y_n\, \sqcup \xrightarrow{R}\\ \triangleright\, \sqcup\, \underline{x_1}\,...\,x_n\,
-	\sqcup\,
-	y_1\,...\,y_n\, \xrightarrow{x \in \{0,\,1\}} M_2 \quad$
-	\textcolor{green}{\ding{51}}
+	\item $x\,=\,0c,\; y\,=00,\; c\in\{0,\,1\} \;\xRightarrow{M_S}\;
+	\triangleright\, \sqcup\, T\, c\, \sqcup\, F\, \underline{0}\, \sqcup\; \xrightarrow{FL_\sqcup}\;
+	\triangleright\, \sqcup\, T\, c\, \underline{\sqcup}\, F\, F\, \sqcup\;
+	\xrightarrow{\overset{0,\,1}{\overset{\botcircleleft}{L}}\xrightarrow{F,\,T}T}\;
+	\triangleright\, \sqcup\, \underline{T}\, c\, \sqcup\, F\, F\, \sqcup\; \xrightarrow{RT}\;
+	\triangleright\, \sqcup\, T\, \underline{T}\, \sqcup\, F\, F\, \sqcup\; \xrightarrow{R}\;
+	\triangleright\, \sqcup\, T\, T\, \underline{\sqcup}\, F\, F\, \sqcup\;
+	\xrightarrow{\xrightarrow{\sqcup}R_\sqcup}\;
+	\triangleright\, \sqcup\, T\, T\, \sqcup\, F\, F\, \underline{\sqcup}\; \xrightarrow{}\; M_T
+	\quad$ \textcolor{green}{\ding{51}}
+	\clearpage
+	\item $x\,=\,0cd,\; y\,=00c,\; d\in \{0,\,1\},\; c\in\{0,\,1\},\,d\in\{0,\,1\} \;\xRightarrow{M_S}\\
+	\triangleright\, \sqcup\, T\, c\, d\, \sqcup\, F\, \underline{0}\, c\, \sqcup\; \xrightarrow{FL_\sqcup}\;
+	\triangleright\, \sqcup\, T\, c\, d\, \underline{\sqcup}\, F\, F\, c\, \sqcup\;
+	\xrightarrow{\overset{0,\,1}{\overset{\botcircleleft}{L}}\xrightarrow{F,\,T}T}\;
+	\triangleright\, \sqcup\, \underline{T}\, c\, d\, \sqcup\, F\, F\, c\, \sqcup\; \xrightarrow{RT}\;
+	\triangleright\, \sqcup\, T\, \underline{T}\, d\, \sqcup\, F\, F\, c\, \sqcup\; \xrightarrow{R}\;
+	\triangleright\, \sqcup\, T\, T\, \underline{d}\, \sqcup\, F\, F\, c\, \sqcup\; \xrightarrow{0}\; M_{0LR}
+	\quad$ \textcolor{green}{\ding{51}}\\
+	\makebox[8.3cm]{\hfill}$\xrightarrow{1}\; M_{1LR} \quad$ \textcolor{green}{\ding{51}}
 \end{itemize}
-
 
 
 
