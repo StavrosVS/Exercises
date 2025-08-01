@@ -294,7 +294,9 @@ F\,R\,\xrightarrow{0} M_{0RL}\]
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \[\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\;\, \xrightarrow{1}\, M_{1LR}\]
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 Δοκιμή:
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \begin{itemize}
@@ -331,6 +333,8 @@ F\,R\,\xrightarrow{0} M_{0RL}\]
 $F,\,T$ σε $0,\,1$. Ταυτόχρονα ο τρόπους που μετακινείτε στη ταινία για να κάνει την μετάφραση, του επιτρέπει
 ταυτόχρονα να τερματίσει τη διαδικασία κατά την ολοκλήρωση της, με την κεφαλή στην αναμενόμενη από τις απαιτήσεις
 θέση.
+
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \[\overset{\lor}{{\text{\large\bfseries L}}} \;\xrightarrow{F}\; 0 \rightarrow M_T \]
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
@@ -347,7 +351,8 @@ $F,\,T$ σε $0,\,1$. Ταυτόχρονα ο τρόπους που μετακι
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \[\xrightarrow{\triangleright}\; R \quad\]
-\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
+\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 Δοκιμή:
 \reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace\reducevspace
 \begin{itemize}
@@ -367,11 +372,89 @@ $F,\,T$ σε $0,\,1$. Ταυτόχρονα ο τρόπους που μετακι
 	\quad$ \textcolor{green}{\ding{51}}
 \end{itemize}
 
+\par Σχεδιάζουμε γραφικά τη διασύνδεση των μηχανών μεταξύ τους και κατόπιν επανασχεδιάζουμε αντικαθιστώντας τες με
+την αντίστοιχη εσωτερική λειτουργία τους, έτσι ώστε να καταλήξουμε στο ζητούμενο.
+Κάναμε τροποποιήσεις ώστε να συγχωνευτούν κάποιες διαδικασίες. Για παράδειγμα σε περίπτωση κενής
+εισόδου, η $M_S$ μεταβαίνει στην $M_T$, μεταβιβάζοντας την ευθύνη τελικής θέσης κεφαλής σε αυτή.
+
+
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth, shorten >=1pt,semithick,node distance=3.0cm,auto]
+
+		\node(q_1)                  {$\,>M_S\,$};
+		\node(q_2) [below of = q_1] {$\,M_{0LR}\,$};
+		\node(q_4) [below left of = q_2] {$\,M_{0RL}\,$};
+		\node(q_5) [below right of = q_2] {$\,M_{1RL}\,$};
+		\node(q_3) [above left of = q_4] {$\,M_{1LR}\,$};
+		\node(q_6) [above right of = q_5] {$M_T$};
+
+		\draw[->] (q_1) -- node {$0$} (q_2);
+		\draw[->] (q_1) -- node[midway, above] {$\sqcup$} (q_6);
+		\draw[->] (q_1) -- node[midway, left] {$1$} (q_3);
+		\draw[->] (q_2) -- node {$\sqcup$} (q_6);
+		\draw[->] (q_2) -- node {$1$} (q_5);
+		\draw[->] (q_2) -- node {$0$} (q_4);
+		\draw[->] (q_3) -- node {$0$} (q_2);
+		\draw (q_3.south) -- ++(0,-0.5cm) -| ++(-1.2cm,0) |- (q_3.west) node[midway, above] {1};
+		\draw (q_3.north) -- ++(0,3.4cm) -| ++(8.5cm,0) -- (q_6.north) node[midway, right] {$\sqcup$};
+		\draw[->] (q_5) -- node {$0$} (q_4);
+		\draw[->] (q_5) -- node {$\sqcup$} (q_6);
+		\draw (q_5.south) -- ++(0,-0.5cm) |- ++(1.3cm,0) |- (q_5.east) node[midway, above] {1};
+		\draw[->] (q_4) -- node {$0$} (q_2);
+		\draw[->] (q_4) -- node {$1$} (q_3);
+		\draw (q_4.south) -- ++(0,-1.2cm) -| ++(6.36cm,0) -- (q_6.south) node[midway, right] {$\sqcup$};
+		\draw (q_6.north east) -- ++(0,0.3cm) -| ++(1cm,0) |- (q_6.south east) node[midway, below]
+		{$T,\,F,\,\sqcup$};
+
+	\end{tikzpicture}
+	\vspace{-0.3cm}
+\end{center}
 %\clearpage
-\hfill \break
+
 
 \begin{tcolorbox}[colback=yellow!15!white, colframe=blue!50!white,
 	fonttitle=\bfseries\Large, title = Γραμματική και συντακτικό δένδρο]
+
+\vspace{+0.5cm}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth, shorten >=1pt,semithick,node distance=3.0cm,auto]
+
+		\node(q_1)                  {$\overset{\lor}{R}$};
+		\node(q_2) [below of = q_1] {$T\,R_\sqcup$};
+		\node(q_4) [below left of = q_2] {$\,M_{0RL}\,$};
+		\node(q_5) [below right of = q_2] {$\,M_{1RL}\,$};
+		\node(q_3) [above left of = q_4] {$\,M_{1LR}\,$};
+		\node(q_6) [above right of = q_5] {$L$};
+		\node(q_60) [above right of = q_6] {$0$};
+		\node(q_61) [below right of = q_6] {$1$};
+
+		\draw[->] (q_1) -- node {$0$} (q_2);
+		\draw[->] (q_1) -- node[midway, above] {$\sqcup$} (q_6);
+		\draw[->] (q_1) -- node[midway, left] {$1$} (q_3);
+		\draw[->] (q_2) -- node {$\sqcup$} (q_6);
+		\draw[->] (q_2) -- node {$1$} (q_5);
+		\draw[->] (q_2) -- node {$0$} (q_4);
+		\draw[->] (q_3) -- node {$0$} (q_2);
+		\draw (q_3.south) -- ++(0,-0.5cm) -| ++(-1.2cm,0) |- (q_3.west) node[midway, above] {1};
+		\draw (q_3.north) -- ++(0,3.4cm) -| ++(8.5cm,0) -- (q_6.north) node[midway, right] {$\sqcup$};
+		\draw[->] (q_5) -- node {$0$} (q_4);
+		\draw[->] (q_5) -- node {$\sqcup$} (q_6);
+		\draw (q_5.south) -- ++(0,-0.5cm) |- ++(1.3cm,0) |- (q_5.east) node[midway, above] {1};
+		\draw[->] (q_4) -- node {$0$} (q_2);
+		\draw[->] (q_4) -- node {$1$} (q_3);
+		\draw (q_4.south) -- ++(0,-1.2cm) -| ++(6.36cm,0) -- (q_6.south) node[midway, right] {$\sqcup$};
+		\draw[->] (q_6) -- node {$F$} (q_60);
+		\draw[->] (q_6) -- node[left] {$T$} (q_61);
+		\draw (q_6) -- ++(1.25cm,0.75cm) -- ++(0.75cm,0) -- ++(0,-0.7cm) -- ++(-1.65cm,0) node[midway, above]
+		{$\sqcup$}
+		(q_6);
+		{$\sqcup$};
+		\draw[->] (q_60) -- ++(0.5cm,0) -- ++(0,-2.3cm) -- ++(-2.53cm,0) node {} (q_6);
+		\draw[->] (q_61) -- ++(0.5cm,0) -- ++(0,1.95cm) -- ++(-2.53cm,0) node {} (q_6);
+
+	\end{tikzpicture}
+	\vspace{+0.6cm}
+\end{center}
 
 
 \end{tcolorbox}
